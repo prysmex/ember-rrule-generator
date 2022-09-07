@@ -40,6 +40,12 @@
       ],
       "ember-rrule-generator/*": [
         "addons/ember-rrule-generator/src/*"
+      ],
+      "test-app/*": [
+        "apps/test-app/app/*"
+      ],
+      "test-app/tests/*": [
+        "apps/test-app/tests/*"
       ]
     }
   },
