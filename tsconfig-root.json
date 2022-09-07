@@ -39,7 +39,7 @@
         "types/*"
       ],
       "ember-rrule-generator/*": [
-        "addons/addons/src/*"
+        "addons/ember-rrule-generator/src/*"
       ]
     }
   },
