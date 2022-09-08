@@ -1,10 +1,12 @@
 {{yield
   (hash
     Select=(component
-      this.Select
+      this.SelectMode
+      id=(concat @id "-select")
       options=this.availableOptions
       value=@end.mode
       handleChange=@handleChange
+      name=(concat @name ".mode")
     )
   )
 }}
@@ -17,6 +19,7 @@
         id=(concat @id "-after")
         after=@end.after
         handleChange=@handleChange
+        name=(concat @name ".after")
       )
     )
   }}
@@ -30,6 +33,7 @@
         id=(concat @id "-onDate")
         onDate=@end.onDate
         handleChange=@handleChange
+        name=(concat @name ".onDate.date")
       )
     )
   }}

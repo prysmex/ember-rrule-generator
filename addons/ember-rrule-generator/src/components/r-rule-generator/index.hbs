@@ -1,11 +1,19 @@
 {{yield
   (hash
     Start=(component
-      this.Start handleChange=this.handleChange start=this.state.data.start
+      this.Start
+      handleChange=this.handleChange
+      start=this.state.data.start
+      name="start"
+    )
+    Repeat=(component
+      this.Repeat
+      handleChange=this.handleChange
+      repeat=this.state.data.repeat
+      name="repeat"
     )
     End=(component
-      this.End handleChange=this.handleChange end=this.state.data.end
+      this.End handleChange=this.handleChange end=this.state.data.end name="end"
     )
   )
 }}
-{{log this.state this.state.data.start}}

@@ -83,7 +83,7 @@
   },
   "scripts": {
     "build": "EXPERIMENTAL_RENDER_MODE_SERIALIZE=true EMBROIDER_CONCAT_STATS=true EMBER_ENGINES_ADDON_DEDUPE=true && ember build --environment=production",
-    "start": "EXPERIMENTAL_RENDER_MODE_SERIALIZE=true EMBER_ENGINES_ADDON_DEDUPE=true && ember serve --port=0",
+    "start": "ember serve --port=0",
     "test:development": "ember exam --parallel=16 --load-balance --test-port=0",
     "test:production": "ember exam --parallel=16 --load-balance -e production --test-port=0"
   },

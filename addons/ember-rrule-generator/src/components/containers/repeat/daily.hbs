@@ -1,0 +1,20 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      daily=@daily handleChange=this.handleChange value=@daily.interval id=@id
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |DailyComponent|}}
+      <DailyComponent
+        @id={{@id}}
+        id={{@id}}
+        @daily={{@daily}}
+        @value={{@daily.interval}}
+        @handleChange={{this.handleChange}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

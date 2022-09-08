@@ -202,6 +202,7 @@ module.exports = {
 
     'ember/routes-segments-snake-case': 'off', // We should leave this off permanently
     'ember/use-brace-expansion': 'off', // has bugs and is annoying + only applies to computeds
+    'ember/no-empty-glimmer-component-classes': 'off',
 
     'ember/no-classic-classes': 'error',
     'ember/no-get': 'error',

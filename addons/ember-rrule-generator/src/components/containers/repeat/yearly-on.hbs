@@ -1,0 +1,20 @@
+{{yield
+  (hash
+    Month=(component
+      this.YearlyOnMonth
+      id=(concat @id "-month")
+      value=@on.month
+      handleChange=@handleChange
+      name=(concat @name ".month")
+      isActive=@isActive
+    )
+    Day=(component
+      this.YearlyOnDay
+      id=(concat @id "-day")
+      value=@on.day
+      handleChange=@handleChange
+      name=(concat @name ".day")
+      isActive=@isActive
+    )
+  )
+}}

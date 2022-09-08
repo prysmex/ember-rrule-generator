@@ -1,25 +1,3 @@
-import Component from '@glimmer/component';
+import BaseHandlerComponent from '../base-handler';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
-
-type End = RRuleGenerator['state']['data']['end'];
-
-interface Signature {
-  Args: {
-    handleChange: RRuleGenerator['handleChange'];
-    end: End;
-  };
-}
-
-export default class ContainersEndOnDateComponent extends Component<Signature> {
-  handleChange = (e: { target: { value: unknown } }) => {
-    const editedEvent = {
-      target: {
-        value: e.target.value,
-        name: 'end.onDate.date',
-      },
-    };
-
-    this.args.handleChange(editedEvent);
-  };
-}
+export default class ContainersEndOnDateComponent extends BaseHandlerComponent {}

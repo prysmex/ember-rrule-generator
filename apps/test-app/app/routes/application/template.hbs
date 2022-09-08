@@ -1,10 +1,37 @@
 <this.RRuleGenerator as |Generator|>
   <Generator.Start @view={{this.DatePicker}} />
+  <Generator.Repeat as |Repeat|>
+    <Repeat.Select @view={{component this.Select label="Repeat"}} />
+    <Repeat.Hourly @view={{this.NumberInput}} />
+    <Repeat.Daily @view={{this.RepeatDaily}} />
+    <Repeat.Weekly @view={{this.RepeatWeekly}} />
+    <Repeat.Monthly as |Monthly|>
+      <Monthly.Select @view={{this.Select}} />
+      <Monthly.On as |On|>
+        <On.Month @view={{this.RepeatMonthly}} />
+        <On.Day @view={{this.RepeatMonthly}} />
+      </Monthly.On>
+      <Monthly.OnThe as |OnThe|>
+        <OnThe.Month @view={{this.RepeatMonthly}} />
+        <OnThe.Day @view={{this.RepeatMonthly}} />
+      </Monthly.OnThe>
+    </Repeat.Monthly>
+    <Repeat.Yearly as |Yearly|>
+      <Yearly.Select @view={{this.Select}} />
+      <Yearly.On as |On|>
+        <On.Day @view={{this.RepeatYearlyOnDay}} />
+        <On.Month @view={{this.RepeatYearlyOnMonth}} />
+      </Yearly.On>
+      <Yearly.OnThe as |OnThe|>
+        <OnThe.Month @view={{this.RepeatYearly}} />
+        <OnThe.Day @view={{this.RepeatYearly}} />
+      </Yearly.OnThe>
+    </Repeat.Yearly>
+  </Generator.Repeat>
   <Generator.End as |End|>
-    <End.Select @view={{this.Select}} />
+    <End.Select @view={{component this.Select label="End"}} />
     <End.After @view={{this.After}} />
     <End.OnDate @view={{this.OnDate}} />
   </Generator.End>
-
 </this.RRuleGenerator>
 {{outlet}}

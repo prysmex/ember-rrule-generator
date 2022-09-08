@@ -1,0 +1,23 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      hourly=@hourly
+      handleChange=this.handleChange
+      value=@hourly.interval
+      id=@id
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |HourlyComponent|}}
+      <HourlyComponent
+        @id={{@id}}
+        id={{@id}}
+        @hourly={{@hourly}}
+        @value={{@hourly.interval}}
+        @handleChange={{this.handleChange}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

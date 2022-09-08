@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
 
-import Select from './select';
+import SelectMode from './select-mode';
 import After from './after';
 import OnDate from './on-date';
 
@@ -24,7 +24,7 @@ const isOptionAvailable = (
 };
 
 export default class ContainersEndIndexComponent extends Component<Signature> {
-  Select = Select;
+  SelectMode = SelectMode;
   OnDate = OnDate;
   After = After;
 

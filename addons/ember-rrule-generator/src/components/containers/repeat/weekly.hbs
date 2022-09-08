@@ -1,0 +1,23 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      weekly=@weekly
+      handleChange=this.handleChange
+      value=@weekly.interval
+      id=@id
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |WeeklyComponent|}}
+      <WeeklyComponent
+        @id={{@id}}
+        id={{@id}}
+        @weekly={{@weekly}}
+        @value={{@weekly.interval}}
+        @handleChange={{this.handleChange}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

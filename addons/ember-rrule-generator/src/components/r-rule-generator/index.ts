@@ -10,6 +10,7 @@ import configureInitialState from '../../utils/configureInitialState';
 
 import Start from '../containers/start/index';
 import End from '../containers/end/index';
+import Repeat from '../containers/repeat/index';
 
 export interface ChangeEvent {
   target: {
@@ -42,6 +43,7 @@ type Signature = {
 export default class RRuleGenerator extends Component<Signature> {
   Start = Start;
   End = End;
+  Repeat = Repeat;
 
   @tracked state = configureInitialState(this.args.config, this.args.id);
 

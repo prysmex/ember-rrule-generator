@@ -1,0 +1,27 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      id=@id
+      name=@name
+      value=@value
+      options=@options
+      isActive=@isActive
+      handleChange=this.handleChange
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |YearlyOnMonthComponent|}}
+      <YearlyOnMonthComponent
+        @id={{@id}}
+        id={{@id}}
+        @name={{@name}}
+        @value={{@value}}
+        @options={{@options}}
+        @isActive={{@isActive}}
+        @handleChange={{this.handleChange}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

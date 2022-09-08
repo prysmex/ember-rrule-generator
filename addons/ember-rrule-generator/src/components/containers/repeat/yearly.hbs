@@ -1,0 +1,46 @@
+{{yield
+  (hash
+    Select=(component
+      this.YearlySelectMode
+      id=(concat @id "-select")
+      options=this.availableOptions
+      value=@yearly.mode
+      handleChange=@handleChange
+      name=(concat @name ".mode")
+    )
+  )
+}}
+
+{{#if (this.isOptionAvailable "on" @yearly.options)}}
+  {{yield
+    (hash
+      On=(component
+        this.YearlyOn
+        id=(concat @id "-on")
+        mode=@yearly.mode
+        on=@yearly.on
+        hasMoreModes=(this.isNotTheOnlyMode "on")
+        handleChange=@handleChange
+        isActive=(this.isModeActive @yearly.mode "on")
+        name=(concat @name ".on")
+      )
+    )
+  }}
+{{/if}}
+
+{{#if (this.isOptionAvailable "on the" @yearly.options)}}
+  {{yield
+    (hash
+      OnThe=(component
+        this.YearlyOnThe
+        id=(concat @id "-onThe")
+        mode=@yearly.mode
+        hasMoreModes=(this.isNotTheOnlyMode "on the")
+        onThe=@yearly.onThe
+        handleChange=@handleChange
+        isActive=(this.isModeActive @yearly.mode "on the")
+        name=(concat @name ".onThe")
+      )
+    )
+  }}
+{{/if}}

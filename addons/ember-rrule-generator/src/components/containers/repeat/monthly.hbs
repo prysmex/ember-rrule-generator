@@ -1,0 +1,23 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      monthly=@monthly
+      handleChange=this.handleChange
+      value=@monthly.interval
+      id=@id
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |MonthlyComponent|}}
+      <MonthlyComponent
+        @id={{@id}}
+        id={{@id}}
+        @monthly={{@monthly}}
+        @value={{@monthly.interval}}
+        @handleChange={{this.handleChange}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

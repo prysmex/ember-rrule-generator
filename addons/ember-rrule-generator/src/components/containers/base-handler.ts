@@ -1,22 +1,22 @@
 import Component from '@glimmer/component';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
+import type RRuleGenerator from '../r-rule-generator/index';
 
-type End = RRuleGenerator['state']['data']['end'];
-
-interface Signature {
+export interface BaseHandlerSignature {
   Args: {
     handleChange: RRuleGenerator['handleChange'];
-    end: End;
+    name: string;
   };
 }
 
-export default class ContainersEndSelectComponent extends Component<Signature> {
+export default class BaseHandlerComponent<
+  Args extends BaseHandlerSignature = BaseHandlerSignature
+> extends Component<Args> {
   handleChange = (e: { target: { value: unknown } }) => {
     const editedEvent = {
       target: {
         value: e.target.value,
-        name: 'end.mode',
+        name: this.args.name,
       },
     };
 
