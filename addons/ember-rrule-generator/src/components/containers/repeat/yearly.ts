@@ -55,12 +55,12 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
   });
 
   get availableOptions() {
-    const availableOptions: string[] = [];
+    const availableOptions: { value: string; label: string }[] = [];
 
     isOptionAvailable('on', this.args.yearly.options) &&
-      availableOptions.push('on');
+      availableOptions.push({ value: 'on', label: 'on' });
     isOptionAvailable('on the', this.args.yearly.options) &&
-      availableOptions.push('on the');
+      availableOptions.push({ value: 'on', label: 'on' });
 
     return availableOptions;
   }

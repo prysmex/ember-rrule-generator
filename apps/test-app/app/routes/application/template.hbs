@@ -19,8 +19,8 @@
     <Repeat.Yearly as |Yearly|>
       <Yearly.Select @view={{this.Select}} />
       <Yearly.On as |On|>
-        <On.Day @view={{this.RepeatYearlyOnDay}} />
-        <On.Month @view={{this.RepeatYearlyOnMonth}} />
+        <On.Day @view={{this.Select}} />
+        <On.Month @view={{this.Select}} />
       </Yearly.On>
       <Yearly.OnThe as |OnThe|>
         <OnThe.Month @view={{this.RepeatYearly}} />

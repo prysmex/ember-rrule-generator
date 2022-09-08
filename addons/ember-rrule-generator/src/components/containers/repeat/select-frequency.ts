@@ -1,3 +1,3 @@
-import BaseHandlerComponent from '../base-handler';
+import BaseContainerComponent from '../base-container';
 
-export default class ContainersRepeatSelectFrequencyComponent extends BaseHandlerComponent {}
+export default class ContainersRepeatSelectFrequencyComponent extends BaseContainerComponent {}

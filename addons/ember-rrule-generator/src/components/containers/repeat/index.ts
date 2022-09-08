@@ -1,4 +1,6 @@
-import BaseHandlerComponent, { BaseHandlerSignature } from '../base-handler';
+import BaseContainerComponent, {
+  BaseContainerSignature,
+} from '../base-container';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
 
@@ -13,7 +15,7 @@ import RepeatHourly from './hourly';
 
 type Repeat = RRuleGenerator['state']['data']['repeat'];
 
-type Signature = BaseHandlerSignature & {
+type Signature = BaseContainerSignature & {
   Args: {
     repeat: Repeat;
   };
@@ -29,7 +31,7 @@ const isOptionAvailable = (
   );
 };
 
-export default class ContainersRepeatComponent extends BaseHandlerComponent<Signature> {
+export default class ContainersRepeatComponent extends BaseContainerComponent<Signature> {
   SelectFrequency = SelectFrequency;
   RepeatYearly = RepeatYearly;
   RepeatMonthly = RepeatMonthly;
@@ -41,15 +43,15 @@ export default class ContainersRepeatComponent extends BaseHandlerComponent<Sign
     const availableOptions: Repeat['options']['frequency'] = [];
 
     isOptionAvailable('Yearly', this.args.repeat.options) &&
-      availableOptions.push('Yearly');
+      availableOptions.push({ value: 'Yearly', label: 'Yearly' });
     isOptionAvailable('Monthly', this.args.repeat.options) &&
-      availableOptions.push('Monthly');
+      availableOptions.push({ value: 'Monthly', label: 'Monthly' });
     isOptionAvailable('Weekly', this.args.repeat.options) &&
-      availableOptions.push('Weekly');
+      availableOptions.push({ value: 'Weekly', label: 'Weekly' });
     isOptionAvailable('Daily', this.args.repeat.options) &&
-      availableOptions.push('Daily');
+      availableOptions.push({ value: 'Daily', label: 'Daily' });
     isOptionAvailable('Hourly', this.args.repeat.options) &&
-      availableOptions.push('Hourly');
+      availableOptions.push({ value: 'Hourly', label: 'Hourly' });
 
     return availableOptions;
   }

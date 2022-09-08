@@ -16,7 +16,7 @@
         {{on "change" @handleChange}}
       >
         {{#each @options as |opt|}}
-          <option value={{opt}}>{{opt}}</option>
+          <option value={{opt.value}}>{{opt.label}}</option>
         {{/each}}
       </select>
     </div>

@@ -1,3 +1,3 @@
-import BaseHandlerComponent from '../base-handler';
+import BaseContainerComponent from '../base-container';
 
-export default class ContainersEndAfterComponent extends BaseHandlerComponent {}
+export default class ContainersEndAfterComponent extends BaseContainerComponent {}

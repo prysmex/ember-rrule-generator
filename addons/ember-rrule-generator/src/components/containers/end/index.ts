@@ -32,11 +32,11 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
     const availableOptions: End['options']['modes'] = [];
 
     isOptionAvailable('Never', this.args.end.options) &&
-      availableOptions.push('Never');
+      availableOptions.push({ value: 'Never', label: 'Never' });
     isOptionAvailable('After', this.args.end.options) &&
-      availableOptions.push('After');
+      availableOptions.push({ value: 'After', label: 'After' });
     isOptionAvailable('On date', this.args.end.options) &&
-      availableOptions.push('On date');
+      availableOptions.push({ value: 'On date', label: 'On date' });
 
     return availableOptions;
   }

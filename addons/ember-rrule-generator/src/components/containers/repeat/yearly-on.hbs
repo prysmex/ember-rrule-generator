@@ -6,6 +6,7 @@
       value=@on.month
       handleChange=@handleChange
       name=(concat @name ".month")
+      options=this.months
       isActive=@isActive
     )
     Day=(component
@@ -14,6 +15,7 @@
       value=@on.day
       handleChange=@handleChange
       name=(concat @name ".day")
+      options=this.days
       isActive=@isActive
     )
   )

@@ -48,7 +48,7 @@
     "type": "addon",
     "version": 2,
     "app-js": {
-      "./components/containers/base-handler.js": "./dist/_app_/components/containers/base-handler.js",
+      "./components/containers/base-container.js": "./dist/_app_/components/containers/base-container.js",
       "./components/containers/end/after.js": "./dist/_app_/components/containers/end/after.js",
       "./components/containers/end/index.js": "./dist/_app_/components/containers/end/index.js",
       "./components/containers/end/on-date.js": "./dist/_app_/components/containers/end/on-date.js",
