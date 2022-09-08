@@ -1,13 +1,15 @@
 import { cloneDeep, set } from 'lodash-es';
 
 import Component from '@glimmer/component';
+//@ts-expect-error
 import { tracked } from '@glimmer/tracking';
 
 import computeRRuleToString from '../../utils/computeRRule/toString/computeRRule';
-import computeRRuleFromString from '../../utils/computeRRule/fromString/computeRRule';
+// import computeRRuleFromString from '../../utils/computeRRule/fromString/computeRRule';
 import configureInitialState from '../../utils/configureInitialState';
 
 import Start from '../containers/start/index';
+import End from '../containers/end/index';
 
 export interface ChangeEvent {
   target: {
@@ -24,7 +26,7 @@ export interface Config {
   hideStart?: boolean;
   hideEnd?: boolean;
   hideError?: boolean;
-  weekStartOnSunday?: boolean;
+  weekStartsOnSunday?: boolean;
 }
 
 type Signature = {
@@ -34,29 +36,14 @@ type Signature = {
     value?: string;
     config?: Config;
     id?: string;
-    calendarComponent?: Component;
   };
 };
 
-interface State {
-  id: string;
-  data: {
-    start: unknown;
-    repeat: unknown;
-    end: unknown;
-    options: unknown;
-  };
-  rrule: string;
-}
-
 export default class RRuleGenerator extends Component<Signature> {
   Start = Start;
+  End = End;
 
-  @tracked state: State = configureInitialState(
-    this.args.config,
-    this.args.calendarComponent,
-    this.args.id
-  );
+  @tracked state = configureInitialState(this.args.config, this.args.id);
 
   handleChange = ({ target }: ChangeEvent) => {
     //eslint-disable-next-line
@@ -71,8 +58,10 @@ export default class RRuleGenerator extends Component<Signature> {
 
     //eslint-disable-next-line
     const rrule = computeRRuleToString(newData);
+
+    //eslint-disable-next-line
     console.log(rrule);
 
-    this.args.onChange?.(rrule);
+    this.args.onChange?.(rrule as string);
   };
 }

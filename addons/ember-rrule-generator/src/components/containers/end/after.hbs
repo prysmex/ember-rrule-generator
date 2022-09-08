@@ -1,0 +1,13 @@
+{{#if (has-block)}}
+  {{yield (hash handleChange=this.handleChange after=@after id=@id)}}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |AfterComponent|}}
+      <AfterComponent
+        @id={{@id}}
+        @after={{@after}}
+        @handleChange={{this.handleChange}}
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

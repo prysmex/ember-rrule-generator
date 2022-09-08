@@ -12,8 +12,16 @@ const addon = new Addon({
   destDir: 'dist',
 });
 
-const importAvailable = ['services/**/*.{js,ts}', 'modifiers/**/*.{js,ts}'];
-const globallyAvailable = ['components/**/*.{js,ts}', 'helpers/**/*.{js,ts}'];
+const importAvailable = [
+  'utils/**/*.{js,ts}',
+  'services/**/*.{js,ts}',
+  'modifiers/**/*.{js,ts}',
+];
+const globallyAvailable = [
+  'utils/**/*.{js,ts}',
+  'components/**/*.{js,ts}',
+  'helpers/**/*.{js,ts}',
+];
 
 function pathExists(filePath) {
   try {

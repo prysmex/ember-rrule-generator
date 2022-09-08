@@ -1,0 +1,36 @@
+{{yield
+  (hash
+    Select=(component
+      this.Select
+      options=this.availableOptions
+      value=@end.mode
+      handleChange=@handleChange
+    )
+  )
+}}
+
+{{#if (this.isOptionSelected "After" @end.mode)}}
+  {{yield
+    (hash
+      After=(component
+        this.After
+        id=(concat @id "-after")
+        after=@end.after
+        handleChange=@handleChange
+      )
+    )
+  }}
+{{/if}}
+
+{{#if (this.isOptionSelected "On date" @end.mode)}}
+  {{yield
+    (hash
+      OnDate=(component
+        this.OnDate
+        id=(concat @id "-onDate")
+        onDate=@end.onDate
+        handleChange=@handleChange
+      )
+    )
+  }}
+{{/if}}

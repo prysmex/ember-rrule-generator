@@ -77,7 +77,7 @@ module.exports = {
     'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
     'max-statements': ['error', { max: 40 }],
-    
+
     complexity: ['error', { max: 20 }],
 
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",

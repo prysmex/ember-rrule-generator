@@ -1,7 +1,10 @@
 <this.RRuleGenerator as |Generator|>
-  <Generator.Start
-    @onDate={{hash options=(hash calendarComponent=this.DatePicker)}}
-  />
+  <Generator.Start @view={{this.DatePicker}} />
+  <Generator.End as |End|>
+    <End.Select @view={{this.Select}} />
+    <End.After @view={{this.After}} />
+    <End.OnDate @view={{this.OnDate}} />
+  </Generator.End>
 
 </this.RRuleGenerator>
 {{outlet}}

@@ -1,0 +1,24 @@
+<div class="px-3">
+  <div class="form-group row">
+    <div class="col-sm-2 text-sm-right">
+      <label htmlFor="{id}" class="col-form-label">
+        <strong>
+          End
+        </strong>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <select
+        name="end.mode"
+        id="{id}"
+        class="form-control"
+        value={{@value}}
+        {{on "change" @handleChange}}
+      >
+        {{#each @options as |opt|}}
+          <option value={{opt}}>{{opt}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>

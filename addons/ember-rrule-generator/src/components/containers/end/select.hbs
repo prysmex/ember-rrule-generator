@@ -1,0 +1,14 @@
+{{#if (has-block)}}
+  {{yield (hash options=@options handleChange=this.handleChange value=@mode)}}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |SelectComponent|}}
+      <SelectComponent
+        @options={{@options}}
+        @value={{@mode}}
+        @handleChange={{this.handleChange}}
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}
+{{log @options}}

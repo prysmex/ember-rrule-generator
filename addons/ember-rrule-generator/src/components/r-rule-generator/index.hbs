@@ -1,3 +1,11 @@
-{{yield (hash Start=(component this.Start handleChange=this.handleChange))}}
-
-{{this.data}}
+{{yield
+  (hash
+    Start=(component
+      this.Start handleChange=this.handleChange start=this.state.data.start
+    )
+    End=(component
+      this.End handleChange=this.handleChange end=this.state.data.end
+    )
+  )
+}}
+{{log this.state this.state.data.start}}

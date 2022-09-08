@@ -9,7 +9,7 @@ interface Signature {
   };
 }
 
-export default class ContainersStartComponent extends Component<Signature> {
+export default class ContainersRepeatComponent extends Component<Signature> {
   handleChange = (e: { target: { value: unknown } }) => {
     const editedEvent = {
       target: {

@@ -1,10 +1,15 @@
-{{#if @onDate.options.calendarComponent}}
-  {{#let (component @onDate.options.calendarComponent) as |CalendarComponent|}}
-    <CalendarComponent
-      @onChange={{this.handleChange}}
-      @value={{@onDate.date}}
-    />
-  {{/let}}
+{{#if (has-block)}}
+  {{yield
+    (hash handleChange=this.handleChange value=@start.onDate.date id=@id)
+  }}
 {{else}}
-  <input type="date" {{on "input" this.handleChange}} value={{@onDate.date}} />
+  {{#if @view}}
+    {{#let (component @view) as |CalendarComponent|}}
+      <CalendarComponent
+        @id={{@id}}
+        @value={{@start.onDate.date}}
+        @onChange={{this.handleChange}}
+      />
+    {{/let}}
+  {{/if}}
 {{/if}}

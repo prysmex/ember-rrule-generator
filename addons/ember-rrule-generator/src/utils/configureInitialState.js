@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import dayjs from 'dayjs';
 import { isEmpty, uniqueId } from 'lodash-es';
 
 import computeRRuleToString from './computeRRule/toString/computeRRule';
 import { DATE_TIME_FORMAT } from './constants.js';
 
-const configureState = (config = {}, calendarComponent, id) => {
+const configureState = (config = {}, id) => {
   const configureFrequency = () =>
-    config.repeat ? config.repeat[0] : 'Yearly';
+    config.frequency ? config.frequency[0] : 'Yearly';
   const configureYearly = () => config.yearly || 'on';
   const configureMonthly = () => config.monthly || 'on';
   const configureEnd = () => (config.end ? config.end[0] : 'Never');
@@ -20,7 +23,6 @@ const configureState = (config = {}, calendarComponent, id) => {
         date: dayjs().format(DATE_TIME_FORMAT),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
-          calendarComponent,
         },
       },
     },
@@ -77,7 +79,7 @@ const configureState = (config = {}, calendarComponent, id) => {
         interval: 1,
       },
       options: {
-        frequency: config.repeat,
+        frequency: config.frequency,
       },
     },
     end: {
@@ -87,7 +89,6 @@ const configureState = (config = {}, calendarComponent, id) => {
         date: dayjs().format(DATE_TIME_FORMAT),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
-          calendarComponent,
         },
       },
       options: {
