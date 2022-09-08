@@ -1,0 +1,10 @@
+{{#if @onDate.options.calendarComponent}}
+  {{#let (component @onDate.options.calendarComponent) as |CalendarComponent|}}
+    <CalendarComponent
+      @onChange={{this.handleChange}}
+      @value={{@onDate.date}}
+    />
+  {{/let}}
+{{else}}
+  <input type="date" {{on "input" this.handleChange}} value={{@onDate.date}} />
+{{/if}}

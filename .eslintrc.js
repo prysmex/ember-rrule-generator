@@ -48,21 +48,12 @@ module.exports = {
     },
     requireConfigFile: false,
   },
-  plugins: [
-    'ember',
-    'qunit',
-    'simple-import-sort',
-    'import',
-    'unused-imports',
-    'unicorn',
-    'no-useless-assign',
-  ],
+  plugins: ['ember', 'qunit', 'import', 'unused-imports', 'no-useless-assign'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
     'plugin:qunit/recommended',
-    'plugin:unicorn/recommended',
   ],
   globals: {},
   env: {
@@ -86,15 +77,8 @@ module.exports = {
     'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
     'max-statements': ['error', { max: 40 }],
-    'max-lines-per-function': [
-      'error',
-      { max: 80, skipBlankLines: true, skipComments: true },
-    ],
+    
     complexity: ['error', { max: 20 }],
-    'no-magic-numbers': [
-      'error',
-      { ignore: [0, 1, -1], ignoreArrayIndexes: true },
-    ],
 
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'error',
@@ -216,15 +200,6 @@ module.exports = {
     // See https://github.com/eslint/eslint/issues/11899 and similar
     'require-atomic-updates': 'off',
 
-    'simple-import-sort/imports': ['error', { groups: ImportSortGroups }],
-    'sort-imports': 'off',
-    'import/order': 'off',
-    'import/first': 'error',
-    'import/newline-after-import': 'error',
-    // this rule doesn't work properly with --fix
-    // https://github.com/benmosher/eslint-plugin-import/issues/1504
-    'import/no-duplicates': 'warn',
-
     'ember/routes-segments-snake-case': 'off', // We should leave this off permanently
     'ember/use-brace-expansion': 'off', // has bugs and is annoying + only applies to computeds
 
@@ -243,68 +218,6 @@ module.exports = {
     'ember/require-tagless-components': 'error',
     'ember/no-classic-components': 'error',
     'ember/no-side-effects': 'error',
-
-    // unicorn
-    'unicorn/prefer-module': 'off',
-    'unicorn/no-array-for-each': 'off', // this might be nice someday? better if it would do regular for loops for arrays
-    'unicorn/number-literal-case': 'off', // conflicts with prettier
-    'unicorn/no-nested-ternary': 'off', // conflicts with prettier
-    'unicorn/no-null': 'off', // too WAT
-    'unicorn/consistent-destructuring': 'off', // nice in some ways but heavy handed
-    'unicorn/prefer-spread': 'off', // possibly nice if we had native arrays
-    'unicorn/no-for-loop': 'off', // if for...of was good maybe we'd use this
-    'unicorn/prefer-add-event-listener': 'error',
-    'unicorn/better-regex': 'off', // would be awesome but has bugs https://github.com/sindresorhus/eslint-plugin-unicorn/issues?q=is%3Aissue+is%3Aopen+better-regex
-
-    'unicorn/prefer-includes': 'error',
-    'unicorn/prefer-default-parameters': 'error',
-    'unicorn/prefer-number-properties': 'error', // note Number.isNaN and Number.isFinite usage differs from global
-    'unicorn/numeric-separators-style': 'error',
-    'unicorn/prefer-optional-catch-binding': 'error',
-    'unicorn/catch-error-name': 'error',
-    'unicorn/prefer-ternary': 'error',
-    'unicorn/no-lonely-if': 'error',
-    'unicorn/prefer-regexp-test': 'error',
-    'unicorn/prefer-array-find': 'error',
-    'unicorn/prefer-array-some': 'error',
-    'unicorn/prefer-string-replace-all': 'error',
-    'unicorn/explicit-length-check': 'error',
-    'unicorn/no-unsafe-regex': 'error',
-
-    // to consider activating
-    'unicorn/prefer-negative-index': 'off',
-    'unicorn/prefer-dom-node-append': 'off',
-    'unicorn/prefer-dom-node-remove': 'off',
-    'unicorn/prefer-query-selector': 'off',
-    'unicorn/prefer-switch': 'off',
-    'unicorn/prefer-string-slice': 'off',
-    'unicorn/no-array-push-push': 'off',
-    'unicorn/no-zero-fractions': 'off',
-    'unicorn/consistent-function-scoping': 'off',
-    'unicorn/no-array-reduce': 'off',
-    'unicorn/new-for-builtins': 'off',
-    'unicorn/escape-case': 'off',
-    'unicorn/no-this-assignment': 'off',
-    'unicorn/prefer-set-has': 'off',
-    'unicorn/prefer-export-from': 'off',
-    'unicorn/prefer-code-point': 'off',
-    'unicorn/require-array-join-separator': 'off',
-    'unicorn/error-message': 'off',
-    'unicorn/no-array-callback-reference': 'off', // we may never want this
-    'unicorn/prevent-abbreviations': [
-      'off',
-      {
-        checkFilenames: false,
-        checkDefaultAndNamespaceImports: false,
-        extendDefaultReplacements: false,
-        replacements: {
-          e: {
-            error: true,
-            event: true,
-          },
-        },
-      },
-    ],
   },
   overrides: [
     // TypeScript files in strict-mode

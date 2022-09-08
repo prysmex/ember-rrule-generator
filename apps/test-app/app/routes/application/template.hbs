@@ -1,3 +1,7 @@
-<screen>
-  {{outlet}}
-</screen>
+<this.RRuleGenerator as |Generator|>
+  <Generator.Start
+    @onDate={{hash options=(hash calendarComponent=this.DatePicker)}}
+  />
+
+</this.RRuleGenerator>
+{{outlet}}

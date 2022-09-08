@@ -65,6 +65,10 @@ module.exports = function (defaults) {
       includeExternalHelpers: true,
     },
     'ember-cli-terser': terserSettings,
+
+    autoImport: {
+      watchDependencies: ['ember-rrule-generator'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -96,16 +100,18 @@ module.exports = function (defaults) {
     packagerOptions: {
       // publicAssetURL: EmberApp.env() === 'production' ? 'https://your-cdn-here.com/' : '/', // This should be a URL ending in "/"
       webpackConfig: {
-        plugins: [new BundleAnalyzerPlugin({
-          generateStatsFile: true,
-          openAnalyzer: false,
-          statsFilename: path.join(
-            process.cwd(),
-            'concat-stats-for',
-            'asset-stats.json',
-          ),
-        })]
-      }
+        plugins: [
+          new BundleAnalyzerPlugin({
+            generateStatsFile: true,
+            openAnalyzer: false,
+            statsFilename: path.join(
+              process.cwd(),
+              'concat-stats-for',
+              'asset-stats.json'
+            ),
+          }),
+        ],
+      },
     },
   });
 };

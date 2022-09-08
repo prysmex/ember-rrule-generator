@@ -42,6 +42,7 @@ specifiers:
   ember-page-title: ^7.0.0
   ember-qunit: ^5.1.5
   ember-resolver: ^8.0.3
+  ember-rrule-generator: file:..
   ember-source: ^4.4.0
   ember-unique-id-helper-polyfill: ^1.2.0
   fastboot-app-server: ^3.3.0
@@ -95,6 +96,7 @@ devDependencies:
   ember-page-title: 7.0.0
   ember-qunit: 5.1.5_m2vpijm5kklvqmlfibufmotnbi
   ember-resolver: 8.0.3_@babel+core@7.19.0
+  ember-rrule-generator: file:..
   ember-source: 4.7.0_z22tmofudeh3tyeifpjvwjl5ei
   ember-unique-id-helper-polyfill: 1.2.2
   fastboot-app-server: 3.3.2
@@ -14187,6 +14189,12 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  file:..:
+    resolution: {directory: .., type: directory}
+    name: apps
+    version: 0.0.0
     dev: true
 
   github.com/ember-intl/ember-intl/1f6c801994f7:

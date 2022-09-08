@@ -90,7 +90,10 @@ function templateOnlyPlugin(args) {
 export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if you need to.
-  output: addon.output(),
+  output: {
+    ...addon.output(),
+    hoistTransitiveImports: false,
+  },
 
   external: [],
 
