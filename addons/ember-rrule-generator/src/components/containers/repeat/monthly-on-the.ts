@@ -5,6 +5,7 @@ import MonthlyOnTheDay from './monthly-on-the-day';
 import MonthlyOnTheWhich from './monthly-on-the-which';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type OnThe = RRuleGenerator['state']['data']['repeat']['monthly']['onThe'];
 
@@ -24,7 +25,10 @@ export default class ContainersRepeatMonthlyOnTheComponent extends BaseContainer
     return DAYS.map((day) => {
       return {
         value: day,
-        label: day,
+        label: translateLabel(
+          this.args.translations,
+          `days.${day.toLowerCase()}`
+        ),
       };
     });
   }
@@ -33,23 +37,23 @@ export default class ContainersRepeatMonthlyOnTheComponent extends BaseContainer
     return [
       {
         value: 'First',
-        label: 'First',
+        label: translateLabel(this.args.translations, 'numerals.first'),
       },
       {
         value: 'Second',
-        label: 'Second',
+        label: translateLabel(this.args.translations, 'numerals.second'),
       },
       {
         value: 'Third',
-        label: 'Third',
+        label: translateLabel(this.args.translations, 'numerals.third'),
       },
       {
         value: 'Fourth',
-        label: 'Fourth',
+        label: translateLabel(this.args.translations, 'numerals.fourth'),
       },
       {
         value: 'Last',
-        label: 'Last',
+        label: translateLabel(this.args.translations, 'numerals.last'),
       },
     ];
   }

@@ -8,12 +8,14 @@ import YearlyOn from './yearly-on';
 import YearlyOnThe from './yearly-on-the';
 import YearlySelectMode from './yearly-select-mode';
 import { merge } from 'lodash-es';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type Yearly = RRuleGenerator['state']['data']['repeat']['yearly'];
 
 interface Signature {
   Args: {
     handleChange: RRuleGenerator['handleChange'];
+    translations: RRuleGenerator['translations'];
     yearly: Yearly;
   };
 }
@@ -62,12 +64,18 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
   });
 
   get availableOptions() {
-    const availableOptions: { value: string; label: string }[] = [];
+    const availableOptions: { value: string; label: string | null }[] = [];
 
     isOptionAvailable('on', this.args.yearly.options) &&
-      availableOptions.push({ value: 'on', label: 'on' });
+      availableOptions.push({
+        value: 'on',
+        label: translateLabel(this.args.translations, 'repeat.yearly.on'),
+      });
     isOptionAvailable('on the', this.args.yearly.options) &&
-      availableOptions.push({ value: 'on the', label: 'on the' });
+      availableOptions.push({
+        value: 'on the',
+        label: translateLabel(this.args.translations, 'repeat.yearly.on_the'),
+      });
 
     return availableOptions;
   }

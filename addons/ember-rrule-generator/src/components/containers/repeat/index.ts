@@ -13,6 +13,7 @@ import RepeatMonthly from './monthly';
 import RepeatWeekly from './weekly';
 import RepeatDaily from './daily';
 import RepeatHourly from './hourly';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type Repeat = RRuleGenerator['state']['data']['repeat'];
 
@@ -44,15 +45,30 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
     const availableOptions: Repeat['options']['frequency'] = [];
 
     isOptionAvailable('Yearly', this.args.repeat.options) &&
-      availableOptions.push({ value: 'Yearly', label: 'Yearly' });
+      availableOptions.push({
+        value: 'Yearly',
+        label: translateLabel(this.args.translations, 'repeat.yearly.label'),
+      });
     isOptionAvailable('Monthly', this.args.repeat.options) &&
-      availableOptions.push({ value: 'Monthly', label: 'Monthly' });
+      availableOptions.push({
+        value: 'Monthly',
+        label: translateLabel(this.args.translations, 'repeat.monthly.label'),
+      });
     isOptionAvailable('Weekly', this.args.repeat.options) &&
-      availableOptions.push({ value: 'Weekly', label: 'Weekly' });
+      availableOptions.push({
+        value: 'Weekly',
+        label: translateLabel(this.args.translations, 'repeat.weekly.label'),
+      });
     isOptionAvailable('Daily', this.args.repeat.options) &&
-      availableOptions.push({ value: 'Daily', label: 'Daily' });
+      availableOptions.push({
+        value: 'Daily',
+        label: translateLabel(this.args.translations, 'repeat.daily.label'),
+      });
     isOptionAvailable('Hourly', this.args.repeat.options) &&
-      availableOptions.push({ value: 'Hourly', label: 'Hourly' });
+      availableOptions.push({
+        value: 'Hourly',
+        label: translateLabel(this.args.translations, 'repeat.hourly.label'),
+      });
 
     return availableOptions;
   }

@@ -37,12 +37,18 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
     isOptionAvailable('Never', this.args.end.options) &&
       availableOptions.push({
         value: 'Never',
-        label: translateLabel(this.args.translations, 'Never'),
+        label: translateLabel(this.args.translations, 'end.never'),
       });
     isOptionAvailable('After', this.args.end.options) &&
-      availableOptions.push({ value: 'After', label: 'After' });
+      availableOptions.push({
+        value: 'After',
+        label: translateLabel(this.args.translations, 'end.after'),
+      });
     isOptionAvailable('On date', this.args.end.options) &&
-      availableOptions.push({ value: 'On date', label: 'On date' });
+      availableOptions.push({
+        value: 'On date',
+        label: translateLabel(this.args.translations, 'end.on_date'),
+      });
 
     return availableOptions;
   }

@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type On = RRuleGenerator['state']['data']['repeat']['yearly']['on'];
 
@@ -30,7 +31,10 @@ export default class ContainersRepeatYearlyOnComponent extends BaseContainerComp
     return MONTHS.map((month) => {
       return {
         value: month,
-        label: month,
+        label: translateLabel(
+          this.args.translations,
+          `months.${month.toLowerCase()}`
+        ),
       };
     });
   }

@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type OnThe = RRuleGenerator['state']['data']['repeat']['yearly']['onThe'];
 
@@ -31,7 +32,10 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
     return MONTHS.map((month) => {
       return {
         value: month,
-        label: month,
+        label: translateLabel(
+          this.args.translations,
+          `months.${month.toLowerCase()}`
+        ),
       };
     });
   }
@@ -40,23 +44,23 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
     return [
       {
         value: 'First',
-        label: 'First',
+        label: translateLabel(this.args.translations, 'numerals.first'),
       },
       {
         value: 'Second',
-        label: 'Second',
+        label: translateLabel(this.args.translations, 'numerals.second'),
       },
       {
         value: 'Third',
-        label: 'Third',
+        label: translateLabel(this.args.translations, 'numerals.third'),
       },
       {
         value: 'Fourth',
-        label: 'Fourth',
+        label: translateLabel(this.args.translations, 'numerals.fourth'),
       },
       {
         value: 'Last',
-        label: 'Last',
+        label: translateLabel(this.args.translations, 'numerals.last'),
       },
     ];
   }
@@ -65,7 +69,10 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
     return DAYS.map((day) => {
       return {
         value: day,
-        label: day,
+        label: translateLabel(
+          this.args.translations,
+          `day.${day.toLowerCase()}`
+        ),
       };
     });
   }
