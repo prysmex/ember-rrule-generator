@@ -7,8 +7,10 @@
       value=@end.mode
       handleChange=@handleChange
       name=(concat @name ".mode")
+      translations=@translations
     )
     handleChange=@handleChange
+    translations=@translations
   )
   as |EndBase|
 }}
@@ -24,6 +26,7 @@
             after=@end.after
             handleChange=@handleChange
             name=(concat @name ".after")
+            translations=@translations
           )
         )
       )
@@ -36,6 +39,7 @@
             onDate=@end.onDate
             handleChange=@handleChange
             name=(concat @name ".onDate")
+            translations=@translations
           )
         )
       )
@@ -46,7 +50,7 @@
       {{yield End}}
     {{else}}
       {{#let (component @view) as |EndComponent|}}
-        <EndComponent @endApi={{End}} ...attributes />
+        <EndComponent @End={{End}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}

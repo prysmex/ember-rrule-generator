@@ -7,6 +7,7 @@
       value=@monthly.mode
       handleChange=@handleChange
       name=(concat @name ".mode")
+      translations=@translations
     )
     Interval=(component
       this.MonthlyInterval
@@ -14,7 +15,9 @@
       value=@monthly.interval
       handleChange=@handleChange
       name=(concat @name ".interval")
+      translations=@translations
     )
+    translations=@translations
   )
   as |MonthlyBase|
 }}
@@ -33,6 +36,7 @@
             handleChange=@handleChange
             isActive=(this.isModeActive @monthly.mode "on")
             name=(concat @name ".on")
+            translations=@translations
           )
           IsOnActive=(this.isModeActive @monthly.mode "on")
         )
@@ -49,6 +53,7 @@
             handleChange=@handleChange
             isActive=(this.isModeActive @monthly.mode "on the")
             name=(concat @name ".onThe")
+            translations=@translations
           )
           IsOnTheActive=(this.isModeActive @monthly.mode "on the")
         )
@@ -60,7 +65,7 @@
       {{yield Monthly}}
     {{else}}
       {{#let (component @view) as |MonthlyComponent|}}
-        <MonthlyComponent @monthlyApi={{Monthly}} ...attributes/>
+        <MonthlyComponent @Monthly={{Monthly}} ...attributes/>
       {{/let}}
     {{/if}}
   {{/let}}

@@ -6,6 +6,7 @@ import { ChangeEvent } from '../r-rule-generator/index';
 export interface BaseContainerSignature {
   Args: {
     handleChange: RRuleGenerator['handleChange'];
+    translations: RRuleGenerator['translations'];
     name: string;
   };
 }

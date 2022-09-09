@@ -8,6 +8,7 @@
       name=(concat @name ".which")
       options=this.whichs
       isActive=@isActive
+      translations=@translations
     )
     Month=(component
       this.YearlyOnTheMonth
@@ -17,6 +18,7 @@
       name=(concat @name ".month")
       options=this.months
       isActive=@isActive
+      translations=@translations
     )
     Day=(component
       this.YearlyOnTheDay
@@ -26,15 +28,18 @@
       name=(concat @name ".day")
       options=this.days
       isActive=@isActive
+      translations=@translations
     )
+    translations=@translations
+    handleChange=@handleChange
   )
-  as |YearlyOnThe|
+  as |OnThe|
 }}
   {{#if (has-block)}}
-    {{yield YearlyOnThe}}
+    {{yield OnThe}}
   {{else}}
     {{#let (component @view) as |YearlyOnTheComponent|}}
-      <YearlyOnTheComponent @yearlyOnTheApi={{YearlyOnThe}} ...attributes />
+      <YearlyOnTheComponent @OnThe={{OnThe}} ...attributes />
     {{/let}}
   {{/if}}
 

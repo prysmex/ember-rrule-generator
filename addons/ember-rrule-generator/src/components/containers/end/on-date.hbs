@@ -1,6 +1,12 @@
 {{#if (has-block)}}
   {{yield
-    (hash handleChange=this.handleChange onDate=@onDate id=@id name=@name)
+    (hash
+      handleChange=this.handleChange
+      onDate=@onDate
+      id=@id
+      name=@name
+      translations=@translations
+    )
   }}
 {{else}}
   {{#if @view}}
@@ -12,6 +18,7 @@
         name={{@name}}
         @value={{@onDate}}
         @handleChange={{this.handleChange}}
+        @translations={{@translations}}
         ...attributes
       />
     {{/let}}

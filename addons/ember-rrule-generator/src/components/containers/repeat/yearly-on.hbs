@@ -8,6 +8,7 @@
       name=(concat @name ".month")
       options=this.months
       isActive=@isActive
+      translations=@translations
     )
     Day=(component
       this.YearlyOnDay
@@ -17,17 +18,20 @@
       name=(concat @name ".day")
       options=this.days
       isActive=@isActive
+      translations=@translations
     )
+    translations=@translations
+    handleChange=@handleChange
   )
-  as |YearlyOn|
+  as |On|
 }}
 
   {{#if (has-block)}}
 
-    {{yield YearlyOn}}
+    {{yield On}}
   {{else}}
     {{#let (component @view) as |YearlyOnComponent|}}
-      <YearlyOnComponent @yearlyOnApi={{YearlyOn}} ...attributes />
+      <YearlyOnComponent @On={{On}} ...attributes />
     {{/let}}
   {{/if}}
 

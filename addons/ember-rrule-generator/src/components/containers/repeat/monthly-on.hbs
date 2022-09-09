@@ -8,16 +8,19 @@
       name=(concat @name ".day")
       options=this.days
       isActive=@isActive
+      translations=@translations
     )
+    translations=@translations
+    handleChange=@handleChange
   )
-  as |MonthlyOn|
+  as |On|
 }}
 
   {{#if (has-block)}}
-    {{yield MonthlyOn}}
+    {{yield On}}
   {{else}}
     {{#let (component @view) as |MonthlyOnComponent|}}
-      <MonthlyOnComponent @monthlyOnApi={{MonthlyOn}} ...attributes/>
+      <MonthlyOnComponent @On={{On}} ...attributes />
     {{/let}}
   {{/if}}
 {{/let}}

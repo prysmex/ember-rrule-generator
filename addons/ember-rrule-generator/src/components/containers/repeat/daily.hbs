@@ -6,8 +6,10 @@
       value=@daily.interval
       handleChange=@handleChange
       name=(concat @name ".interval")
+      translations=@translations
     )
     handleChange=@handleChange
+    translations=@translations
   )
   as |Daily|
 }}
@@ -15,7 +17,7 @@
     {{yield Daily}}
   {{else}}
     {{#let (component @view) as |DailyComponent|}}
-      <DailyComponent @dailyApi={{Daily}} ...attributes/>
+      <DailyComponent @Daily={{Daily}} ...attributes />
     {{/let}}
   {{/if}}
 {{/let}}

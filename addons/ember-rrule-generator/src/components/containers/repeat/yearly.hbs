@@ -7,6 +7,7 @@
       value=@yearly.mode
       handleChange=@handleChange
       name=(concat @name ".mode")
+      translations=@translations
     )
     Interval=(component
       this.YearlyInterval
@@ -14,7 +15,10 @@
       value=@yearly.interval
       handleChange=@handleChange
       name=(concat @name ".interval")
+      translations=@translations
     )
+    translations=@translations
+    handleChange=handleChange
   )
   as |YearlyBase|
 }}
@@ -33,6 +37,7 @@
             handleChange=@handleChange
             isActive=(this.isModeActive @yearly.mode "on")
             name=(concat @name ".on")
+            translations=@translations
           )
           IsOnActive=(this.isModeActive @yearly.mode "on")
         )
@@ -50,6 +55,7 @@
             handleChange=@handleChange
             isActive=(this.isModeActive @yearly.mode "on the")
             name=(concat @name ".onThe")
+            translations=@translations
           )
           IsOnTheActive=(this.isModeActive @yearly.mode "on the")
         )
@@ -62,7 +68,7 @@
       {{yield Yearly}}
     {{else}}
       {{#let (component @view) as |YearlyComponent|}}
-        <YearlyComponent @yearlyApi={{Yearly}} ...attributes />
+        <YearlyComponent @Yearly={{Yearly}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}

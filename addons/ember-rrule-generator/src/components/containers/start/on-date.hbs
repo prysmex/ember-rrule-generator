@@ -1,16 +1,24 @@
 {{#if (has-block)}}
-  {{yield (hash handleChange=@handleChange onDate=@onDate id=@id)}}
+  {{yield
+    (hash
+      handleChange=@handleChange
+      onDate=@onDate
+      id=@id
+      translations=@translations
+    )
+  }}
 {{else}}
   {{#if @view}}
     {{#let (component @view) as |OnDateComponent|}}
       <OnDateComponent
         @id={{@id}}
-				id={{@id}}
-				@name={{@name}}
-				name={{@name}}
+        id={{@id}}
+        @name={{@name}}
+        name={{@name}}
         @onDate={{@onDate}}
         @handleChange={{@handleChange}}
-				...attributes
+        @translations={{@translations}}
+        ...attributes
       />
     {{/let}}
   {{/if}}

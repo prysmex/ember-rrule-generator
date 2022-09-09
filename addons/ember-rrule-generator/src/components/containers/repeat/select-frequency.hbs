@@ -1,18 +1,25 @@
 {{#if (has-block)}}
   {{yield
-    (hash options=@options handleChange=this.handleChange value=@value id=@id)
+    (hash
+      options=@options
+      handleChange=this.handleChange
+      value=@value
+      id=@id
+      translations=@translations
+    )
   }}
 {{else}}
   {{#if @view}}
     {{#let (component @view) as |SelectComponent|}}
       <SelectComponent
         @id={{@id}}
-				id={{@id}}
+        id={{@id}}
         name={{@name}}
         @name={{@name}}
         @options={{@options}}
         @value={{@value}}
         @handleChange={{this.handleChange}}
+        @translations={{@translations}}
         ...attributes
       />
     {{/let}}

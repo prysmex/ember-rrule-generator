@@ -7,8 +7,10 @@
       value=@repeat.frequency
       handleChange=@handleChange
       name=(concat @name ".frequency")
+      translations=@translations
     )
   )
+  translations=@translations
   as |RepeatBase|
 }}
   {{#let
@@ -23,6 +25,7 @@
             yearly=@repeat.yearly
             name=(concat @name ".yearly")
             handleChange=@handleChange
+            translations=@translations
           )
         )
         (hash)
@@ -36,6 +39,7 @@
             monthly=@repeat.monthly
             name=(concat @name ".monthly")
             handleChange=@handleChange
+            translations=@translations
           )
         )
         (hash)
@@ -49,6 +53,7 @@
             weekly=@repeat.weekly
             name=(concat @name ".weekly")
             handleChange=@handleChange
+            translations=@translations
           )
         )
       )
@@ -61,6 +66,7 @@
             daily=@repeat.daily
             name=(concat @name ".daily")
             handleChange=@handleChange
+            translations=@translations
           )
         )
       )
@@ -73,6 +79,7 @@
             hourly=@repeat.hourly
             name=(concat @name ".hourly")
             handleChange=@handleChange
+            translations=@translations
           )
         )
       )
@@ -83,7 +90,7 @@
       {{yield RepeatApi}}
     {{else}}
       {{#let (component @view) as |RepeatComponent|}}
-        <RepeatComponent @repeatApi={{RepeatApi}} ...attributes/>
+        <RepeatComponent @Repeat={{RepeatApi}} ...attributes/>
       {{/let}}
     {{/if}}
   {{/let}}

@@ -6,8 +6,10 @@
       value=@hourly.interval
       handleChange=@handleChange
       name=(concat @name ".interval")
+      translations=@translations
     )
     handleChange=this.handleChange
+    translations=@translations
   )
   as |Hourly|
 }}
@@ -15,7 +17,7 @@
     {{yield Hourly}}
   {{else}}
     {{#let (component @view) as |HourlyComponent|}}
-      <HourlyComponent @hourlyApi={{Hourly}} ...attributes/>
+      <HourlyComponent @Hourly={{Hourly}} ...attributes />
     {{/let}}
   {{/if}}
 {{/let}}
