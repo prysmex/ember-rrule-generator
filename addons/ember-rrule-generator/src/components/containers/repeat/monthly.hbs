@@ -60,7 +60,7 @@
       {{yield Monthly}}
     {{else}}
       {{#let (component @view) as |MonthlyComponent|}}
-        <MonthlyComponent @monthlyApi={{Monthly}} />
+        <MonthlyComponent @monthlyApi={{Monthly}} ...attributes/>
       {{/let}}
     {{/if}}
   {{/let}}

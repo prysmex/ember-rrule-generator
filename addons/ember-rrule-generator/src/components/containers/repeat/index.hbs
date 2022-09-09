@@ -83,7 +83,7 @@
       {{yield RepeatApi}}
     {{else}}
       {{#let (component @view) as |RepeatComponent|}}
-        <RepeatComponent @repeatApi={{RepeatApi}} />
+        <RepeatComponent @repeatApi={{RepeatApi}} ...attributes/>
       {{/let}}
     {{/if}}
   {{/let}}

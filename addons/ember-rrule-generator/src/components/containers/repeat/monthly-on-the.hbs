@@ -25,7 +25,7 @@
     {{yield MonthlyOnThe}}
   {{else}}
     {{#let (component @view) as |MonthlyOnTheComponent|}}
-      <MonthlyOnTheComponent monthlyOnTheApi={{MonthlyOnThe}} />
+      <MonthlyOnTheComponent monthlyOnTheApi={{MonthlyOnThe}} ...attributes/>
     {{/let}}
   {{/if}}
 {{/let}}

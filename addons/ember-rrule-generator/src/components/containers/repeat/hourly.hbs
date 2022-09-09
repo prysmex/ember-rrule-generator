@@ -15,7 +15,7 @@
     {{yield Hourly}}
   {{else}}
     {{#let (component @view) as |HourlyComponent|}}
-      <HourlyComponent @hourlyApi={{Hourly}} />
+      <HourlyComponent @hourlyApi={{Hourly}} ...attributes/>
     {{/let}}
   {{/if}}
 {{/let}}

@@ -1,4 +1,4 @@
-{{yield
+{{#let
   (hash
     Month=(component
       this.YearlyOnMonth
@@ -19,4 +19,16 @@
       isActive=@isActive
     )
   )
+  as |YearlyOn|
 }}
+
+  {{#if (has-block)}}
+
+    {{yield YearlyOn}}
+  {{else}}
+    {{#let (component @view) as |YearlyOnComponent|}}
+      <YearlyOnComponent @yearlyOnApi={{YearlyOn}} ...attributes />
+    {{/let}}
+  {{/if}}
+
+{{/let}}

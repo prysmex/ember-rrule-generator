@@ -62,7 +62,7 @@
       {{yield Yearly}}
     {{else}}
       {{#let (component @view) as |YearlyComponent|}}
-        <YearlyComponent @yearlyApi={{Yearly}} />
+        <YearlyComponent @yearlyApi={{Yearly}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}

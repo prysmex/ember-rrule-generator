@@ -46,7 +46,7 @@
       {{yield End}}
     {{else}}
       {{#let (component @view) as |EndComponent|}}
-        <EndComponent @endApi={{End}} />
+        <EndComponent @endApi={{End}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}

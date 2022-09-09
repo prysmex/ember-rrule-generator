@@ -53,6 +53,7 @@ export default class RRuleGenerator extends Component<Signature> {
     //eslint-disable-next-line
     set(newData, target.name, target.value);
 
+    debugger
     this.state = {
       ...this.state,
       data: newData,

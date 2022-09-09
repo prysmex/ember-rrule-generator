@@ -15,7 +15,7 @@
     {{yield Daily}}
   {{else}}
     {{#let (component @view) as |DailyComponent|}}
-      <DailyComponent @dailyApi={{Daily}} />
+      <DailyComponent @dailyApi={{Daily}} ...attributes/>
     {{/let}}
   {{/if}}
 {{/let}}

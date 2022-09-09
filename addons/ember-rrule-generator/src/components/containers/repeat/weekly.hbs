@@ -22,7 +22,7 @@
     {{yield Weekly}}
   {{else}}
     {{#let (component @view) as |WeeklyComponent|}}
-      <WeeklyComponent @weeklyApi={{Weekly}} />
+      <WeeklyComponent @weeklyApi={{Weekly}} ...attributes/>
     {{/let}}
   {{/if}}
 {{/let}}

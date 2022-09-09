@@ -17,7 +17,7 @@
     {{yield MonthlyOn}}
   {{else}}
     {{#let (component @view) as |MonthlyOnComponent|}}
-      <MonthlyOnComponent @monthlyOnApi={{MonthlyOn}} />
+      <MonthlyOnComponent @monthlyOnApi={{MonthlyOn}} ...attributes/>
     {{/let}}
   {{/if}}
 {{/let}}
