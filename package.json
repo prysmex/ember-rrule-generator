@@ -32,9 +32,7 @@
   "homepage": "https://github.com/prysmex/ember-rrule-generator",
   "bugs": "https://github.com/prysmex/ember-rrule-generator/issues",
   "engines": {
-    "node": "16.* || >= 18",
-    "npm": "Use pnpm",
-    "yarn": "Use pnpm"
+    "node": "16.* || >= 18"
   },
   "volta": {
     "node": "16.17.0"

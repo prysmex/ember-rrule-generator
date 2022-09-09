@@ -50,6 +50,14 @@ module.exports = function (defaults) {
     emberData: {
       compatWith: '4.3',
     },
+
+    svgJar: {
+      sourceDirs: [
+        'public/assets',
+        'node_modules/@elastic/eui/lib/components/icon',
+      ],
+    },
+
     /*
     'esw-cache-fallback': {
       // RegExp patterns specifying which URLs to cache.

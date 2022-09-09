@@ -13,17 +13,18 @@
   "homepage": "https://github.com/prysmex/ember-rrule-generator",
   "bugs": "https://github.com/prysmex/ember-rrule-generator/issues",
   "engines": {
-    "node": "16.* || >= 18",
-    "npm": "Use pnpm",
-    "yarn": "Use pnpm"
+    "node": "16.* || >= 18"
   },
   "volta": {
     "extends": "../../package.json"
   },
   "dependencies": {
+    "@ember-eui/core": "^5.10.2",
     "els-addon-typed-templates": "^4.2.4",
-    "ember-chessboard": "link:../../addons/ember-rrule-generator",
-    "ember-truth-helpers": "^3.1.1"
+    "ember-focus-trap": "^1.0.1",
+    "ember-svg-jar": "^2.3.4",
+    "ember-truth-helpers": "^3.1.1",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
@@ -69,7 +70,6 @@
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-source": "^4.5.0",
-    "ember-unique-id-helper-polyfill": "^1.2.0",
     "intl-messageformat-parser": "^6.4.4",
     "loader.js": "^4.7.0",
     "lodash-es": "^4.17.21",
