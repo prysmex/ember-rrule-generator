@@ -1,4 +1,4 @@
-import { cloneDeep, set } from 'lodash-es';
+import { cloneDeep, set, merge } from 'lodash-es';
 
 import Component from '@glimmer/component';
 //@ts-expect-error
@@ -11,6 +11,7 @@ import configureInitialState from '../../utils/configureInitialState';
 import Start from '../containers/start/index';
 import End from '../containers/end/index';
 import Repeat from '../containers/repeat/index';
+import { helper } from '@ember/component/helper';
 
 export interface ChangeEvent {
   target: {
@@ -66,4 +67,16 @@ export default class RRuleGenerator extends Component<Signature> {
 
     this.args.onChange?.(rrule as string);
   };
+
+  merge = helper(function ([T, ...O]: [unknown, unknown]) {
+    return merge({}, T, ...O);
+  });
+
+  get showStart() {
+    return this.args.config?.hideStart !== true;
+  }
+
+  get showEnd() {
+    return this.args.config?.hideEnd !== true;
+  }
 }

@@ -1,25 +1,37 @@
 {{yield
-  (hash
-    Start=(component
-      this.Start
-      handleChange=this.handleChange
-      start=this.state.data.start
-      name="start"
-      id=this.state.id
+  (this.merge
+    (hash
+      Repeat=(component
+        this.Repeat
+        handleChange=this.handleChange
+        repeat=this.state.data.repeat
+        id=this.state.id
+        name="repeat"
+      )
     )
-    Repeat=(component
-      this.Repeat
-      handleChange=this.handleChange
-      repeat=this.state.data.repeat
-      id=this.state.id
-      name="repeat"
+    (if
+      this.showStart
+      (hash
+        Start=(component
+          this.Start
+          handleChange=this.handleChange
+          start=this.state.data.start
+          name="start"
+          id=this.state.id
+        )
+      )
     )
-    End=(component
-      this.End
-      handleChange=this.handleChange
-      end=this.state.data.end
-      name="end"
-      id=this.state.id
+    (if
+      this.showEnd
+      (hash
+        End=(component
+          this.End
+          handleChange=this.handleChange
+          end=this.state.data.end
+          name="end"
+          id=this.state.id
+        )
+      )
     )
   )
 }}

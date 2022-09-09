@@ -13,8 +13,7 @@ const configureState = (config = {}, id) => {
   const configureYearly = () => config.yearly || 'on';
   const configureMonthly = () => config.monthly || 'on';
   const configureEnd = () => (config.end ? config.end[0] : 'Never');
-  const configureHideStart = () =>
-    typeof config.hideStart === 'undefined' ? true : config.hideStart;
+  const configureHideStart = () => config.hideStart;
   const uniqueRruleId = isEmpty(id) ? uniqueId('rrule-') : id;
 
   const data = {
