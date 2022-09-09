@@ -60,6 +60,7 @@ export default class RRuleGenerator extends Component<Signature> {
   End = End;
   Repeat = Repeat;
 
+  //eslint-disable-next-line
   @tracked state = configureInitialState(this.args.config, this.args.id);
 
   get translations() {
@@ -71,9 +72,10 @@ export default class RRuleGenerator extends Component<Signature> {
     const newData = cloneDeep(this.state.data);
     //eslint-disable-next-line
     set(newData, target.name, target.value);
-
+    //eslint-disable-next-line
     this.state = {
       ...this.state,
+      //eslint-disable-next-line
       data: newData,
     };
 
