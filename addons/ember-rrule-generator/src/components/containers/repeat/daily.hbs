@@ -1,22 +1,20 @@
-{{#if (has-block)}}
-  {{yield
-    (hash
-      daily=@daily handleChange=this.handleChange value=@daily.interval id=@id
+{{#let
+  (hash
+    Interval=(component
+      this.DailyInterval
+      id=(concat @id "-interval")
+      value=@daily.interval
+      handleChange=@handleChange
+      name=(concat @name ".interval")
     )
-  }}
-{{else}}
-  {{#if @view}}
+  )
+  as |Daily|
+}}
+  {{#if (has-block)}}
+    {{yield Daily}}
+  {{else}}
     {{#let (component @view) as |DailyComponent|}}
-      <DailyComponent
-        @id={{@id}}
-        id={{@id}}
-        name={{@name}}
-        @name={{@name}}
-        @daily={{@daily}}
-        @value={{@daily.interval}}
-        @handleChange={{this.handleChange}}
-        ...attributes
-      />
+      <DailyComponent @dailyApi={{Daily}} />
     {{/let}}
   {{/if}}
-{{/if}}
+{{/let}}

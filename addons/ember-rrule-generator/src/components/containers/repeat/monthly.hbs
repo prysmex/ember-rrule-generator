@@ -16,12 +16,11 @@
       name=(concat @name ".interval")
     )
   )
-  as |Monthly|
+  as |MonthlyBase|
 }}
-
-  {{yield
+  {{#let
     (this.merge
-      Monthly
+      MonthlyBase
       (if
         (this.isOptionAvailable "on" @monthly.options)
         (hash
@@ -37,7 +36,6 @@
           )
           IsOnActive=(this.isModeActive @monthly.mode "on")
         )
-        (hash)
       )
       (if
         (this.isOptionAvailable "on the" @monthly.options)
@@ -54,8 +52,16 @@
           )
           IsOnTheActive=(this.isModeActive @monthly.mode "on the")
         )
-        (hash)
       )
     )
+    as |Monthly|
   }}
+    {{#if (has-block)}}
+      {{yield Monthly}}
+    {{else}}
+      {{#let (component @view) as |MonthlyComponent|}}
+        <MonthlyComponent @monthlyApi={{Monthly}} />
+      {{/let}}
+    {{/if}}
+  {{/let}}
 {{/let}}

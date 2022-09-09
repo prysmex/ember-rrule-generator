@@ -1,4 +1,4 @@
-{{yield
+{{#let
   (hash
     Select=(component
       this.SelectFrequency
@@ -9,74 +9,82 @@
       name=(concat @name ".frequency")
     )
   )
+  as |RepeatBase|
 }}
-
-{{#if (this.isOptionSelected "Yearly" @repeat.frequency)}}
-  {{yield
-    (hash
-      Yearly=(component
-        this.RepeatYearly
-        id=(concat @id "-yearly")
-        yearly=@repeat.yearly
-        name=(concat @name ".yearly")
-        handleChange=@handleChange
+  {{#let
+    (this.merge
+      RepeatBase
+      (if
+        (this.isOptionSelected "Yearly" @repeat.frequency)
+        (hash
+          Yearly=(component
+            this.RepeatYearly
+            id=(concat @id "-yearly")
+            yearly=@repeat.yearly
+            name=(concat @name ".yearly")
+            handleChange=@handleChange
+          )
+        )
+        (hash)
+      )
+      (if
+        (this.isOptionSelected "Monthly" @repeat.frequency)
+        (hash
+          Monthly=(component
+            this.RepeatMonthly
+            id=(concat @id "-monthly")
+            monthly=@repeat.monthly
+            name=(concat @name ".monthly")
+            handleChange=@handleChange
+          )
+        )
+        (hash)
+      )
+      (if
+        (this.isOptionSelected "Weekly" @repeat.frequency)
+        (hash
+          Weekly=(component
+            this.RepeatWeekly
+            id=(concat @id "-weekly")
+            weekly=@repeat.weekly
+            name=(concat @name ".weekly")
+            handleChange=@handleChange
+          )
+        )
+      )
+      (if
+        (this.isOptionSelected "Daily" @repeat.frequency)
+        (hash
+          Daily=(component
+            this.RepeatDaily
+            id=(concat @id "-daily")
+            daily=@repeat.daily
+            name=(concat @name ".daily")
+            handleChange=@handleChange
+          )
+        )
+      )
+      (if
+        (this.isOptionSelected "Hourly" @repeat.frequency)
+        (hash
+          Hourly=(component
+            this.RepeatHourly
+            id=(concat @id "-hourly")
+            hourly=@repeat.hourly
+            name=(concat @name ".hourly")
+            handleChange=@handleChange
+          )
+        )
       )
     )
+    as |RepeatApi|
   }}
-{{/if}}
-
-{{#if (this.isOptionSelected "Monthly" @repeat.frequency)}}
-  {{yield
-    (hash
-      Monthly=(component
-        this.RepeatMonthly
-        id=(concat @id "-monthly")
-        monthly=@repeat.monthly
-        name=(concat @name ".monthly")
-        handleChange=@handleChange
-      )
-    )
-  }}
-{{/if}}
-
-{{#if (this.isOptionSelected "Weekly" @repeat.frequency)}}
-  {{yield
-    (hash
-      Weekly=(component
-        this.RepeatWeekly
-        id=(concat @id "-weekly")
-        weekly=@repeat.weekly
-        name=(concat @name ".weekly")
-        handleChange=@handleChange
-      )
-    )
-  }}
-{{/if}}
-
-{{#if (this.isOptionSelected "Daily" @repeat.frequency)}}
-  {{yield
-    (hash
-      Daily=(component
-        this.RepeatDaily
-        id=(concat @id "-daily")
-        daily=@repeat.daily
-        name=(concat @name ".daily")
-        handleChange=@handleChange
-      )
-    )
-  }}
-{{/if}}
-
-{{#if (this.isOptionSelected "Hourly" @repeat.frequency)}}
-  {{yield
-    (hash
-      Hourly=(component
-        this.RepeatHourly
-        id=(concat @id "-hourly")
-        hourly=@repeat.hourly
-        name=(concat @name ".hourly")
-        handleChange=@handleChange
-      )
-    )
-  }}
-{{/if}}
+    {{#if (has-block)}}
+      {{yield RepeatApi}}
+    {{else}}
+      {{#let (component @view) as |RepeatComponent|}}
+        <RepeatComponent @repeatApi={{RepeatApi}} />
+      {{/let}}
+    {{/if}}
+  {{/let}}
+{{/let}}

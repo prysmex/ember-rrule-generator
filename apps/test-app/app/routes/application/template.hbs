@@ -2,9 +2,16 @@
   <Generator.Start @view={{this.DatePicker}} />
   <Generator.Repeat as |Repeat|>
     <Repeat.Select @view={{component this.Select label="Repeat"}} />
-    <Repeat.Hourly @view={{this.NumberInput}} />
-    <Repeat.Daily @view={{this.RepeatDaily}} />
-    <Repeat.Weekly @view={{this.RepeatWeekly}} />
+    <Repeat.Hourly as |Hourly|>
+      <Hourly.Interval @view={{this.NumberInput}} />
+    </Repeat.Hourly>
+    <Repeat.Daily as |Daily|>
+      <Daily.Interval @view={{this.NumberInput}} />
+    </Repeat.Daily>
+    <Repeat.Weekly as |Weekly|>
+      <Weekly.Interval @view={{this.NumberInput}} />
+      <Weekly.Days @view={{this.RepeatWeeklyDays}} />
+    </Repeat.Weekly>
     <Repeat.Monthly as |Monthly|>
       <Monthly.Interval @view={{this.NumberInput}} placeholder="Interval" />
       <Monthly.Select @view={{this.Select}} />

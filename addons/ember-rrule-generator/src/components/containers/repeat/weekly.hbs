@@ -1,25 +1,28 @@
-{{#if (has-block)}}
-  {{yield
-    (hash
-      weekly=@weekly
-      handleChange=this.handleChange
+{{#let
+  (hash
+    Interval=(component
+      this.WeeklyInterval
+      id=(concat @id "-interval")
       value=@weekly.interval
-      id=@id
+      handleChange=@handleChange
+      name=(concat @name ".interval")
     )
-  }}
-{{else}}
-  {{#if @view}}
+    Days=(component
+      this.WeeklyDays
+      id=(concat @id "-days")
+      days=this.days
+      value=@weekly.days
+      handleChange=@handleChange
+      name=(concat @name ".days")
+    )
+  )
+  as |Weekly|
+}}
+  {{#if (has-block)}}
+    {{yield Weekly}}
+  {{else}}
     {{#let (component @view) as |WeeklyComponent|}}
-      <WeeklyComponent
-        @id={{@id}}
-        id={{@id}}
-        name={{@name}}
-        @name={{@name}}
-        @weekly={{@weekly}}
-        @value={{@weekly.interval}}
-        @handleChange={{this.handleChange}}
-        ...attributes
-      />
+      <WeeklyComponent @weeklyApi={{Weekly}} />
     {{/let}}
   {{/if}}
-{{/if}}
+{{/let}}

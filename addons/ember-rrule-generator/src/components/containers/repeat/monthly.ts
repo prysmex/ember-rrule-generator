@@ -58,7 +58,7 @@ export default class ContainersRepeatMonthlyComponent extends Component<Signatur
   });
 
   merge = helper(function ([T, ...O]: [unknown, unknown]) {
-    return merge(T, ...O);
+    return merge({}, T, ...O);
   });
 
   get availableOptions() {

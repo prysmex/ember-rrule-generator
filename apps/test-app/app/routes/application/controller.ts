@@ -11,6 +11,7 @@ import NumberInput from 'test-app/components/repeat/number-input';
 import RepeatHourly from 'test-app/components/repeat/hourly';
 import RepeatDaily from 'test-app/components/repeat/daily';
 import RepeatWeekly from 'test-app/components/repeat/weekly';
+import RepeatWeeklyDays from 'test-app/components/repeat/weekly/days';
 import RepeatMonthly from 'test-app/components/repeat/monthly';
 import RepeatYearly from 'test-app/components/repeat/yearly';
 import RepeatYearlyOnMonth from 'test-app/components/repeat/yearly/on/month';
@@ -28,6 +29,7 @@ export default class ApplictionController extends Controller {
   RepeatHourly = RepeatHourly;
   RepeatDaily = RepeatDaily;
   RepeatWeekly = RepeatWeekly;
+  RepeatWeeklyDays = RepeatWeeklyDays;
   RepeatMonthly = RepeatMonthly;
   RepeatYearly = RepeatYearly;
   RepeatYearlyOnMonth = RepeatYearlyOnMonth;

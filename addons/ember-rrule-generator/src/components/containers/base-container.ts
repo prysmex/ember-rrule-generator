@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 
 import type RRuleGenerator from '../r-rule-generator/index';
+import { ChangeEvent } from '../r-rule-generator/index';
 
 export interface BaseContainerSignature {
   Args: {
@@ -12,7 +13,7 @@ export interface BaseContainerSignature {
 export default class BaseContainerComponent<
   Args extends BaseContainerSignature = BaseContainerSignature
 > extends Component<Args> {
-  handleChange = (e: { target: { value: unknown } }) => {
+  handleChange = (e: ChangeEvent) => {
     const editedEvent = {
       target: {
         value: e.target.value,

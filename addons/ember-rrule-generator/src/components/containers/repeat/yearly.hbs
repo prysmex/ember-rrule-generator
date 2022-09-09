@@ -16,12 +16,11 @@
       name=(concat @name ".interval")
     )
   )
-  as |Yearly|
+  as |YearlyBase|
 }}
-
-  {{yield
+  {{#let
     (this.merge
-      Yearly
+      YearlyBase
       (if
         (this.isOptionAvailable "on" @yearly.options)
         (hash
@@ -57,5 +56,14 @@
         (hash)
       )
     )
+    as |Yearly|
   }}
+    {{#if (has-block)}}
+      {{yield Yearly}}
+    {{else}}
+      {{#let (component @view) as |YearlyComponent|}}
+        <YearlyComponent @yearlyApi={{Yearly}} />
+      {{/let}}
+    {{/if}}
+  {{/let}}
 {{/let}}

@@ -5,6 +5,7 @@ import BaseContainerComponent, {
 import type RRuleGenerator from '../../r-rule-generator/index';
 
 import { helper } from '@ember/component/helper';
+import { merge } from 'lodash-es';
 
 import SelectFrequency from './select-frequency';
 import RepeatYearly from './yearly';
@@ -61,5 +62,9 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
     keyof Repeat['options']['frequency']
   ]) {
     return frequency === option;
+  });
+
+  merge = helper(function ([T, ...O]: [unknown, unknown]) {
+    return merge({}, T, ...O);
   });
 }
