@@ -1,8 +1,4 @@
-<this.RRuleGenerator
-  @config={{hash hideStart=true}}
-  @onChange={{this.changeRule}}
-  as |Generator|
->
+<this.RRuleGenerator @onChange={{this.changeRule}} as |Generator|>
   <Generator.Start as |Start|>
     <Start.OnDate @view={{this.DatePicker}} />
   </Generator.Start>
