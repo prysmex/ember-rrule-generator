@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 import { merge } from 'lodash-es';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 import SelectMode from './select-mode';
 import After from './after';
@@ -13,6 +14,7 @@ type End = RRuleGenerator['state']['data']['end'];
 interface Signature {
   Args: {
     handleChange: RRuleGenerator['handleChange'];
+    translations: RRuleGenerator['translations'];
     end: End;
   };
 }
@@ -33,7 +35,10 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
     const availableOptions: End['options']['modes'] = [];
 
     isOptionAvailable('Never', this.args.end.options) &&
-      availableOptions.push({ value: 'Never', label: 'Never' });
+      availableOptions.push({
+        value: 'Never',
+        label: translateLabel(this.args.translations, 'Never'),
+      });
     isOptionAvailable('After', this.args.end.options) &&
       availableOptions.push({ value: 'After', label: 'After' });
     isOptionAvailable('On date', this.args.end.options) &&

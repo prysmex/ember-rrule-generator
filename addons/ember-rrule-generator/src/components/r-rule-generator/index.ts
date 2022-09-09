@@ -12,9 +12,9 @@ import Start from '../containers/start/index';
 import End from '../containers/end/index';
 import Repeat from '../containers/repeat/index';
 import { helper } from '@ember/component/helper';
-import translateLabel from '../../utils/translateLabel';
 
 import EN from '../../translations/en';
+import { Translations } from 'ember-rrule-generator/utils/translateLabel';
 
 export interface ChangeEvent {
   target: {
@@ -41,7 +41,7 @@ type Signature = {
     value?: string;
     config?: Config;
     id?: string;
-    translations?: (name: string, ...args) => string | typeof EN;
+    translations?: Translations;
   };
 };
 
@@ -52,10 +52,9 @@ export default class RRuleGenerator extends Component<Signature> {
 
   @tracked state = configureInitialState(this.args.config, this.args.id);
 
-  translations = (key: string, values = {}) => {
-    //eslint-disable-next-line
-    return translateLabel(this.args.translations || EN, key, values);
-  };
+  get translations() {
+    return (this.args.translations || EN) as Translations;
+  }
 
   handleChange = ({ target }: ChangeEvent) => {
     //eslint-disable-next-line

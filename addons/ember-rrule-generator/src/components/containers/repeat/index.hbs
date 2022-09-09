@@ -9,8 +9,8 @@
       name=(concat @name ".frequency")
       translations=@translations
     )
+    translations=@translations
   )
-  translations=@translations
   as |RepeatBase|
 }}
   {{#let
@@ -90,7 +90,7 @@
       {{yield RepeatApi}}
     {{else}}
       {{#let (component @view) as |RepeatComponent|}}
-        <RepeatComponent @Repeat={{RepeatApi}} ...attributes/>
+        <RepeatComponent @Repeat={{RepeatApi}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}
