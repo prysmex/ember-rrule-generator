@@ -7,7 +7,7 @@ import Select from 'test-app/components/select';
 import After from 'test-app/components/after';
 import OnDate from 'test-app/components/on-date';
 
-import NumberInput from 'test-app/components/repeat/number-input';
+import NumberInput from 'test-app/components/number-input';
 import RepeatHourly from 'test-app/components/repeat/hourly';
 import RepeatDaily from 'test-app/components/repeat/daily';
 import RepeatWeekly from 'test-app/components/repeat/weekly';
