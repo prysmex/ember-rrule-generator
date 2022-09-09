@@ -2,7 +2,7 @@ import { helper } from '@ember/component/helper';
 import Component from '@glimmer/component';
 import { merge } from 'lodash-es';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
+import RRuleGenerator, { EndValue } from '../../r-rule-generator/index';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 import SelectMode from './select-mode';
@@ -19,10 +19,7 @@ interface Signature {
   };
 }
 
-const isOptionAvailable = (
-  option: keyof End['options']['modes'],
-  options: End['options']
-) => {
+const isOptionAvailable = (option: EndValue, options: End['options']) => {
   return !options.modes || options.modes.indexOf(option) !== -1;
 };
 
@@ -32,7 +29,10 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
   After = After;
 
   get availableOptions() {
-    const availableOptions: End['options']['modes'] = [];
+    const availableOptions: {
+      value: EndValue;
+      label: string | null;
+    }[] = [];
 
     isOptionAvailable('Never', this.args.end.options) &&
       availableOptions.push({

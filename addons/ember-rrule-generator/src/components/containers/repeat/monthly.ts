@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { helper } from '@ember/component/helper';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
+import RRuleGenerator, { MonthlyMode } from '../../r-rule-generator/index';
 
 import MonthlyOn from './monthly-on';
 import MonthlyOnThe from './monthly-on-the';
@@ -18,13 +18,11 @@ interface Signature {
   };
 }
 
-const isTheOnlyMode = (
-  option: keyof Monthly['options']['modes'],
-  options: Monthly['options']
-) => options.modes === option;
+const isTheOnlyMode = (option: MonthlyMode, options: Monthly['options']) =>
+  options.modes === option;
 
 const isOptionAvailable = (
-  option: keyof Monthly['options']['modes'],
+  option: MonthlyMode,
   options: Monthly['options']
 ) => {
   return !options.modes || isTheOnlyMode(option, options);
@@ -37,23 +35,20 @@ export default class ContainersRepeatMonthlyComponent extends Component<Signatur
   MonthlyOnThe = MonthlyOnThe;
 
   isNotTheOnlyMode = helper(function ([option, options]: [
-    keyof Monthly['options']['modes'],
+    MonthlyMode,
     Monthly['options']
   ]) {
     return !isTheOnlyMode(option, options);
   });
 
   isOptionAvailable = helper(function ([option, options]: [
-    keyof Monthly['options']['modes'],
+    MonthlyMode,
     Monthly['options']
   ]) {
     return isOptionAvailable(option, options);
   });
 
-  isModeActive = helper(function ([mode, option]: [
-    keyof Monthly['options']['modes'],
-    keyof Monthly['options']['modes']
-  ]) {
+  isModeActive = helper(function ([mode, option]: [MonthlyMode, MonthlyMode]) {
     return mode === option;
   });
 

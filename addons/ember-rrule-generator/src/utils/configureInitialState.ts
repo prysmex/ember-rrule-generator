@@ -7,7 +7,9 @@ import { isEmpty, uniqueId } from 'lodash-es';
 import computeRRuleToString from './computeRRule/toString/computeRRule';
 import { DATE_TIME_FORMAT } from './constants.js';
 
-const configureState = (config = {}, id) => {
+import { Config } from 'ember-rrule-generator/components/r-rule-generator';
+
+const configureState = (config: Config = {}, id) => {
   const configureFrequency = () =>
     config.frequency ? config.frequency[0] : 'Yearly';
   const configureYearly = () => config.yearly || 'on';

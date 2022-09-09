@@ -2,7 +2,7 @@ import BaseContainerComponent, {
   BaseContainerSignature,
 } from '../base-container';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
+import RRuleGenerator, { FrequencyValue } from '../../r-rule-generator/index';
 
 import { helper } from '@ember/component/helper';
 import { merge } from 'lodash-es';
@@ -24,12 +24,12 @@ type Signature = BaseContainerSignature & {
 };
 
 const isOptionAvailable = (
-  option: keyof Repeat['options']['frequency'],
-  options: Repeat['options']['frequency']
+  option: FrequencyValue,
+  options: Repeat['options']
 ) => {
   return (
-    !options.frequency ||
-    (options.frequency as string[]).indexOf(option as string) !== -1
+    !options?.frequency ||
+    (options?.frequency as string[]).indexOf(option as string) !== -1
   );
 };
 
@@ -42,7 +42,10 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
   RepeatHourly = RepeatHourly;
 
   get availableOptions() {
-    const availableOptions: Repeat['options']['frequency'] = [];
+    const availableOptions: {
+      value: FrequencyValue;
+      label: string | null;
+    }[] = [];
 
     isOptionAvailable('Yearly', this.args.repeat.options) &&
       availableOptions.push({

@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { helper } from '@ember/component/helper';
 
-import type RRuleGenerator from '../../r-rule-generator/index';
+import RRuleGenerator, { YearlyMode } from '../../r-rule-generator/index';
 
 import YearlyInterval from './yearly-interval';
 import YearlyOn from './yearly-on';
@@ -20,15 +20,10 @@ interface Signature {
   };
 }
 
-const isTheOnlyMode = (
-  option: keyof Yearly['options']['modes'],
-  options: Yearly['options']
-) => options.modes === option;
+const isTheOnlyMode = (option: YearlyMode, options: Yearly['options']) =>
+  options.modes === option;
 
-const isOptionAvailable = (
-  option: keyof Yearly['options']['modes'],
-  options: Yearly['options']
-) => {
+const isOptionAvailable = (option: YearlyMode, options: Yearly['options']) => {
   return !options.modes || isTheOnlyMode(option, options);
 };
 
@@ -39,23 +34,20 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
   YearlySelectMode = YearlySelectMode;
 
   isNotTheOnlyMode = helper(function ([option, options]: [
-    keyof Yearly['options']['modes'],
+    YearlyMode,
     Yearly['options']
   ]) {
     return !isTheOnlyMode(option, options);
   });
 
   isOptionAvailable = helper(function ([option, options]: [
-    keyof Yearly['options']['modes'],
+    YearlyMode,
     Yearly['options']
   ]) {
     return isOptionAvailable(option, options);
   });
 
-  isModeActive = helper(function ([mode, option]: [
-    keyof Yearly['options']['modes'],
-    keyof Yearly['options']['modes']
-  ]) {
+  isModeActive = helper(function ([mode, option]: [YearlyMode, YearlyMode]) {
     return mode === option;
   });
 

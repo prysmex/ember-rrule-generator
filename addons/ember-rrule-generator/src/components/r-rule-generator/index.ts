@@ -4,9 +4,9 @@ import Component from '@glimmer/component';
 //@ts-expect-error
 import { tracked } from '@glimmer/tracking';
 
-import computeRRuleToString from '../../utils/computeRRule/toString/computeRRule';
+import computeRRuleToString from 'ember-rrule-generator/utils/computeRRule/toString/computeRRule';
 // import computeRRuleFromString from '../../utils/computeRRule/fromString/computeRRule';
-import configureInitialState from '../../utils/configureInitialState';
+import configureInitialState from 'ember-rrule-generator/utils/configureInitialState';
 
 import Start from '../containers/start/index';
 import End from '../containers/end/index';
@@ -23,11 +23,21 @@ export interface ChangeEvent {
   };
 }
 
+export type EndValue = 'Never' | 'After' | 'On date';
+export type FrequencyValue =
+  | 'Yearly'
+  | 'Monthly'
+  | 'Weekly'
+  | 'Daily'
+  | 'Hourly';
+export type MonthlyMode = 'on' | 'on the';
+export type YearlyMode = 'on' | 'on the';
+
 export interface Config {
-  frequency?: 'Yearly' | 'Monthy' | 'Weekly' | 'Daily' | 'Hourly'[];
-  yearly?: 'on' | 'on the';
-  monthly?: 'on' | 'on the';
-  end?: 'Never' | 'After' | 'On date'[];
+  frequency?: Array<FrequencyValue>;
+  yearly?: YearlyMode;
+  monthly?: MonthlyMode;
+  end?: Array<EndValue>;
   hideStart?: boolean;
   hideEnd?: boolean;
   hideError?: boolean;
