@@ -4,7 +4,7 @@
       this.MonthlyOnTheWhich
       id=(concat @id "-which")
       value=@onThe.which
-      handleChange=this.handleChange
+      handleChange=@handleChange
       name=(concat @name ".which")
       options=this.whichs
       isActive=@isActive
@@ -13,11 +13,12 @@
       this.MonthlyOnTheDay
       id=(concat @id "-day")
       value=@onThe.day
-      handleChange=this.handleChange
+      handleChange=@handleChange
       name=(concat @name ".day")
       options=this.days
       isActive=@isActive
     )
+    handleChange=@handleChange
   )
   as |MonthlyOnThe|
 }}
@@ -25,7 +26,7 @@
     {{yield MonthlyOnThe}}
   {{else}}
     {{#let (component @view) as |MonthlyOnTheComponent|}}
-      <MonthlyOnTheComponent monthlyOnTheApi={{MonthlyOnThe}} ...attributes/>
+      <MonthlyOnTheComponent monthlyOnTheApi={{MonthlyOnThe}} ...attributes />
     {{/let}}
   {{/if}}
 {{/let}}
