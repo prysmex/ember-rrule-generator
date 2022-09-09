@@ -22,7 +22,7 @@ type Signature = BaseContainerSignature & {
   };
 };
 
-export default class ContainersRepeatYearlyComponent extends BaseContainerComponent<Signature> {
+export default class ContainersRepeatYearlyOnComponent extends BaseContainerComponent<Signature> {
   YearlyOnMonth = YearlyOnMonth;
   YearlyOnDay = YearlyOnDay;
 

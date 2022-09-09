@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
 
 import RRuleGenerator from 'ember-rrule-generator/components/r-rule-generator';
 import DatePicker from 'test-app/components/date-picker';
@@ -31,4 +32,9 @@ export default class ApplictionController extends Controller {
   RepeatYearly = RepeatYearly;
   RepeatYearlyOnMonth = RepeatYearlyOnMonth;
   RepeatYearlyOnDay = RepeatYearlyOnDay;
+
+  @tracked rule: string | undefined;
+  changeRule = (rule: string) => {
+    this.rule = rule;
+  };
 }

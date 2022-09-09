@@ -5,6 +5,7 @@ import { DATE_TIME_FORMAT } from '../../constants';
 import computeStartOnDate from './computeStartOnDate';
 import computeFrequency from './computeFrequency';
 import computeYearlyMode from './computeYearlyMode';
+import computeYearlyInterval from './computeYearlyInterval';
 import computeYearlyOnMonth from './computeYearlyOnMonth';
 import computeYearlyOnMonthday from './computeYearlyOnMonthday';
 import computeYearlyOnTheMonth from './computeYearlyOnTheMonth';
@@ -53,6 +54,7 @@ const computeRRule = (data, rrule) => {
         yearly: {
           ...data.repeat.yearly,
           mode: computeYearlyMode(data, rruleObj),
+          interval: computeYearlyInterval(data, rruleObj),
           on: {
             month: computeYearlyOnMonth(data, rruleObj),
             day: computeYearlyOnMonthday(data, rruleObj),

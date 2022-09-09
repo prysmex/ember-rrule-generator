@@ -1,7 +1,7 @@
 {{yield
   (hash
     Which=(component
-      this.YearlyOnTheWhich
+      this.MonthlyOnTheWhich
       id=(concat @id "-which")
       value=@onThe.which
       handleChange=@handleChange
@@ -9,17 +9,8 @@
       options=this.whichs
       isActive=@isActive
     )
-    Month=(component
-      this.YearlyOnTheMonth
-      id=(concat @id "-month")
-      value=@onThe.month
-      handleChange=@handleChange
-      name=(concat @name ".month")
-      options=this.months
-      isActive=@isActive
-    )
     Day=(component
-      this.YearlyOnTheDay
+      this.MonthlyOnTheDay
       id=(concat @id "-day")
       value=@onThe.day
       handleChange=@handleChange

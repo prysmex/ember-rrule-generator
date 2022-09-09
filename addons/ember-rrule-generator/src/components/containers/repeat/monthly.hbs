@@ -1,23 +1,61 @@
-{{#if (has-block)}}
-  {{yield
-    (hash
-      monthly=@monthly
-      handleChange=this.handleChange
+{{#let
+  (hash
+    Select=(component
+      this.MonthlySelectMode
+      id=(concat @id "-select")
+      options=this.availableOptions
+      value=@monthly.mode
+      handleChange=@handleChange
+      name=(concat @name ".mode")
+    )
+    Interval=(component
+      this.MonthlyInterval
+      id=(concat @id "-interval")
       value=@monthly.interval
-      id=@id
+      handleChange=@handleChange
+      name=(concat @name ".interval")
+    )
+  )
+  as |Monthly|
+}}
+
+  {{yield
+    (this.merge
+      Monthly
+      (if
+        (this.isOptionAvailable "on" @monthly.options)
+        (hash
+          On=(component
+            this.MonthlyOn
+            id=(concat @id "-on")
+            mode=@monthly.mode
+            on=@monthly.on
+            hasMoreModes=(this.isNotTheOnlyMode "on")
+            handleChange=@handleChange
+            isActive=(this.isModeActive @monthly.mode "on")
+            name=(concat @name ".on")
+          )
+          IsOnActive=(this.isModeActive @monthly.mode "on")
+        )
+        (hash)
+      )
+      (if
+        (this.isOptionAvailable "on the" @monthly.options)
+        (hash
+          OnThe=(component
+            this.MonthlyOnThe
+            id=(concat @id "-onThe")
+            mode=@monthly.mode
+            hasMoreModes=(this.isNotTheOnlyMode "on the")
+            onThe=@monthly.onThe
+            handleChange=@handleChange
+            isActive=(this.isModeActive @monthly.mode "on the")
+            name=(concat @name ".onThe")
+          )
+          IsOnTheActive=(this.isModeActive @monthly.mode "on the")
+        )
+        (hash)
+      )
     )
   }}
-{{else}}
-  {{#if @view}}
-    {{#let (component @view) as |MonthlyComponent|}}
-      <MonthlyComponent
-        @id={{@id}}
-        id={{@id}}
-        @monthly={{@monthly}}
-        @value={{@monthly.interval}}
-        @handleChange={{this.handleChange}}
-        ...attributes
-      />
-    {{/let}}
-  {{/if}}
-{{/if}}
+{{/let}}

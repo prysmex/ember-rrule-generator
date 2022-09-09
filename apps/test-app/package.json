@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "els-addon-typed-templates": "^4.2.4",
-    "ember-chessboard": "link:../../addons/ember-rrule-generator"
+    "ember-chessboard": "link:../../addons/ember-rrule-generator",
+    "ember-truth-helpers": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
@@ -44,6 +45,7 @@
     "@html-next/svg-icon-optimizer": "0.0.1",
     "@types/chess.js": "^0.13.2",
     "broccoli-asset-rev": "^3.0.0",
+    "dayjs": "^1.11.5",
     "ember-auto-import": "^2.4.1",
     "ember-cached-decorator-polyfill": "^0.1.4",
     "ember-cli": "^4.3.0",
@@ -75,11 +77,10 @@
     "postcss-loader": "^7.0.1",
     "qunit": "^2.19.1",
     "qunit-dom": "^2.0.0",
+    "rrule": "^2.7.1",
     "sass": "^1.52.0",
     "webpack": "^5.72.1",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "dayjs": "^1.11.5",
-    "rrule": "^2.7.1"
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "scripts": {
     "build": "EXPERIMENTAL_RENDER_MODE_SERIALIZE=true EMBROIDER_CONCAT_STATS=true EMBER_ENGINES_ADDON_DEDUPE=true && ember build --environment=production",

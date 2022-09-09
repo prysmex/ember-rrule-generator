@@ -3,9 +3,11 @@ import { helper } from '@ember/component/helper';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
 
+import YearlyInterval from './yearly-interval';
 import YearlyOn from './yearly-on';
 import YearlyOnThe from './yearly-on-the';
 import YearlySelectMode from './yearly-select-mode';
+import { merge } from 'lodash-es';
 
 type Yearly = RRuleGenerator['state']['data']['repeat']['yearly'];
 
@@ -29,6 +31,7 @@ const isOptionAvailable = (
 };
 
 export default class ContainersRepeatYearlyComponent extends Component<Signature> {
+  YearlyInterval = YearlyInterval;
   YearlyOn = YearlyOn;
   YearlyOnThe = YearlyOnThe;
   YearlySelectMode = YearlySelectMode;
@@ -54,13 +57,17 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
     return mode === option;
   });
 
+  merge = helper(function ([T, ...O]: [unknown, unknown]) {
+    return merge(T, ...O);
+  });
+
   get availableOptions() {
     const availableOptions: { value: string; label: string }[] = [];
 
     isOptionAvailable('on', this.args.yearly.options) &&
       availableOptions.push({ value: 'on', label: 'on' });
     isOptionAvailable('on the', this.args.yearly.options) &&
-      availableOptions.push({ value: 'on', label: 'on' });
+      availableOptions.push({ value: 'on the', label: 'on the' });
 
     return availableOptions;
   }

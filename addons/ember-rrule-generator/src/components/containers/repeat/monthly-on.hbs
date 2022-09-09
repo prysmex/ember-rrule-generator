@@ -1,0 +1,13 @@
+{{yield
+  (hash
+    Day=(component
+      this.MonthlyOnDay
+      id=(concat @id "-day")
+      value=@on.day
+      handleChange=@handleChange
+      name=(concat @name ".day")
+      options=this.days
+      isActive=@isActive
+    )
+  )
+}}

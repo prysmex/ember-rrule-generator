@@ -1,4 +1,4 @@
-{{yield
+{{#let
   (hash
     Select=(component
       this.YearlySelectMode
@@ -8,39 +8,54 @@
       handleChange=@handleChange
       name=(concat @name ".mode")
     )
+    Interval=(component
+      this.YearlyInterval
+      id=(concat @id "-interval")
+      value=@yearly.interval
+      handleChange=@handleChange
+      name=(concat @name ".interval")
+    )
   )
+  as |Yearly|
 }}
 
-{{#if (this.isOptionAvailable "on" @yearly.options)}}
   {{yield
-    (hash
-      On=(component
-        this.YearlyOn
-        id=(concat @id "-on")
-        mode=@yearly.mode
-        on=@yearly.on
-        hasMoreModes=(this.isNotTheOnlyMode "on")
-        handleChange=@handleChange
-        isActive=(this.isModeActive @yearly.mode "on")
-        name=(concat @name ".on")
+    (this.merge
+      Yearly
+      (if
+        (this.isOptionAvailable "on" @yearly.options)
+        (hash
+          On=(component
+            this.YearlyOn
+            id=(concat @id "-on")
+            mode=@yearly.mode
+            on=@yearly.on
+            hasMoreModes=(this.isNotTheOnlyMode "on")
+            handleChange=@handleChange
+            isActive=(this.isModeActive @yearly.mode "on")
+            name=(concat @name ".on")
+          )
+          IsOnActive=(this.isModeActive @yearly.mode "on")
+        )
+        (hash)
+      )
+      (if
+        (this.isOptionAvailable "on the" @yearly.options)
+        (hash
+          OnThe=(component
+            this.YearlyOnThe
+            id=(concat @id "-onThe")
+            mode=@yearly.mode
+            hasMoreModes=(this.isNotTheOnlyMode "on the")
+            onThe=@yearly.onThe
+            handleChange=@handleChange
+            isActive=(this.isModeActive @yearly.mode "on the")
+            name=(concat @name ".onThe")
+          )
+          IsOnTheActive=(this.isModeActive @yearly.mode "on the")
+        )
+        (hash)
       )
     )
   }}
-{{/if}}
-
-{{#if (this.isOptionAvailable "on the" @yearly.options)}}
-  {{yield
-    (hash
-      OnThe=(component
-        this.YearlyOnThe
-        id=(concat @id "-onThe")
-        mode=@yearly.mode
-        hasMoreModes=(this.isNotTheOnlyMode "on the")
-        onThe=@yearly.onThe
-        handleChange=@handleChange
-        isActive=(this.isModeActive @yearly.mode "on the")
-        name=(concat @name ".onThe")
-      )
-    )
-  }}
-{{/if}}
+{{/let}}

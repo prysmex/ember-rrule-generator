@@ -1,4 +1,4 @@
-<this.RRuleGenerator as |Generator|>
+<this.RRuleGenerator @onChange={{this.changeRule}} as |Generator|>
   <Generator.Start @view={{this.DatePicker}} />
   <Generator.Repeat as |Repeat|>
     <Repeat.Select @view={{component this.Select label="Repeat"}} />
@@ -6,26 +6,36 @@
     <Repeat.Daily @view={{this.RepeatDaily}} />
     <Repeat.Weekly @view={{this.RepeatWeekly}} />
     <Repeat.Monthly as |Monthly|>
+      <Monthly.Interval @view={{this.NumberInput}} placeholder="Interval" />
       <Monthly.Select @view={{this.Select}} />
-      <Monthly.On as |On|>
-        <On.Month @view={{this.RepeatMonthly}} />
-        <On.Day @view={{this.RepeatMonthly}} />
-      </Monthly.On>
-      <Monthly.OnThe as |OnThe|>
-        <OnThe.Month @view={{this.RepeatMonthly}} />
-        <OnThe.Day @view={{this.RepeatMonthly}} />
-      </Monthly.OnThe>
+      {{#if Monthly.IsOnActive}}
+        <Monthly.On as |On|>
+          <On.Day @view={{this.Select}} />
+        </Monthly.On>
+      {{/if}}
+      {{#if Monthly.IsOnTheActive}}
+        <Monthly.OnThe as |OnThe|>
+          <OnThe.Which @view={{this.Select}} />
+          <OnThe.Day @view={{this.Select}} />
+        </Monthly.OnThe>
+      {{/if}}
     </Repeat.Monthly>
     <Repeat.Yearly as |Yearly|>
+      <Yearly.Interval @view={{this.NumberInput}} />
       <Yearly.Select @view={{this.Select}} />
-      <Yearly.On as |On|>
-        <On.Day @view={{this.Select}} />
-        <On.Month @view={{this.Select}} />
-      </Yearly.On>
-      <Yearly.OnThe as |OnThe|>
-        <OnThe.Month @view={{this.RepeatYearly}} />
-        <OnThe.Day @view={{this.RepeatYearly}} />
-      </Yearly.OnThe>
+      {{#if Yearly.IsOnActive}}
+        <Yearly.On as |On|>
+          <On.Day @view={{this.Select}} />
+          <On.Month @view={{this.Select}} />
+        </Yearly.On>
+      {{/if}}
+      {{#if Yearly.IsOnTheActive}}
+        <Yearly.OnThe as |OnThe|>
+          <OnThe.Which @view={{this.Select}} />
+          <OnThe.Day @view={{this.Select}} />
+          <OnThe.Month @view={{this.Select}} />
+        </Yearly.OnThe>
+      {{/if}}
     </Repeat.Yearly>
   </Generator.Repeat>
   <Generator.End as |End|>
@@ -34,4 +44,5 @@
     <End.OnDate @view={{this.OnDate}} />
   </Generator.End>
 </this.RRuleGenerator>
+{{this.rule}}
 {{outlet}}
