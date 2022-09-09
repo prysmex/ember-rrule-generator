@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
+import OnDate from './on-date';
 
 interface Signature {
   Args: {
@@ -10,14 +11,5 @@ interface Signature {
 }
 
 export default class ContainersStartComponent extends Component<Signature> {
-  handleChange = (e: { target: { value: unknown } }) => {
-    const editedEvent = {
-      target: {
-        value: e.target.value,
-        name: 'start.onDate.date',
-      },
-    };
-
-    this.args.handleChange(editedEvent);
-  };
+  OnDate = OnDate;
 }

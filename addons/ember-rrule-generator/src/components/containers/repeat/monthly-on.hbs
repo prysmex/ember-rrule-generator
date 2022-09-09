@@ -1,4 +1,4 @@
-{{yield
+{{#let
   (hash
     Day=(component
       this.MonthlyOnDay
@@ -10,4 +10,14 @@
       isActive=@isActive
     )
   )
+  as |MonthlyOn|
 }}
+
+  {{#if (has-block)}}
+    {{yield MonthlyOn}}
+  {{else}}
+    {{#let (component @view) as |MonthlyOnComponent|}}
+      <MonthlyOnComponent @monthlyOnApi={{MonthlyOn}} />
+    {{/let}}
+  {{/if}}
+{{/let}}

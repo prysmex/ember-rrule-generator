@@ -4,9 +4,10 @@
       this.DailyInterval
       id=(concat @id "-interval")
       value=@daily.interval
-      handleChange=@handleChange
+      handleChange=this.handleChange
       name=(concat @name ".interval")
     )
+    handleChange=this.handleChange
   )
   as |Daily|
 }}

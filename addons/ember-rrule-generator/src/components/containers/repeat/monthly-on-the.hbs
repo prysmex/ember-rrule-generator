@@ -1,10 +1,10 @@
-{{yield
+{{#let
   (hash
     Which=(component
       this.MonthlyOnTheWhich
       id=(concat @id "-which")
       value=@onThe.which
-      handleChange=@handleChange
+      handleChange=this.handleChange
       name=(concat @name ".which")
       options=this.whichs
       isActive=@isActive
@@ -13,10 +13,19 @@
       this.MonthlyOnTheDay
       id=(concat @id "-day")
       value=@onThe.day
-      handleChange=@handleChange
+      handleChange=this.handleChange
       name=(concat @name ".day")
       options=this.days
       isActive=@isActive
     )
   )
+  as |MonthlyOnThe|
 }}
+  {{#if (has-block)}}
+    {{yield MonthlyOnThe}}
+  {{else}}
+    {{#let (component @view) as |MonthlyOnTheComponent|}}
+      <MonthlyOnTheComponent monthlyOnTheApi={{MonthlyOnThe}} />
+    {{/let}}
+  {{/if}}
+{{/let}}

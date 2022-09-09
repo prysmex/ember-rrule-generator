@@ -1,4 +1,4 @@
-{{yield
+{{#let
   (hash
     Select=(component
       this.SelectMode
@@ -8,33 +8,46 @@
       handleChange=@handleChange
       name=(concat @name ".mode")
     )
+    handleChange=@handleChange
   )
+  as |EndBase|
 }}
-
-{{#if (this.isOptionSelected "After" @end.mode)}}
-  {{yield
-    (hash
-      After=(component
-        this.After
-        id=(concat @id "-after")
-        after=@end.after
-        handleChange=@handleChange
-        name=(concat @name ".after")
+  {{#let
+    (this.merge
+      EndBase
+      (if
+        (this.isOptionSelected "After" @end.mode)
+        (hash
+          After=(component
+            this.After
+            id=(concat @id "-after")
+            after=@end.after
+            handleChange=@handleChange
+            name=(concat @name ".after")
+          )
+        )
+      )
+      (if
+        (this.isOptionSelected "On date" @end.mode)
+        (hash
+          OnDate=(component
+            this.OnDate
+            id=(concat @id "-onDate")
+            onDate=@end.onDate
+            handleChange=@handleChange
+            name=(concat @name ".onDate.date")
+          )
+        )
       )
     )
+    as |End|
   }}
-{{/if}}
-
-{{#if (this.isOptionSelected "On date" @end.mode)}}
-  {{yield
-    (hash
-      OnDate=(component
-        this.OnDate
-        id=(concat @id "-onDate")
-        onDate=@end.onDate
-        handleChange=@handleChange
-        name=(concat @name ".onDate.date")
-      )
-    )
-  }}
-{{/if}}
+    {{#if (has-block)}}
+      {{yield End}}
+    {{else}}
+      {{#let (component @view) as |EndComponent|}}
+        <EndComponent @endApi={{End}} />
+      {{/let}}
+    {{/if}}
+  {{/let}}
+{{/let}}

@@ -1,5 +1,6 @@
 import { helper } from '@ember/component/helper';
 import Component from '@glimmer/component';
+import { merge } from 'lodash-es';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
 
@@ -46,5 +47,9 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
     keyof End['options']['modes']
   ]) {
     return mode === option;
+  });
+
+  merge = helper(function ([T, ...O]: [unknown, unknown]) {
+    return merge({}, T, ...O);
   });
 }

@@ -1,5 +1,7 @@
 <this.RRuleGenerator @onChange={{this.changeRule}} as |Generator|>
-  <Generator.Start @view={{this.DatePicker}} />
+  <Generator.Start as |Start|>
+    <Start.OnDate @view={{this.DatePicker}} />
+  </Generator.Start>
   <Generator.Repeat as |Repeat|>
     <Repeat.Select @view={{component this.Select label="Repeat"}} />
     <Repeat.Hourly as |Hourly|>
@@ -47,7 +49,7 @@
   </Generator.Repeat>
   <Generator.End as |End|>
     <End.Select @view={{component this.Select label="End"}} />
-    <End.After @view={{this.After}} />
+    <End.After @view={{this.NumberInput}} />
     <End.OnDate @view={{this.OnDate}} />
   </Generator.End>
 </this.RRuleGenerator>

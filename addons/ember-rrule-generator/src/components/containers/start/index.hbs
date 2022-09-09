@@ -1,15 +1,20 @@
-{{#if (has-block)}}
-  {{yield
-    (hash handleChange=this.handleChange value=@start.onDate.date id=@id)
-  }}
-{{else}}
-  {{#if @view}}
-    {{#let (component @view) as |CalendarComponent|}}
-      <CalendarComponent
-        @id={{@id}}
-        @value={{@start.onDate.date}}
-        @onChange={{this.handleChange}}
-      />
+{{#let
+  (hash
+    OnDate=(component
+      this.OnDate
+      id=(concat @id "-onDate")
+      onDate=@start.onDate
+      handleChange=@handleChange
+      name=(concat @name ".onDate.date")
+    )
+  )
+  as |Start|
+}}
+  {{#if (has-block)}}
+    {{yield Start}}
+  {{else}}
+    {{#let (component @view) as |StartComponent|}}
+      <StartComponent @startApi={{Start}} />
     {{/let}}
   {{/if}}
-{{/if}}
+{{/let}}
