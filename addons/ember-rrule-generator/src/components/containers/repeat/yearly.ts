@@ -7,7 +7,6 @@ import YearlyInterval from './yearly-interval';
 import YearlyOn from './yearly-on';
 import YearlyOnThe from './yearly-on-the';
 import YearlySelectMode from './yearly-select-mode';
-import { merge } from 'lodash-es';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type Yearly = RRuleGenerator['state']['data']['repeat']['yearly'];
@@ -49,10 +48,6 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
 
   isModeActive = helper(function ([mode, option]: [YearlyMode, YearlyMode]) {
     return mode === option;
-  });
-
-  merge = helper(function ([T, ...O]: [unknown, unknown]) {
-    return merge({}, T, ...O);
   });
 
   get availableOptions() {

@@ -1,6 +1,5 @@
 import { helper } from '@ember/component/helper';
 import Component from '@glimmer/component';
-import { merge } from 'lodash-es';
 
 import RRuleGenerator, { EndValue } from '../../r-rule-generator/index';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
@@ -58,9 +57,5 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
     keyof End['options']['modes']
   ]) {
     return mode === option;
-  });
-
-  merge = helper(function ([T, ...O]: [unknown, unknown]) {
-    return merge({}, T, ...O);
   });
 }

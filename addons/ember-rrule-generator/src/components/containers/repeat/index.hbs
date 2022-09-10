@@ -9,90 +9,62 @@
       name=(concat @name ".frequency")
       translations=@translations
     )
+    Yearly=(component
+      this.RepeatYearly
+      id=(concat @id "-yearly")
+      yearly=@repeat.yearly
+      name=(concat @name ".yearly")
+      handleChange=@handleChange
+      translations=@translations
+    )
+    Monthly=(component
+      this.RepeatMonthly
+      id=(concat @id "-monthly")
+      monthly=@repeat.monthly
+      name=(concat @name ".monthly")
+      handleChange=@handleChange
+      translations=@translations
+    )
+    Weekly=(component
+      this.RepeatWeekly
+      id=(concat @id "-weekly")
+      weekly=@repeat.weekly
+      name=(concat @name ".weekly")
+      handleChange=@handleChange
+      translations=@translations
+    )
+    Daily=(component
+      this.RepeatDaily
+      id=(concat @id "-daily")
+      daily=@repeat.daily
+      name=(concat @name ".daily")
+      handleChange=@handleChange
+      translations=@translations
+    )
+    Hourly=(component
+      this.RepeatHourly
+      id=(concat @id "-hourly")
+      hourly=@repeat.hourly
+      name=(concat @name ".hourly")
+      handleChange=@handleChange
+      translations=@translations
+    )
+    isYearlySelected=(this.isOptionSelected "Yearly" @repeat.frequency)
+    isMonthlySelected=(this.isOptionSelected "Monthly" @repeat.frequency)
+    isWeeklySelected=(this.isOptionSelected "Weekly" @repeat.frequency)
+    isDailySelected=(this.isOptionSelected "Daily" @repeat.frequency)
+    isHourlySelected=(this.isOptionSelected "Hourly" @repeat.frequency)
+    handleChange=@handleChange
     name=@name
     translations=@translations
   )
-  as |RepeatBase|
+  as |Repeat|
 }}
-  {{#let
-    (this.merge
-      RepeatBase
-      (if
-        (this.isOptionSelected "Yearly" @repeat.frequency)
-        (hash
-          Yearly=(component
-            this.RepeatYearly
-            id=(concat @id "-yearly")
-            yearly=@repeat.yearly
-            name=(concat @name ".yearly")
-            handleChange=@handleChange
-            translations=@translations
-          )
-        )
-        (hash)
-      )
-      (if
-        (this.isOptionSelected "Monthly" @repeat.frequency)
-        (hash
-          Monthly=(component
-            this.RepeatMonthly
-            id=(concat @id "-monthly")
-            monthly=@repeat.monthly
-            name=(concat @name ".monthly")
-            handleChange=@handleChange
-            translations=@translations
-          )
-        )
-        (hash)
-      )
-      (if
-        (this.isOptionSelected "Weekly" @repeat.frequency)
-        (hash
-          Weekly=(component
-            this.RepeatWeekly
-            id=(concat @id "-weekly")
-            weekly=@repeat.weekly
-            name=(concat @name ".weekly")
-            handleChange=@handleChange
-            translations=@translations
-          )
-        )
-      )
-      (if
-        (this.isOptionSelected "Daily" @repeat.frequency)
-        (hash
-          Daily=(component
-            this.RepeatDaily
-            id=(concat @id "-daily")
-            daily=@repeat.daily
-            name=(concat @name ".daily")
-            handleChange=@handleChange
-            translations=@translations
-          )
-        )
-      )
-      (if
-        (this.isOptionSelected "Hourly" @repeat.frequency)
-        (hash
-          Hourly=(component
-            this.RepeatHourly
-            id=(concat @id "-hourly")
-            hourly=@repeat.hourly
-            name=(concat @name ".hourly")
-            handleChange=@handleChange
-            translations=@translations
-          )
-        )
-      )
-    )
-    as |RepeatApi|
-  }}
-    {{#if (has-block)}}
-      {{yield RepeatApi}}
-    {{else}}
-      {{#let (component @view) as |RepeatComponent|}}
-        <RepeatComponent @Repeat={{RepeatApi}} ...attributes />
-      {{/let}}
-    {{/if}}
-  {{/let}}
+  {{#if (has-block)}}
+    {{yield Repeat}}
+  {{else}}
+    {{#let (component @view) as |RepeatComponent|}}
+      <RepeatComponent @Repeat={{Repeat}} ...attributes />
+    {{/let}}
+  {{/if}}
 {{/let}}

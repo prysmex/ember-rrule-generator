@@ -7,7 +7,6 @@ import MonthlyOn from './monthly-on';
 import MonthlyOnThe from './monthly-on-the';
 import MonthlySelectMode from './monthly-select-mode';
 import MonthlyInterval from './monthly-interval';
-import { merge } from 'lodash-es';
 
 type Monthly = RRuleGenerator['state']['data']['repeat']['monthly'];
 
@@ -50,10 +49,6 @@ export default class ContainersRepeatMonthlyComponent extends Component<Signatur
 
   isModeActive = helper(function ([mode, option]: [MonthlyMode, MonthlyMode]) {
     return mode === option;
-  });
-
-  merge = helper(function ([T, ...O]: [unknown, unknown]) {
-    return merge({}, T, ...O);
   });
 
   get availableOptions() {

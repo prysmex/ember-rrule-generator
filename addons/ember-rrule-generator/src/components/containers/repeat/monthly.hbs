@@ -17,51 +17,36 @@
       name=(concat @name ".interval")
       translations=@translations
     )
+    On=(component
+      this.MonthlyOn
+      id=(concat @id "-on")
+      mode=@monthly.mode
+      on=@monthly.on
+      hasMoreModes=(this.isNotTheOnlyMode "on" @monthly.options)
+      handleChange=@handleChange
+      isActive=(this.isModeActive @monthly.mode "on")
+      name=(concat @name ".on")
+      translations=@translations
+    )
+    OnThe=(component
+      this.MonthlyOnThe
+      id=(concat @id "-onThe")
+      mode=@monthly.mode
+      hasMoreModes=(this.isNotTheOnlyMode "on the" @monthly.options)
+      onThe=@monthly.onThe
+      handleChange=@handleChange
+      isActive=(this.isModeActive @monthly.mode "on the")
+      name=(concat @name ".onThe")
+      translations=@translations
+    )
     name=@name
     translations=@translations
+    isOnActive=(this.isModeActive @monthly.mode "on")
+    isOnTheActive=(this.isModeActive @monthly.mode "on the")
   )
   as |MonthlyBase|
 }}
-  {{#let
-    (this.merge
-      MonthlyBase
-      (if
-        (this.isOptionAvailable "on" @monthly.options)
-        (hash
-          On=(component
-            this.MonthlyOn
-            id=(concat @id "-on")
-            mode=@monthly.mode
-            on=@monthly.on
-            hasMoreModes=(this.isNotTheOnlyMode "on" @monthly.options)
-            handleChange=@handleChange
-            isActive=(this.isModeActive @monthly.mode "on")
-            name=(concat @name ".on")
-            translations=@translations
-          )
-          IsOnActive=(this.isModeActive @monthly.mode "on")
-        )
-      )
-      (if
-        (this.isOptionAvailable "on the" @monthly.options)
-        (hash
-          OnThe=(component
-            this.MonthlyOnThe
-            id=(concat @id "-onThe")
-            mode=@monthly.mode
-            hasMoreModes=(this.isNotTheOnlyMode "on the" @monthly.options)
-            onThe=@monthly.onThe
-            handleChange=@handleChange
-            isActive=(this.isModeActive @monthly.mode "on the")
-            name=(concat @name ".onThe")
-            translations=@translations
-          )
-          IsOnTheActive=(this.isModeActive @monthly.mode "on the")
-        )
-      )
-    )
-    as |Monthly|
-  }}
+  {{#let MonthlyBase as |Monthly|}}
     {{#if (has-block)}}
       {{yield Monthly}}
     {{else}}

@@ -9,43 +9,32 @@
       name=(concat @name ".mode")
       translations=@translations
     )
+    After=(component
+      this.After
+      id=(concat @id "-after")
+      after=@end.after
+      handleChange=@handleChange
+      name=(concat @name ".after")
+      translations=@translations
+    )
+    OnDate=(component
+      this.OnDate
+      id=(concat @id "-onDate")
+      onDate=@end.onDate
+      handleChange=@handleChange
+      name=(concat @name ".onDate")
+      translations=@translations
+    )
+    isNeverSelected=(this.isOptionSelected "Never" @end.mode)
+    isAfterSelected=(this.isOptionSelected "After" @end.mode)
+    isOnDateSelected=(this.isOptionSelected "On date" @end.mode)
+    name=@name
     handleChange=@handleChange
     translations=@translations
   )
   as |EndBase|
 }}
-  {{#let
-    (this.merge
-      EndBase
-      (if
-        (this.isOptionSelected "After" @end.mode)
-        (hash
-          After=(component
-            this.After
-            id=(concat @id "-after")
-            after=@end.after
-            handleChange=@handleChange
-            name=(concat @name ".after")
-            translations=@translations
-          )
-        )
-      )
-      (if
-        (this.isOptionSelected "On date" @end.mode)
-        (hash
-          OnDate=(component
-            this.OnDate
-            id=(concat @id "-onDate")
-            onDate=@end.onDate
-            handleChange=@handleChange
-            name=(concat @name ".onDate")
-            translations=@translations
-          )
-        )
-      )
-    )
-    as |End|
-  }}
+  {{#let EndBase as |End|}}
     {{#if (has-block)}}
       {{yield End}}
     {{else}}

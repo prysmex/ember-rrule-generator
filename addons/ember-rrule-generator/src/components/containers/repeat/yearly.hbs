@@ -17,60 +17,41 @@
       name=(concat @name ".interval")
       translations=@translations
     )
+    On=(component
+      this.YearlyOn
+      id=(concat @id "-on")
+      mode=@yearly.mode
+      on=@yearly.on
+      hasMoreModes=(this.isNotTheOnlyMode "on")
+      handleChange=@handleChange
+      isActive=(this.isModeActive @yearly.mode "on")
+      name=(concat @name ".on")
+      translations=@translations
+    )
+    OnThe=(component
+      this.YearlyOnThe
+      id=(concat @id "-onThe")
+      mode=@yearly.mode
+      hasMoreModes=(this.isNotTheOnlyMode "on the")
+      onThe=@yearly.onThe
+      handleChange=@handleChange
+      isActive=(this.isModeActive @yearly.mode "on the")
+      name=(concat @name ".onThe")
+      translations=@translations
+    )
     name=@name
     translations=@translations
     handleChange=@handleChange
+    isOnActive=(this.isModeActive @yearly.mode "on")
+    isOnTheActive=(this.isModeActive @yearly.mode "on the")
   )
-  as |YearlyBase|
+  as |Yearly|
 }}
-  {{#let
-    (this.merge
-      YearlyBase
-      (if
-        (this.isOptionAvailable "on" @yearly.options)
-        (hash
-          On=(component
-            this.YearlyOn
-            id=(concat @id "-on")
-            mode=@yearly.mode
-            on=@yearly.on
-            hasMoreModes=(this.isNotTheOnlyMode "on")
-            handleChange=@handleChange
-            isActive=(this.isModeActive @yearly.mode "on")
-            name=(concat @name ".on")
-            translations=@translations
-          )
-          IsOnActive=(this.isModeActive @yearly.mode "on")
-        )
-        (hash)
-      )
-      (if
-        (this.isOptionAvailable "on the" @yearly.options)
-        (hash
-          OnThe=(component
-            this.YearlyOnThe
-            id=(concat @id "-onThe")
-            mode=@yearly.mode
-            hasMoreModes=(this.isNotTheOnlyMode "on the")
-            onThe=@yearly.onThe
-            handleChange=@handleChange
-            isActive=(this.isModeActive @yearly.mode "on the")
-            name=(concat @name ".onThe")
-            translations=@translations
-          )
-          IsOnTheActive=(this.isModeActive @yearly.mode "on the")
-        )
-        (hash)
-      )
-    )
-    as |Yearly|
-  }}
-    {{#if (has-block)}}
-      {{yield Yearly}}
-    {{else}}
-      {{#let (component @view) as |YearlyComponent|}}
-        <YearlyComponent @Yearly={{Yearly}} ...attributes />
-      {{/let}}
-    {{/if}}
-  {{/let}}
+  {{#if (has-block)}}
+    {{yield Yearly}}
+  {{else}}
+    {{#let (component @view) as |YearlyComponent|}}
+      <YearlyComponent @Yearly={{Yearly}} ...attributes />
+    {{/let}}
+  {{/if}}
 {{/let}}
