@@ -32,15 +32,13 @@
     handleChange=@handleChange
     translations=@translations
   )
-  as |EndBase|
+  as |End|
 }}
-  {{#let EndBase as |End|}}
-    {{#if (has-block)}}
-      {{yield End}}
-    {{else}}
-      {{#let (component @view) as |EndComponent|}}
-        <EndComponent @End={{End}} ...attributes />
-      {{/let}}
-    {{/if}}
-  {{/let}}
+  {{#if (has-block)}}
+    {{yield End}}
+  {{else}}
+    {{#let (component @view) as |EndComponent|}}
+      <EndComponent @End={{End}} ...attributes />
+    {{/let}}
+  {{/if}}
 {{/let}}
