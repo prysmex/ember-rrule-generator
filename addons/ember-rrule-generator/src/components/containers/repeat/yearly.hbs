@@ -22,9 +22,9 @@
       id=(concat @id "-on")
       mode=@yearly.mode
       on=@yearly.on
-      hasMoreModes=(this.isNotTheOnlyMode "on")
+      hasMoreModes=(this.isNotTheOnlyMode "on" @yearly.options)
       handleChange=@handleChange
-      isActive=(this.isModeActive @yearly.mode "on")
+      isActive=(this.isModeActive @yearly.mode "on" @yearly.options)
       name=(concat @name ".on")
       translations=@translations
     )
