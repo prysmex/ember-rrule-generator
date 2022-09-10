@@ -32,7 +32,7 @@
             id=(concat @id "-on")
             mode=@monthly.mode
             on=@monthly.on
-            hasMoreModes=(this.isNotTheOnlyMode "on")
+            hasMoreModes=(this.isNotTheOnlyMode "on" @monthly.options)
             handleChange=@handleChange
             isActive=(this.isModeActive @monthly.mode "on")
             name=(concat @name ".on")
@@ -48,7 +48,7 @@
             this.MonthlyOnThe
             id=(concat @id "-onThe")
             mode=@monthly.mode
-            hasMoreModes=(this.isNotTheOnlyMode "on the")
+            hasMoreModes=(this.isNotTheOnlyMode "on the" @monthly.options)
             onThe=@monthly.onThe
             handleChange=@handleChange
             isActive=(this.isModeActive @monthly.mode "on the")
@@ -65,7 +65,7 @@
       {{yield Monthly}}
     {{else}}
       {{#let (component @view) as |MonthlyComponent|}}
-        <MonthlyComponent @Monthly={{Monthly}} ...attributes/>
+        <MonthlyComponent @Monthly={{Monthly}} ...attributes />
       {{/let}}
     {{/if}}
   {{/let}}
