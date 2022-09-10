@@ -38,7 +38,7 @@ export default class ContainersRepeatMonthlyComponent extends Component<Signatur
     MonthlyMode,
     Monthly['options']
   ]) {
-    return !isTheOnlyMode(option, options);
+    return options.modes && !isTheOnlyMode(option, options);
   });
 
   isOptionAvailable = helper(function ([option, options]: [

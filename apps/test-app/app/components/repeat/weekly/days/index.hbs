@@ -2,7 +2,7 @@
   <div class="btn-group btn-group-toggle offset-sm-2">
     {{#each @days as |dayArr|}}
       {{#let (get dayArr "0") (get dayArr "1") as |day isActive|}}
-        <label htmlFor="{{@id}}-{{day.value}}">
+        <label for="{{@id}}-{{day.value}}">
           <input
             type="checkbox"
             id="{{@id}}-{{day.value}}"
