@@ -36,7 +36,7 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
     YearlyMode,
     Yearly['options']
   ]) {
-    return !isTheOnlyMode(option, options);
+    return options.modes && !isTheOnlyMode(option, options);
   });
 
   isOptionAvailable = helper(function ([option, options]: [
