@@ -1,7 +1,7 @@
 {
   "name": "ember-rrule-generator",
   "description": "headless rrule generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "license": "MIT",
   "author": "betocantu93 <betocantu93@gmail.com>",
