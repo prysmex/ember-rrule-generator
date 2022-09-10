@@ -4,48 +4,58 @@
   </Generator.Start>
   <Generator.Repeat as |Repeat|>
     <Repeat.Select @view={{component this.Select label="Repeat"}} />
-    <Repeat.Hourly as |Hourly|>
-      <Hourly.Interval @view={{this.NumberInput}} />
-    </Repeat.Hourly>
-    <Repeat.Daily as |Daily|>
-      <Daily.Interval @view={{this.NumberInput}} />
-    </Repeat.Daily>
-    <Repeat.Weekly as |Weekly|>
-      <Weekly.Interval @view={{this.NumberInput}} />
-      <Weekly.Days @view={{this.RepeatWeeklyDays}} />
-    </Repeat.Weekly>
-    <Repeat.Monthly as |Monthly|>
-      <Monthly.Interval @view={{this.NumberInput}} placeholder="Interval" />
-      <Monthly.Select @view={{this.Select}} />
-      {{#if Monthly.IsOnActive}}
-        <Monthly.On as |On|>
-          <On.Day @view={{this.Select}} />
-        </Monthly.On>
-      {{/if}}
-      {{#if Monthly.IsOnTheActive}}
-        <Monthly.OnThe as |OnThe|>
-          <OnThe.Which @view={{this.Select}} />
-          <OnThe.Day @view={{this.Select}} />
-        </Monthly.OnThe>
-      {{/if}}
-    </Repeat.Monthly>
-    <Repeat.Yearly as |Yearly|>
-      <Yearly.Interval @view={{this.NumberInput}} />
-      <Yearly.Select @view={{this.Select}} />
-      {{#if Yearly.IsOnActive}}
-        <Yearly.On as |On|>
-          <On.Day @view={{this.Select}} />
-          <On.Month @view={{this.Select}} />
-        </Yearly.On>
-      {{/if}}
-      {{#if Yearly.IsOnTheActive}}
-        <Yearly.OnThe as |OnThe|>
-          <OnThe.Which @view={{this.Select}} />
-          <OnThe.Day @view={{this.Select}} />
-          <OnThe.Month @view={{this.Select}} />
-        </Yearly.OnThe>
-      {{/if}}
-    </Repeat.Yearly>
+    {{#if Repeat.isYearlyActive}}
+      <Repeat.Yearly as |Yearly|>
+        <Yearly.Interval @view={{this.NumberInput}} />
+        <Yearly.Select @view={{this.Select}} />
+        {{#if Yearly.IsOnActive}}
+          <Yearly.On as |On|>
+            <On.Day @view={{this.Select}} />
+            <On.Month @view={{this.Select}} />
+          </Yearly.On>
+        {{/if}}
+        {{#if Yearly.IsOnTheActive}}
+          <Yearly.OnThe as |OnThe|>
+            <OnThe.Which @view={{this.Select}} />
+            <OnThe.Day @view={{this.Select}} />
+            <OnThe.Month @view={{this.Select}} />
+          </Yearly.OnThe>
+        {{/if}}
+      </Repeat.Yearly>
+    {{/if}}
+    {{#if Repeat.isMonthlyActive}}
+      <Repeat.Monthly as |Monthly|>
+        <Monthly.Interval @view={{this.NumberInput}} placeholder="Interval" />
+        <Monthly.Select @view={{this.Select}} />
+        {{#if Monthly.IsOnActive}}
+          <Monthly.On as |On|>
+            <On.Day @view={{this.Select}} />
+          </Monthly.On>
+        {{/if}}
+        {{#if Monthly.IsOnTheActive}}
+          <Monthly.OnThe as |OnThe|>
+            <OnThe.Which @view={{this.Select}} />
+            <OnThe.Day @view={{this.Select}} />
+          </Monthly.OnThe>
+        {{/if}}
+      </Repeat.Monthly>
+    {{/if}}
+    {{#if Repeat.isWeeklyActive}}
+      <Repeat.Weekly as |Weekly|>
+        <Weekly.Interval @view={{this.NumberInput}} />
+        <Weekly.Days @view={{this.RepeatWeeklyDays}} />
+      </Repeat.Weekly>
+    {{/if}}
+    {{#if Repeat.isDailyActive}}
+      <Repeat.Daily as |Daily|>
+        <Daily.Interval @view={{this.NumberInput}} />
+      </Repeat.Daily>
+    {{/if}}
+    {{#if Repeat.isHourlyActive}}
+      <Repeat.Hourly as |Hourly|>
+        <Hourly.Interval @view={{this.NumberInput}} />
+      </Repeat.Hourly>
+    {{/if}}
   </Generator.Repeat>
   <Generator.End as |End|>
     <End.Select @view={{component this.Select label="End"}} />
