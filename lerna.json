@@ -1,19 +1,19 @@
 {
-  "npmClient": "pnpm",
-  "useWorkspaces": true,
-  "packages": [
-      "engines/*",
-      "addons/*",
-      "apps/*",
-      "tools/*"
-  ],
-  "version": "0.0.0",
-  "command": {
-      "version": {
-          "allowBranch": [
-              "main",
-              "release"
-          ]
-      }
-  }
+    "npmClient": "pnpm",
+    "useWorkspaces": true,
+    "packages": [
+        "engines/*",
+        "addons/*",
+        "apps/*",
+        "tools/*"
+    ],
+    "version": "0.0.1",
+    "command": {
+        "version": {
+            "allowBranch": [
+                "main",
+                "release"
+            ]
+        }
+    }
 }

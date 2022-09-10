@@ -1,7 +1,7 @@
 {
   "name": "test-app",
   "description": "Add your description here",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "license": "ALL RIGHTS RESERVED",
   "author": "betocantu93 <betocantu93@gmail.com>",
@@ -19,8 +19,8 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "ember-truth-helpers": "^3.1.1",
-    "ember-rrule-generator": "link:../../addons/ember-rrule-generator"
+    "ember-rrule-generator": "link:../../addons/ember-rrule-generator",
+    "ember-truth-helpers": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
