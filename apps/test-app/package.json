@@ -19,8 +19,8 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "els-addon-typed-templates": "^4.2.4",
-    "ember-truth-helpers": "^3.1.1"
+    "ember-truth-helpers": "^3.1.1",
+    "ember-rrule-generator": "link:../../addons/ember-rrule-generator"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
@@ -40,7 +40,6 @@
     "@html-next/flexi-layouts": "^3.0.0-alpha.0",
     "@html-next/flexi-sustain": "^3.0.0-alpha.0",
     "@html-next/svg-icon-optimizer": "0.0.1",
-    "@types/chess.js": "^0.13.2",
     "broccoli-asset-rev": "^3.0.0",
     "dayjs": "^1.11.5",
     "ember-auto-import": "^2.4.1",
