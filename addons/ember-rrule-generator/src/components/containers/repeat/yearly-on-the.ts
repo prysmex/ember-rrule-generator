@@ -75,7 +75,7 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
         value: day,
         label: translateLabel(
           this.args.translations,
-          `day.${day.toLowerCase()}`
+          `days.${day.toLowerCase()}`
         ),
       };
     });

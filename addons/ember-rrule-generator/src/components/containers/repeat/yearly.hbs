@@ -8,6 +8,7 @@
       handleChange=@handleChange
       name=(concat @name ".mode")
       translations=@translations
+      labels=this.labels
     )
     Interval=(component
       this.YearlyInterval
@@ -16,6 +17,7 @@
       handleChange=@handleChange
       name=(concat @name ".interval")
       translations=@translations
+      labels=this.labels
     )
     On=(component
       this.YearlyOn
@@ -27,6 +29,7 @@
       isActive=(this.isModeActive @yearly.mode "on" @yearly.options)
       name=(concat @name ".on")
       translations=@translations
+      labels=this.labels
     )
     OnThe=(component
       this.YearlyOnThe
@@ -38,6 +41,7 @@
       isActive=(this.isModeActive @yearly.mode "on the")
       name=(concat @name ".onThe")
       translations=@translations
+      labels=this.labels
     )
     labels=this.labels
     name=@name
