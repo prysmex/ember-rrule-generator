@@ -32,8 +32,11 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
       label: translateLabel(this.args.translations, 'end.label'),
       tooltip: translateLabel(this.args.translations, 'end.tooltip'),
       never: translateLabel(this.args.translations, 'end.never'),
-      after: translateLabel(this.args.translations, 'end.after'),
+      never_help: translateLabel(this.args.translations, 'end.never_help'),
       on_date: translateLabel(this.args.translations, 'end.on_date'),
+      on_date_help: translateLabel(this.args.translations, 'end.on_date_help'),
+      after: translateLabel(this.args.translations, 'end.after'),
+      after_help: translateLabel(this.args.translations, 'end.after_help'),
       executions: translateLabel(this.args.translations, 'end.executions'),
     };
   }

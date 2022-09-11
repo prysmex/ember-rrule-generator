@@ -10,6 +10,7 @@ export default class ContainersRepeatHourlyComponent extends BaseContainerCompon
       label: translateLabel(this.args.translations, 'repeat.hourly.every'),
       every: translateLabel(this.args.translations, 'repeat.hourly.every'),
       hours: translateLabel(this.args.translations, 'repeat.hourly.hours'),
+      which: translateLabel(this.args.translations, 'repeat.hourly.hours'),
     };
   }
 }

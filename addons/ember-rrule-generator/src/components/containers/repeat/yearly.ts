@@ -70,6 +70,9 @@ export default class ContainersRepeatYearlyComponent extends BaseContainerCompon
   get labels() {
     return {
       label: translateLabel(this.args.translations, 'repeat.yearly.label'),
+      every: translateLabel(this.args.translations, 'repeat.yearly.every'),
+      years: translateLabel(this.args.translations, 'repeat.yearly.years'),
+      which: translateLabel(this.args.translations, 'repeat.yearly.years'),
       on: translateLabel(this.args.translations, 'repeat.yearly.on'),
       on_the: translateLabel(this.args.translations, 'repeat.yearly.on_the'),
       of: translateLabel(this.args.translations, 'repeat.yearly.of'),

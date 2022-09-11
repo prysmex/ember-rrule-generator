@@ -81,4 +81,10 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
   ]) {
     return frequency === option;
   });
+
+  get labels() {
+    return {
+      label: translateLabel(this.args.translations, 'repeat.label'),
+    };
+  }
 }

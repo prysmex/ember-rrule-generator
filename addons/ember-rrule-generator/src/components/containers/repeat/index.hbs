@@ -8,6 +8,7 @@
       handleChange=@handleChange
       name=(concat @name ".frequency")
       translations=@translations
+      labels=this.labels
     )
     Yearly=(component
       this.RepeatYearly
@@ -16,6 +17,7 @@
       name=(concat @name ".yearly")
       handleChange=@handleChange
       translations=@translations
+      labels=this.labels
     )
     Monthly=(component
       this.RepeatMonthly
@@ -24,6 +26,7 @@
       name=(concat @name ".monthly")
       handleChange=@handleChange
       translations=@translations
+      labels=this.labels
     )
     Weekly=(component
       this.RepeatWeekly
@@ -32,6 +35,7 @@
       name=(concat @name ".weekly")
       handleChange=@handleChange
       translations=@translations
+      labels=this.labels
     )
     Daily=(component
       this.RepeatDaily
@@ -40,6 +44,7 @@
       name=(concat @name ".daily")
       handleChange=@handleChange
       translations=@translations
+      labels=this.labels
     )
     Hourly=(component
       this.RepeatHourly
@@ -48,7 +53,9 @@
       name=(concat @name ".hourly")
       handleChange=@handleChange
       translations=@translations
+      labels=this.labels
     )
+    labels=this.labels
     isYearlyActive=(this.isOptionSelected "Yearly" @repeat.frequency)
     isMonthlyActive=(this.isOptionSelected "Monthly" @repeat.frequency)
     isWeeklyActive=(this.isOptionSelected "Weekly" @repeat.frequency)

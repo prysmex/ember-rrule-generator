@@ -70,6 +70,7 @@ export default class ContainersRepeatMonthlyComponent extends BaseContainerCompo
       label: translateLabel(this.args.translations, 'repeat.monthly.label'),
       every: translateLabel(this.args.translations, 'repeat.monthly.every'),
       months: translateLabel(this.args.translations, 'repeat.monthly.months'),
+      which: translateLabel(this.args.translations, 'repeat.monthly.months'),
       on_day: translateLabel(this.args.translations, 'repeat.monthly.on_day'),
       on_the: translateLabel(this.args.translations, 'repeat.monthly.on_the'),
     };

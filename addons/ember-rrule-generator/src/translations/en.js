@@ -118,6 +118,8 @@ export default {
       on: 'on',
       on_the: 'on the',
       of: 'of',
+      every: 'every',
+      years: 'year(s)'
     },
     monthly: {
       label: 'Monthly',
@@ -146,8 +148,12 @@ export default {
     label: 'End',
     tooltip: 'Datetime picker for end on date',
     never: 'Never',
+    never_help: 'The event will repeat indefinitely',
     after: 'After',
+    after_help: 'The event will run until it reaches an specific date',
     on_date: 'On date',
+    on_date_help:
+      'The event will repeat until it reaches certain amount of occurrences',
     executions: 'executions.',
   },
 };

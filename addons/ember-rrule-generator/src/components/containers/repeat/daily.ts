@@ -10,6 +10,7 @@ export default class ContainersRepeatDailyComponent extends BaseContainerCompone
       label: translateLabel(this.args.translations, 'repeat.daily.label'),
       every: translateLabel(this.args.translations, 'repeat.daily.every'),
       days: translateLabel(this.args.translations, 'repeat.daily.days'),
+      which: translateLabel(this.args.translations, 'repeat.daily.days'),
     };
   }
 }

@@ -42,6 +42,7 @@ export default class ContainersRepeatYearlyOnMonthComponent extends BaseContaine
       label: translateLabel(this.args.translations, 'repeat.weekly.label'),
       every: translateLabel(this.args.translations, 'repeat.weekly.every'),
       weeks: translateLabel(this.args.translations, 'repeat.weekly.weeks'),
+      which: translateLabel(this.args.translations, 'repeat.weekly.weeks'),
     };
   }
 }
