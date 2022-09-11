@@ -107,7 +107,7 @@ const configureState = (config: Config = {}, id) => {
   };
 
   return {
-    id: uniqueRruleId,
+    id: uniqueRruleId as string,
     data,
     rrule: computeRRuleToString(data),
   };

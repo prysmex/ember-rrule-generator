@@ -1,4 +1,6 @@
-import Component from '@glimmer/component';
+import BaseContainerComponent, {
+  BaseContainerSignature,
+} from '../base-container';
 import { helper } from '@ember/component/helper';
 
 import RRuleGenerator, { YearlyMode } from '../../r-rule-generator/index';
@@ -11,13 +13,11 @@ import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type Yearly = RRuleGenerator['state']['data']['repeat']['yearly'];
 
-interface Signature {
+type Signature = BaseContainerSignature & {
   Args: {
-    handleChange: RRuleGenerator['handleChange'];
-    translations: RRuleGenerator['translations'];
     yearly: Yearly;
   };
-}
+};
 
 const isTheOnlyMode = (option: YearlyMode, options: Yearly['options']) =>
   options.modes === option;
@@ -26,7 +26,7 @@ const isOptionAvailable = (option: YearlyMode, options: Yearly['options']) => {
   return !options.modes || isTheOnlyMode(option, options);
 };
 
-export default class ContainersRepeatYearlyComponent extends Component<Signature> {
+export default class ContainersRepeatYearlyComponent extends BaseContainerComponent<Signature> {
   YearlyInterval = YearlyInterval;
   YearlyOn = YearlyOn;
   YearlyOnThe = YearlyOnThe;
@@ -65,5 +65,14 @@ export default class ContainersRepeatYearlyComponent extends Component<Signature
       });
 
     return availableOptions;
+  }
+
+  get labels() {
+    return {
+      label: translateLabel(this.args.translations, 'repeat.weekly.label'),
+      on: translateLabel(this.args.translations, 'repeat.weekly.on'),
+      on_the: translateLabel(this.args.translations, 'repeat.weekly.on_the'),
+      of: translateLabel(this.args.translations, 'repeat.weekly.of'),
+    };
   }
 }

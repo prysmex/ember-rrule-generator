@@ -40,6 +40,10 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
     });
   }
 
+  get label() {
+    return translateLabel(this.args.translations, 'repeat.yearly.on_the');
+  }
+
   get whichs() {
     return [
       {

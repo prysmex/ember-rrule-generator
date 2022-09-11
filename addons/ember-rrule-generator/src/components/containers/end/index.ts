@@ -27,6 +27,17 @@ export default class ContainersEndIndexComponent extends Component<Signature> {
   OnDate = OnDate;
   After = After;
 
+  get labels() {
+    return {
+      label: translateLabel(this.args.translations, 'end.label'),
+      tooltip: translateLabel(this.args.translations, 'end.tooltip'),
+      never: translateLabel(this.args.translations, 'end.never'),
+      after: translateLabel(this.args.translations, 'end.after'),
+      on_date: translateLabel(this.args.translations, 'end.on_date'),
+      executions: translateLabel(this.args.translations, 'end.executions'),
+    };
+  }
+
   get availableOptions() {
     const availableOptions: {
       value: EndValue;

@@ -1,7 +1,10 @@
-import Component from '@glimmer/component';
+import BaseContainerComponent, {
+  BaseContainerSignature,
+} from '../base-container';
 import { helper } from '@ember/component/helper';
 
 import RRuleGenerator, { MonthlyMode } from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 import MonthlyOn from './monthly-on';
 import MonthlyOnThe from './monthly-on-the';
@@ -10,12 +13,12 @@ import MonthlyInterval from './monthly-interval';
 
 type Monthly = RRuleGenerator['state']['data']['repeat']['monthly'];
 
-interface Signature {
+type Signature = BaseContainerSignature & {
   Args: {
     handleChange: RRuleGenerator['handleChange'];
     monthly: Monthly;
   };
-}
+};
 
 const isTheOnlyMode = (option: MonthlyMode, options: Monthly['options']) =>
   options.modes === option;
@@ -27,7 +30,7 @@ const isOptionAvailable = (
   return !options.modes || isTheOnlyMode(option, options);
 };
 
-export default class ContainersRepeatMonthlyComponent extends Component<Signature> {
+export default class ContainersRepeatMonthlyComponent extends BaseContainerComponent<Signature> {
   MonthlySelectMode = MonthlySelectMode;
   MonthlyInterval = MonthlyInterval;
   MonthlyOn = MonthlyOn;
@@ -60,5 +63,15 @@ export default class ContainersRepeatMonthlyComponent extends Component<Signatur
       availableOptions.push({ value: 'on the', label: 'on the' });
 
     return availableOptions;
+  }
+
+  get labels() {
+    return {
+      label: translateLabel(this.args.translations, 'repeat.monthly.label'),
+      every: translateLabel(this.args.translations, 'repeat.monthly.every'),
+      months: translateLabel(this.args.translations, 'repeat.monthly.months'),
+      on_day: translateLabel(this.args.translations, 'repeat.monthly.on_day'),
+      on_the: translateLabel(this.args.translations, 'repeat.monthly.on_the'),
+    };
   }
 }

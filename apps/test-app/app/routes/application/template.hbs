@@ -1,4 +1,14 @@
-<this.RRuleGenerator @onChange={{this.changeRule}} as |Generator|>
+{{this.rule}}
+<textarea
+  type="text"
+  value={{this.rule}}
+  {{on "input" this.changeRuleFromInput}}
+/>
+<this.RRuleGenerator
+  @onChange={{this.changeRule}}
+  @value={{this.rule}}
+  as |Generator|
+>
   <Generator.Start as |Start|>
     <Start.OnDate @view={{this.DatePicker}} />
   </Generator.Start>
@@ -8,13 +18,13 @@
       <Repeat.Yearly as |Yearly|>
         <Yearly.Interval @view={{this.NumberInput}} />
         <Yearly.Select @view={{this.Select}} />
-        {{#if Yearly.IsOnActive}}
+        {{#if Yearly.isOnActive}}
           <Yearly.On as |On|>
             <On.Day @view={{this.Select}} />
             <On.Month @view={{this.Select}} />
           </Yearly.On>
         {{/if}}
-        {{#if Yearly.IsOnTheActive}}
+        {{#if Yearly.isOnTheActive}}
           <Yearly.OnThe as |OnThe|>
             <OnThe.Which @view={{this.Select}} />
             <OnThe.Day @view={{this.Select}} />
@@ -27,12 +37,12 @@
       <Repeat.Monthly as |Monthly|>
         <Monthly.Interval @view={{this.NumberInput}} placeholder="Interval" />
         <Monthly.Select @view={{this.Select}} />
-        {{#if Monthly.IsOnActive}}
+        {{#if Monthly.isOnActive}}
           <Monthly.On as |On|>
             <On.Day @view={{this.Select}} />
           </Monthly.On>
         {{/if}}
-        {{#if Monthly.IsOnTheActive}}
+        {{#if Monthly.isOnTheActive}}
           <Monthly.OnThe as |OnThe|>
             <OnThe.Which @view={{this.Select}} />
             <OnThe.Day @view={{this.Select}} />

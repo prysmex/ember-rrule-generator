@@ -1,20 +1,17 @@
 import { cloneDeep, set } from 'lodash-es';
 
 import Component from '@glimmer/component';
-//@ts-expect-error
-import { tracked } from '@glimmer/tracking';
 
 import computeRRuleToString from 'ember-rrule-generator/utils/computeRRule/toString/computeRRule';
-// import computeRRuleFromString from '../../utils/computeRRule/fromString/computeRRule';
+import computeRRuleFromString from 'ember-rrule-generator/utils/computeRRule/fromString/computeRRule';
 import configureInitialState from 'ember-rrule-generator/utils/configureInitialState';
 
-import Start from '../containers/start/index';
-import End from '../containers/end/index';
-import Repeat from '../containers/repeat/index';
+import Start from 'ember-rrule-generator/components/containers/start/index';
+import End from 'ember-rrule-generator/components/containers/end/index';
+import Repeat from 'ember-rrule-generator/components/containers/repeat/index';
 
 import EN from '../../translations/en';
 import { Translations } from 'ember-rrule-generator/utils/translateLabel';
-
 export interface ChangeEvent {
   target: {
     value: unknown;
@@ -29,6 +26,7 @@ export type FrequencyValue =
   | 'Weekly'
   | 'Daily'
   | 'Hourly';
+
 export type MonthlyMode = 'on' | 'on the';
 export type YearlyMode = 'on' | 'on the';
 
@@ -54,13 +52,59 @@ type Signature = {
   };
 };
 
+type TheState = ReturnType<typeof configureInitialState>;
+
+class State {
+  id: TheState['id'];
+  data: TheState['data'];
+  rrule: TheState['rrule'];
+
+  constructor(s: TheState) {
+    this.id = s.id;
+    this.data = s.data;
+    this.rrule = s.rrule;
+  }
+}
 export default class RRuleGenerator extends Component<Signature> {
   Start = Start;
   End = End;
   Repeat = Repeat;
 
-  //eslint-disable-next-line
-  @tracked state = configureInitialState(this.args.config, this.args.id);
+  _lastStateValue: State;
+
+  _lastValue;
+
+  get state() {
+    const newState = new State({
+      ...this._lastStateValue,
+      data: computeRRuleFromString(
+        this._lastStateValue.data,
+        this.args.value
+      ) as State['data'],
+    });
+    //eslint-disable-next-line
+    this._lastStateValue = newState;
+    return newState;
+  }
+
+  constructor(owner: unknown, args: Signature['Args']) {
+    super(owner, args);
+
+    const state = new State(
+      configureInitialState(this.args.config, this.args.id)
+    );
+
+    if (this.args.value) {
+      const data = computeRRuleFromString(
+        state.data,
+        this.args.value
+      ) as State['data'];
+
+      state.data = data;
+    }
+
+    this._lastStateValue = state;
+  }
 
   get translations() {
     return (this.args.translations || EN) as Translations;
@@ -68,18 +112,14 @@ export default class RRuleGenerator extends Component<Signature> {
 
   handleChange = ({ target }: ChangeEvent) => {
     //eslint-disable-next-line
-    const newData = cloneDeep(this.state.data);
-    //eslint-disable-next-line
+    const newData = cloneDeep(this._lastStateValue.data);
+
     set(newData, target.name, target.value);
-    //eslint-disable-next-line
-    this.state = {
-      ...this.state,
-      //eslint-disable-next-line
-      data: newData,
-    };
+
+    this._lastStateValue.data = newData;
 
     //eslint-disable-next-line
-    const rrule = computeRRuleToString(newData);
+    const rrule = computeRRuleToString(newData!);
 
     //eslint-disable-next-line
     console.log(rrule);

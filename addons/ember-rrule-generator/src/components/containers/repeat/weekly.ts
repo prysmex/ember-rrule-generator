@@ -3,6 +3,7 @@ import BaseContainerComponent, {
 } from '../base-container';
 import { toPairs } from 'lodash-es';
 import type RRuleGenerator from '../../r-rule-generator/index';
+import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 import WeeklyInterval from './weekly-interval';
 import WeeklyDays from './weekly-days';
@@ -29,9 +30,18 @@ export default class ContainersRepeatYearlyOnMonthComponent extends BaseContaine
         {
           value: dayArray[0],
           label: dayArray[0],
+          isActive: dayArray[1],
         },
         dayArray[1],
       ];
     });
+  }
+
+  get labels() {
+    return {
+      label: translateLabel(this.args.translations, 'repeat.weekly.label'),
+      every: translateLabel(this.args.translations, 'repeat.weekly.every'),
+      weeks: translateLabel(this.args.translations, 'repeat.weekly.weeks'),
+    };
   }
 }

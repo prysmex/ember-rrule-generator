@@ -33,6 +33,10 @@ export default class ContainersRepeatMonthlyOnTheComponent extends BaseContainer
     });
   }
 
+  get label() {
+    return translateLabel(this.args.translations, 'repeat.monthly.on_the');
+  }
+
   get whichs() {
     return [
       {

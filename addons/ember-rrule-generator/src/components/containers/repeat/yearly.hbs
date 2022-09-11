@@ -32,13 +32,14 @@
       this.YearlyOnThe
       id=(concat @id "-onThe")
       mode=@yearly.mode
-      hasMoreModes=(this.isNotTheOnlyMode "on the")
+      hasMoreModes=(this.isNotTheOnlyMode "on the" @yearly.options)
       onThe=@yearly.onThe
       handleChange=@handleChange
       isActive=(this.isModeActive @yearly.mode "on the")
       name=(concat @name ".onThe")
       translations=@translations
     )
+    labels=this.labels
     name=@name
     translations=@translations
     handleChange=@handleChange
