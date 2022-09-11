@@ -3,6 +3,7 @@
     (hash
       handleChange=this.handleChange
       onDate=@onDate
+      value=@onDate.date
       id=@id
       name=@name
       translations=@translations
@@ -17,7 +18,7 @@
         id={{@id}}
         @name={{@name}}
         name={{@name}}
-        @value={{@onDate}}
+        @value={{@onDate.date}}
         @handleChange={{this.handleChange}}
         @translations={{@translations}}
         @labels={{@labels}}

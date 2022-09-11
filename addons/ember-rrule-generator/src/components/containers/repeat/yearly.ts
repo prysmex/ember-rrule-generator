@@ -78,4 +78,9 @@ export default class ContainersRepeatYearlyComponent extends BaseContainerCompon
       of: translateLabel(this.args.translations, 'repeat.yearly.of'),
     };
   }
+
+  get allowBYSETPOS() {
+    const { allowBYSETPOS } = this.args.yearly.options || {};
+    return typeof allowBYSETPOS === 'undefined' ? true : allowBYSETPOS;
+  }
 }

@@ -30,6 +30,7 @@
       name=(concat @name ".on")
       translations=@translations
       labels=this.labels
+      allowBYSETPOS=this.allowBYSETPOS
     )
     OnThe=(component
       this.YearlyOnThe
@@ -42,11 +43,13 @@
       name=(concat @name ".onThe")
       translations=@translations
       labels=this.labels
+      allowBYSETPOS=this.allowBYSETPOS
     )
     labels=this.labels
     name=@name
     translations=@translations
     handleChange=@handleChange
+    allowBYSETPOS=this.allowBYSETPOS
     isOnActive=(this.isModeActive @yearly.mode "on")
     isOnTheActive=(this.isModeActive @yearly.mode "on the")
   )

@@ -14,6 +14,7 @@ import { DAYS } from 'ember-rrule-generator/utils/constants';
 type Signature = BaseContainerSignature & {
   Args: {
     onThe: OnThe;
+    allowBYSETPOS: boolean;
   };
 };
 
@@ -22,12 +23,16 @@ export default class ContainersRepeatMonthlyOnTheComponent extends BaseContainer
   MonthlyOnTheWhich = MonthlyOnTheWhich;
 
   get days() {
-    return DAYS.map((day) => {
+    const filteredDays = DAYS.filter((d) => {
+      if (d.match(/^week/i)) return this.args.allowBYSETPOS;
+      return true;
+    });
+    return filteredDays.map((day) => {
       return {
         value: day,
         label: translateLabel(
           this.args.translations,
-          `days.${day.toLowerCase()}`
+          `days.${day.toLowerCase().replace(/\s/g, '_')}`
         ),
       };
     });

@@ -1,9 +1,11 @@
+import { Frequency } from 'rrule';
+
 const computeWeeklyInterval = (data, rruleObj) => {
-  if (rruleObj.freq !== 2) {
-    return data.repeat.weekly.interval;
+  if (rruleObj.freq !== Frequency.WEEKLY) {
+    return data.repeat.weekly.interval || 1;
   }
 
-  return rruleObj.interval;
+  return rruleObj.interval || 1;
 };
 
 export default computeWeeklyInterval;

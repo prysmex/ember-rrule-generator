@@ -1,6 +1,8 @@
+import { Frequency } from 'rrule';
+
 const computeHourlyInterval = (data, rruleObj) => {
-  if (rruleObj.freq !== 4) {
-    return data.repeat.daily.interval;
+  if (rruleObj.freq !== Frequency.HOURLY) {
+    return data.repeat.hourly.interval;
   }
 
   return rruleObj.interval;

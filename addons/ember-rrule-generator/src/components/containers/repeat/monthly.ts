@@ -75,4 +75,9 @@ export default class ContainersRepeatMonthlyComponent extends BaseContainerCompo
       on_the: translateLabel(this.args.translations, 'repeat.monthly.on_the'),
     };
   }
+
+  get allowBYSETPOS() {
+    const { allowBYSETPOS } = this.args.monthly.options || {};
+    return typeof allowBYSETPOS === 'undefined' ? true : allowBYSETPOS;
+  }
 }

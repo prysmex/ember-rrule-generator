@@ -1,7 +1,7 @@
 {{#if (has-block)}}
   {{yield
     (hash
-      handleChange=this.handleChange
+      handleChange=this.numericalFieldHandler
       after=@after
       id=@id
       name=@name
@@ -18,7 +18,7 @@
         @name={{@name}}
         name={{@name}}
         @after={{@after}}
-        @handleChange={{this.handleChange}}
+        @handleChange={{this.numericalFieldHandler}}
         @translations={{@translations}}
         @labels={{@labels}}
         ...attributes

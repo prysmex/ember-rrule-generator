@@ -43,6 +43,7 @@ const configureState = (config: Config = {}, id) => {
         },
         options: {
           modes: config.yearly,
+          allowBYSETPOS: config.allowBYSETPOS,
         },
       },
       monthly: {
@@ -57,6 +58,7 @@ const configureState = (config: Config = {}, id) => {
         },
         options: {
           modes: config.monthly,
+          allowBYSETPOS: config.allowBYSETPOS,
         },
       },
       weekly: {

@@ -39,6 +39,7 @@ export interface Config {
   hideEnd?: boolean;
   hideError?: boolean;
   weekStartsOnSunday?: boolean;
+  allowBYSETPOS?: boolean;
 }
 
 type Signature = {

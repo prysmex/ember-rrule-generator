@@ -120,6 +120,7 @@
       "./utils/computeRRule/toString/computeYearlyOnThe.js": "./dist/_app_/utils/computeRRule/toString/computeYearlyOnThe.js",
       "./utils/configureInitialState.js": "./dist/_app_/utils/configureInitialState.js",
       "./utils/constants.js": "./dist/_app_/utils/constants.js",
+      "./utils/numerical-field-handler.js": "./dist/_app_/utils/numerical-field-handler.js",
       "./utils/translateLabel.js": "./dist/_app_/utils/translateLabel.js"
     },
     "public-assets": {}
