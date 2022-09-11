@@ -8,6 +8,7 @@
       handleChange=@handleChange
       name=(concat @name ".mode")
       translations=@translations
+      labels=this.labels
     )
     After=(component
       this.After
@@ -16,6 +17,7 @@
       handleChange=@handleChange
       name=(concat @name ".after")
       translations=@translations
+      labels=this.labels
     )
     OnDate=(component
       this.OnDate
@@ -24,6 +26,7 @@
       handleChange=@handleChange
       name=(concat @name ".onDate")
       translations=@translations
+      labels=this.labels
     )
     labels=this.labels
     isNeverActive=(this.isOptionSelected "Never" @end.mode)

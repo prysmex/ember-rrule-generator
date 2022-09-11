@@ -40,10 +40,6 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
     });
   }
 
-  get label() {
-    return translateLabel(this.args.translations, 'repeat.yearly.on_the');
-  }
-
   get whichs() {
     return [
       {
@@ -75,7 +71,7 @@ export default class ContainersRepeatYearlyOnTheComponent extends BaseContainerC
         value: day,
         label: translateLabel(
           this.args.translations,
-          `days.${day.toLowerCase()}`
+          `days.${day.toLowerCase().replace(/\s/g, '_')}`
         ),
       };
     });

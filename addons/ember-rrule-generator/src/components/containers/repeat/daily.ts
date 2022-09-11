@@ -1,6 +1,7 @@
 import BaseContainerComponent from '../base-container';
 import DailyInterval from './daily-interval';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
+
 export default class ContainersRepeatDailyComponent extends BaseContainerComponent {
   DailyInterval = DailyInterval;
 

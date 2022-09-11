@@ -1,5 +1,14 @@
 {{#if (has-block)}}
-  {{yield (hash id=@id name=@name value=@value handleChange=this.handleChange translations=@translations)}}
+  {{yield
+    (hash
+      id=@id
+      name=@name
+      value=@value
+      handleChange=this.handleChange
+      translations=@translations
+      labels=@labels
+    )
+  }}
 {{else}}
   {{#if @view}}
     {{#let (component @view) as |DailyIntervalComponent|}}
@@ -11,6 +20,7 @@
         @value={{@value}}
         @handleChange={{this.handleChange}}
         @translations={{@translations}}
+        @labels={{@labels}}
         ...attributes
       />
     {{/let}}

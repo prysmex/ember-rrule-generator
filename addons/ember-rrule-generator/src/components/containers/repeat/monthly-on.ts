@@ -40,8 +40,4 @@ export default class ContainersRepeatMonthlyOnComponent extends BaseContainerCom
     });
     return [...positive, ...neg];
   }
-
-  get label() {
-    return translateLabel(this.args.translations, 'repeat.monthly.on_day');
-  }
 }

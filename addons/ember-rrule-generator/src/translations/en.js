@@ -109,7 +109,7 @@ export default {
   },
   start: {
     label: 'Start',
-    tooltip: 'Datetime picker for start on date',
+    on: 'on',
   },
   repeat: {
     label: 'Repeat',

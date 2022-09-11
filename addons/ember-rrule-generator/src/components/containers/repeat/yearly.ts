@@ -69,10 +69,10 @@ export default class ContainersRepeatYearlyComponent extends BaseContainerCompon
 
   get labels() {
     return {
-      label: translateLabel(this.args.translations, 'repeat.weekly.label'),
-      on: translateLabel(this.args.translations, 'repeat.weekly.on'),
-      on_the: translateLabel(this.args.translations, 'repeat.weekly.on_the'),
-      of: translateLabel(this.args.translations, 'repeat.weekly.of'),
+      label: translateLabel(this.args.translations, 'repeat.yearly.label'),
+      on: translateLabel(this.args.translations, 'repeat.yearly.on'),
+      on_the: translateLabel(this.args.translations, 'repeat.yearly.on_the'),
+      of: translateLabel(this.args.translations, 'repeat.yearly.of'),
     };
   }
 }
