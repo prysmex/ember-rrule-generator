@@ -3,17 +3,10 @@ import BaseContainerComponent, {
 } from '../base-container';
 import YearlyOnMonth from './yearly-on-month';
 import YearlyOnDay from './yearly-on-day';
-import { range } from 'lodash-es';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-
 import type RRuleGenerator from '../../r-rule-generator/index';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type On = RRuleGenerator['state']['data']['repeat']['yearly']['on'];
-
-//eslint-disable-next-line
-dayjs.extend(customParseFormat);
 
 import { MONTHS } from 'ember-rrule-generator/utils/constants';
 
@@ -41,14 +34,25 @@ export default class ContainersRepeatYearlyOnComponent extends BaseContainerComp
 
   get days() {
     //eslint-disable-next-line
-    const daysInMonth = dayjs(this.args.on.month, 'MMM').daysInMonth();
-    //eslint-disable-next-line
-    const opts = range(0, daysInMonth).map((day) => {
+    const positive = [...new Array(31)].map((_day, i) => {
       return {
-        value: day + 1,
-        label: day + 1,
+        value: i + 1,
+        label: translateLabel(
+          this.args.translations,
+          `numerals_by_number.${i + 1}`
+        ),
       };
     });
-    return opts;
+    //eslint-disable-next-line
+    const neg = [...new Array(30)].map((_day, i) => {
+      return {
+        value: (i + 1) * -1,
+        label: translateLabel(
+          this.args.translations,
+          `numerals_by_number.${(i + 1) * -1}`
+        ),
+      };
+    });
+    return [...positive, ...neg];
   }
 }
