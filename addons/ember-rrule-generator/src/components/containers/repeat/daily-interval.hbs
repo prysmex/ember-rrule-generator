@@ -7,6 +7,7 @@
       handleChange=this.numericalFieldHandler
       translations=@translations
       labels=@labels
+      isDisabled=@isDisabled
     )
   }}
 {{else}}
@@ -21,6 +22,7 @@
         @handleChange={{this.numericalFieldHandler}}
         @translations={{@translations}}
         @labels={{@labels}}
+        @isDisabled={{@isDisabled}}
         ...attributes
       />
     {{/let}}

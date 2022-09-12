@@ -9,6 +9,7 @@
       handleChange=this.handleChange
       translations=@translations
       labels=@labels
+      isDisabled=@isDisabled
     )
   }}
 {{else}}
@@ -20,6 +21,7 @@
         name={{@name}}
         @name={{@name}}
         @value={{@value}}
+        @isDisabled={{@isDisabled}}
         @options={{@options}}
         @isActive={{@isActive}}
         @handleChange={{this.handleChange}}

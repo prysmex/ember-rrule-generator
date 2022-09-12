@@ -8,6 +8,7 @@
       name=@name
       translations=@translations
       labels=@labels
+      isDisabled=@isDisabled
     )
   }}
 {{else}}
@@ -19,6 +20,7 @@
         @name={{@name}}
         name={{@name}}
         @value={{@onDate.date}}
+        @isDisabled={{@isDisabled}}
         @handleChange={{this.handleChange}}
         @translations={{@translations}}
         @labels={{@labels}}

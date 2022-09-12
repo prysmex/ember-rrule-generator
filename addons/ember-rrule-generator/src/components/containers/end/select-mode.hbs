@@ -8,6 +8,7 @@
       name=@name
       translations=@translations
       labels=@labels
+      isDisabled=@isDisabled
     )
   }}
 {{else}}
@@ -18,6 +19,7 @@
         id={{@id}}
         @name={{@name}}
         name={{@name}}
+        @isDisabled={{@isDisabled}}
         @options={{@options}}
         @value={{@value}}
         @handleChange={{this.handleChange}}

@@ -9,6 +9,7 @@
       name=(concat @name ".mode")
       translations=@translations
       labels=this.labels
+      isDisabled=@isDisabled
     )
     Interval=(component
       this.YearlyInterval
@@ -18,6 +19,7 @@
       name=(concat @name ".interval")
       translations=@translations
       labels=this.labels
+      isDisabled=@isDisabled
     )
     On=(component
       this.YearlyOn
@@ -31,6 +33,7 @@
       translations=@translations
       labels=this.labels
       allowBYSETPOS=this.allowBYSETPOS
+      isDisabled=@isDisabled
     )
     OnThe=(component
       this.YearlyOnThe
@@ -44,7 +47,9 @@
       translations=@translations
       labels=this.labels
       allowBYSETPOS=this.allowBYSETPOS
+      isDisabled=@isDisabled
     )
+    isDisabled=@isDisabled
     labels=this.labels
     name=@name
     translations=@translations

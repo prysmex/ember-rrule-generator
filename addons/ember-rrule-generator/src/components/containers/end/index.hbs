@@ -9,6 +9,7 @@
       name=(concat @name ".mode")
       translations=@translations
       labels=this.labels
+      isDisabled=@isDisabled
     )
     After=(component
       this.After
@@ -18,6 +19,7 @@
       name=(concat @name ".after")
       translations=@translations
       labels=this.labels
+      isDisabled=@isDisabled
     )
     OnDate=(component
       this.OnDate
@@ -27,7 +29,9 @@
       name=(concat @name ".onDate")
       translations=@translations
       labels=this.labels
+      isDisabled=@isDisabled
     )
+    isDisabled=@isDisabled
     labels=this.labels
     isNeverActive=(this.isOptionSelected "Never" @end.mode)
     isAfterActive=(this.isOptionSelected "After" @end.mode)
