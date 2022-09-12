@@ -1,0 +1,28 @@
+{{#if (has-block)}}
+  {{yield
+    (hash
+      id=@id
+      name=@name
+      value=@value
+      handleChange=this.numericalFieldHandler
+      translations=@translations
+      labels=@labels
+    )
+  }}
+{{else}}
+  {{#if @view}}
+    {{#let (component @view) as |MinutelyIntervalComponent|}}
+      <MinutelyIntervalComponent
+        @id={{@id}}
+        id={{@id}}
+        name={{@name}}
+        @name={{@name}}
+        @value={{@value}}
+        @handleChange={{this.numericalFieldHandler}}
+        @translations={{@translations}}
+        @labels={{@labels}}
+        ...attributes
+      />
+    {{/let}}
+  {{/if}}
+{{/if}}

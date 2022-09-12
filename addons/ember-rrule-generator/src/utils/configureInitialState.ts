@@ -82,6 +82,9 @@ const configureState = (config: Config = {}, id) => {
       hourly: {
         interval: 1,
       },
+      minutely: {
+        interval: 1,
+      },
       options: {
         frequency: config.frequency,
       },

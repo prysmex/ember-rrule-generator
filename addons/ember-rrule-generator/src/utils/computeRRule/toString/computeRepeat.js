@@ -3,6 +3,7 @@ import computeMonthly from './computeMonthly';
 import computeWeekly from './computeWeekly';
 import computeDaily from './computeDaily';
 import computeHourly from './computeHourly';
+import computeMinutely from './computeMinutely';
 
 const computeRepeat = ({
   frequency,
@@ -11,6 +12,7 @@ const computeRepeat = ({
   weekly,
   daily,
   hourly,
+  minutely,
 }) => {
   switch (frequency) {
     case 'Yearly': {
@@ -27,6 +29,9 @@ const computeRepeat = ({
     }
     case 'Hourly': {
       return computeHourly(hourly);
+    }
+    case 'Minutely': {
+      return computeMinutely(minutely);
     }
     default:
       return {};

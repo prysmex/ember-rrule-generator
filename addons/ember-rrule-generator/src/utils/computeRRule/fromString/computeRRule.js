@@ -24,6 +24,7 @@ import computeHourlyInterval from './computeHourlyInterval';
 import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
 import computeEndOnDate from './computeEndOnDate';
+import computeMinutelyInterval from './computeMinutelyInterval';
 
 const computeRRule = (data, rrule) => {
   if (!rrule) {
@@ -89,6 +90,9 @@ const computeRRule = (data, rrule) => {
         },
         hourly: {
           interval: computeHourlyInterval(data, rruleObj),
+        },
+        minutely: {
+          interval: computeMinutelyInterval(data, rruleObj),
         },
       },
       end: {

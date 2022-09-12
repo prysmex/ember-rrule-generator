@@ -25,7 +25,8 @@ export type FrequencyValue =
   | 'Monthly'
   | 'Weekly'
   | 'Daily'
-  | 'Hourly';
+  | 'Hourly'
+  | 'Minutely';
 
 export type MonthlyMode = 'on' | 'on the';
 export type YearlyMode = 'on' | 'on the';

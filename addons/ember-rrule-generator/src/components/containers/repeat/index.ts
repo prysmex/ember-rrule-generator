@@ -12,6 +12,7 @@ import RepeatMonthly from './monthly';
 import RepeatWeekly from './weekly';
 import RepeatDaily from './daily';
 import RepeatHourly from './hourly';
+import RepeatMinutely from './minutely';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type Repeat = RRuleGenerator['state']['data']['repeat'];
@@ -39,6 +40,7 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
   RepeatWeekly = RepeatWeekly;
   RepeatDaily = RepeatDaily;
   RepeatHourly = RepeatHourly;
+  RepeatMinutely = RepeatMinutely;
 
   get availableOptions() {
     const availableOptions: {
@@ -70,6 +72,11 @@ export default class ContainersRepeatComponent extends BaseContainerComponent<Si
       availableOptions.push({
         value: 'Hourly',
         label: translateLabel(this.args.translations, 'repeat.hourly.label'),
+      });
+    isOptionAvailable('Minutely', this.args.repeat.options) &&
+      availableOptions.push({
+        value: 'Minutely',
+        label: translateLabel(this.args.translations, 'repeat.minutely.label'),
       });
 
     return availableOptions;

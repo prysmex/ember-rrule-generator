@@ -55,6 +55,15 @@
       translations=@translations
       labels=this.labels
     )
+    Minutely=(component
+      this.RepeatMinutely
+      id=(concat @id "-minutely")
+      minutely=@repeat.minutely
+      name=(concat @name ".minutely")
+      handleChange=@handleChange
+      translations=@translations
+      labels=this.labels
+    )
     labels=this.labels
     isYearlyActive=(this.isOptionSelected "Yearly" @repeat.frequency)
     isMonthlyActive=(this.isOptionSelected "Monthly" @repeat.frequency)

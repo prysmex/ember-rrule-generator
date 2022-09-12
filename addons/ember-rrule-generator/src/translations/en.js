@@ -119,7 +119,7 @@ export default {
       on_the: 'on the',
       of: 'of',
       every: 'every',
-      years: 'year(s)'
+      years: 'year(s)',
     },
     monthly: {
       label: 'Monthly',
@@ -142,6 +142,11 @@ export default {
       label: 'Hourly',
       every: 'every',
       hours: 'hour(s)',
+    },
+    minutely: {
+      label: 'Minutely',
+      every: 'every',
+      minutes: 'minute(s)',
     },
   },
   end: {
