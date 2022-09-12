@@ -29,7 +29,10 @@ export default class ContainersRepeatYearlyOnMonthComponent extends BaseContaine
       return [
         {
           value: dayArray[0],
-          label: dayArray[0],
+          label: translateLabel(
+            this.args.translations,
+            `days_short.${dayArray[0].toLowerCase()}`
+          ),
           isActive: dayArray[1],
         },
         dayArray[1],
