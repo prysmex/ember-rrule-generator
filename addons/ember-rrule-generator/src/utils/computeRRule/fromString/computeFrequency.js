@@ -1,19 +1,24 @@
+import { RRule } from 'rrule';
+
 const computeFrequency = (data, rruleObj) => {
   switch (rruleObj.freq) {
-    case 0: {
+    case RRule.YEARLY: {
       return 'Yearly';
     }
-    case 1: {
+    case RRule.MONTHLY: {
       return 'Monthly';
     }
-    case 2: {
+    case RRule.WEEKLY: {
       return 'Weekly';
     }
-    case 3: {
+    case RRule.DAILY: {
       return 'Daily';
     }
-    case 4: {
+    case RRule.HOURLY: {
       return 'Hourly';
+    }
+    case RRule.MINUTELY: {
+      return 'Minutely';
     }
     default: {
       return data.repeat.frequency;
