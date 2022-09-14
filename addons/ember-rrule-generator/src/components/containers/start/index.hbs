@@ -20,7 +20,7 @@
     {{yield Start}}
   {{else}}
     {{#let (component @view) as |StartComponent|}}
-      <StartComponent @startApi={{Start}} ...attributes />
+      <StartComponent @Start={{Start}} ...attributes />
     {{/let}}
   {{/if}}
 {{/let}}
