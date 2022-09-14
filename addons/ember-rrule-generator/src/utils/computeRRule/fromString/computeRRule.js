@@ -25,6 +25,7 @@ import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
 import computeEndOnDate from './computeEndOnDate';
 import computeMinutelyInterval from './computeMinutelyInterval';
+import computeTimezone from './computeTimezone';
 
 const computeRRule = (data, rrule) => {
   if (!rrule) {
@@ -108,6 +109,10 @@ const computeRRule = (data, rrule) => {
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
           },
         },
+      },
+      timezone: {
+        ...data.timezone,
+        tzid: computeTimezone(data, rruleObj),
       },
       options: {
         ...data.options,

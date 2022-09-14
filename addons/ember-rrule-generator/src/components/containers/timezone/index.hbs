@@ -1,0 +1,25 @@
+{{#let
+  (hash
+    Select=(component
+      this.TimezoneSelect
+      id=(concat @id "-timezone")
+      timezone=@timezone
+      handleChange=@handleChange
+      name=(concat @name ".tzid")
+      translations=@translations
+      labels=this.labels
+      isDisabled=@isDisabled
+    )
+    isDisabled=@isDisabled
+    labels=this.labels
+  )
+  as |Select|
+}}
+  {{#if (has-block)}}
+    {{yield Select}}
+  {{else}}
+    {{#let (component @view) as |SelectComponent|}}
+      <SelectComponent @Select={{Select}} ...attributes />
+    {{/let}}
+  {{/if}}
+{{/let}}

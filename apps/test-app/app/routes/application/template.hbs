@@ -3,12 +3,15 @@
   type="text"
   value={{this.rule}}
   {{on "input" this.changeRuleFromInput}}
-/>
+></textarea>
 <this.RRuleGenerator
   @onChange={{this.changeRule}}
   @value={{this.rule}}
   as |Generator|
 >
+  <Generator.Timezone as |Timezone|>
+    <Timezone.Select @view={{this.Select}} />
+  </Generator.Timezone>
   <Generator.Start as |Start|>
     <Start.OnDate @view={{this.DatePicker}} />
   </Generator.Start>

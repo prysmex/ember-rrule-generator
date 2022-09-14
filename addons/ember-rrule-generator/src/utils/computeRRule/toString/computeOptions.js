@@ -1,6 +1,11 @@
 import { RRule } from 'rrule';
 
-const computeOptions = ({ hideStart, weekStartsOnSunday, tzid }) => {
+const computeOptions = ({
+  hideStart,
+  weekStartsOnSunday,
+  tzid,
+  removeTimezone,
+}) => {
   const options = {};
 
   if (hideStart) {
@@ -13,6 +18,10 @@ const computeOptions = ({ hideStart, weekStartsOnSunday, tzid }) => {
 
   if (tzid) {
     options.tzid = tzid;
+  }
+
+  if (removeTimezone) {
+    options.tzid = null;
   }
 
   return options;

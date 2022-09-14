@@ -161,4 +161,8 @@ export default {
       'The event will repeat until it reaches certain amount of occurrences',
     executions: 'executions.',
   },
+  timezone: {
+    label: 'Time Zone',
+    local: 'Local',
+  },
 };
