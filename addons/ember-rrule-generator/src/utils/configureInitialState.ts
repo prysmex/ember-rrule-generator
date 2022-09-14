@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable */
 import dayjs from 'dayjs';
 import { isEmpty, uniqueId } from 'lodash-es';
 
@@ -16,6 +17,13 @@ const configureState = (config: Config = {}, id) => {
   const configureMonthly = () => config.monthly || 'on';
   const configureEnd = () => (config.end ? config.end[0] : 'Never');
   const configureHideStart = () => config.hideStart;
+  const configureSupportedTimezones = () => {
+    return (
+      config.supportedTimezones ||
+      //@ts-ignore
+      ((): string[] => Intl.supportedValuesOf('timeZone'))
+    );
+  };
   const uniqueRruleId = isEmpty(id) ? uniqueId('rrule-') : id;
 
   const data = {
@@ -102,11 +110,17 @@ const configureState = (config: Config = {}, id) => {
         modes: config.end,
       },
     },
+    timezone: {
+      options: {
+        supportedTimezones: configureSupportedTimezones(),
+      },
+    },
     options: {
       hideStart: configureHideStart(),
       hideEnd: config.hideEnd,
       hideError: config.hideError,
       weekStartsOnSunday: config.weekStartsOnSunday,
+      tzid: config.tzid,
     },
     error: null,
   };

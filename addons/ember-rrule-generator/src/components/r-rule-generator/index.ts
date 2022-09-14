@@ -9,6 +9,7 @@ import configureInitialState from 'ember-rrule-generator/utils/configureInitialS
 import Start from 'ember-rrule-generator/components/containers/start/index';
 import End from 'ember-rrule-generator/components/containers/end/index';
 import Repeat from 'ember-rrule-generator/components/containers/repeat/index';
+import Timezone from 'ember-rrule-generator/components/containers/timezone/index';
 
 import EN from '../../translations/en';
 import { Translations } from 'ember-rrule-generator/utils/translateLabel';
@@ -41,10 +42,11 @@ export interface Config {
   hideError?: boolean;
   weekStartsOnSunday?: boolean;
   allowBYSETPOS?: boolean;
+  supportedTimezones?: () => string[];
+  tzid?: string;
 }
 
 type Signature = {
-  Element: HTMLUListElement;
   Args: {
     onChange: (rrule: string) => void;
     value?: string;
@@ -71,6 +73,7 @@ export default class RRuleGenerator extends Component<Signature> {
   Start = Start;
   End = End;
   Repeat = Repeat;
+  Timezone = Timezone;
 
   _lastStateValue: State;
 

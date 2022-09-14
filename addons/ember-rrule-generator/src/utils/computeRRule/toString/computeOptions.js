@@ -1,6 +1,6 @@
 import { RRule } from 'rrule';
 
-const computeOptions = ({ hideStart, weekStartsOnSunday }) => {
+const computeOptions = ({ hideStart, weekStartsOnSunday, tzid }) => {
   const options = {};
 
   if (hideStart) {
@@ -9,6 +9,10 @@ const computeOptions = ({ hideStart, weekStartsOnSunday }) => {
 
   if (weekStartsOnSunday) {
     options.wkst = RRule.SU;
+  }
+
+  if (tzid) {
+    options.tzid = tzid;
   }
 
   return options;
