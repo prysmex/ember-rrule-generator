@@ -1,7 +1,4 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-
-dayjs.extend(utc);
 
 const computeEnd = ({ mode, after, onDate: { date } }) => {
   const end = {};
@@ -11,7 +8,7 @@ const computeEnd = ({ mode, after, onDate: { date } }) => {
   }
 
   if (mode === 'On date') {
-    end.until = dayjs.utc(date).format();
+    end.until = dayjs(date).format();
   }
 
   return end;
