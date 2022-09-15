@@ -5,10 +5,10 @@ import dayjs from 'dayjs';
 export default class ContainersStartOnDateComponent extends BaseContainerComponent {
   dateFormat = DATE_TIME_FORMAT;
 
-  handleDateChange = (inputDate: Date | undefined) => {
+  handleDateChange: BaseContainerComponent['args']['handleChange'] = (e) => {
     const editedEvent = {
       target: {
-        value: dayjs(inputDate).format(DATE_TIME_FORMAT),
+        value: dayjs(e.target.value as Date).format(DATE_TIME_FORMAT),
         name: 'start.onDate.date',
       },
     };
