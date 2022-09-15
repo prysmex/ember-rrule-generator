@@ -4,11 +4,12 @@ import dayjs from 'dayjs';
 
 export default class ContainersEndOnDateComponent extends BaseContainerComponent {
   dateFormat = DATE_TIME_FORMAT;
+
   handleDateChange = (inputDate: Date | undefined) => {
     const editedEvent = {
       target: {
         value: dayjs(inputDate).format(DATE_TIME_FORMAT),
-        name: this.args.name,
+        name: 'end.onDate.date',
       },
     };
 
