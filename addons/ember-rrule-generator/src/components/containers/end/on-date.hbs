@@ -1,7 +1,7 @@
 {{#if (has-block)}}
   {{yield
     (hash
-      handleChange=this.handleChange
+      handleChange=this.handleDateChange
       onDate=@onDate
       value=@onDate.date
       id=@id
@@ -9,6 +9,7 @@
       translations=@translations
       labels=@labels
       isDisabled=@isDisabled
+      dateFormat=this.dateFormat
     )
   }}
 {{else}}
@@ -20,8 +21,9 @@
         @name={{@name}}
         name={{@name}}
         @value={{@onDate.date}}
+        @dateFormat={{this.dateFormat}}
         @isDisabled={{@isDisabled}}
-        @handleChange={{this.handleChange}}
+        @handleChange={{this.handleDateChange}}
         @translations={{@translations}}
         @labels={{@labels}}
         ...attributes
