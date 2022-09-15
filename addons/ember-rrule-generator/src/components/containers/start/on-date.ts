@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 export default class ContainersStartOnDateComponent extends BaseContainerComponent {
   dateFormat = DATE_TIME_FORMAT;
 
-  handleDateChange(inputDate: Date | undefined) {
+  handleDateChange = (inputDate: Date | undefined) => {
     const editedEvent = {
       target: {
         value: dayjs(inputDate).format(DATE_TIME_FORMAT),
@@ -14,5 +14,5 @@ export default class ContainersStartOnDateComponent extends BaseContainerCompone
     };
 
     this.args.handleChange(editedEvent);
-  }
+  };
 }
