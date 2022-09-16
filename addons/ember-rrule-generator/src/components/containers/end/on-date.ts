@@ -9,7 +9,7 @@ export default class ContainersEndOnDateComponent extends BaseContainerComponent
     const editedEvent = {
       target: {
         value: dayjs(e.target.value as Date).format(DATE_TIME_FORMAT),
-        name: 'start.onDate.date',
+        name: 'end.onDate.date',
       },
     };
 
