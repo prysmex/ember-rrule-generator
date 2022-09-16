@@ -5,11 +5,11 @@
       onDate=@onDate
       value=@onDate.date
       id=@id
-      name=@name
+      name=(concat @name ".date")
       translations=@translations
       labels=@labels
       isDisabled=@isDisabled
-      dateFormat=this.dateFormat
+      dateFormatting=this.dateFormat
     )
   }}
 {{else}}
@@ -18,10 +18,10 @@
       <OnDateComponent
         @id={{@id}}
         id={{@id}}
-        @name={{@name}}
-        name={{@name}}
+        @name={{concat @name ".date"}}
+        name={{concat @name ".date"}}
         @value={{@onDate.date}}
-        @dateFormat={{this.dateFormat}}
+        @dateFormatting={{this.dateFormat}}
         @isDisabled={{@isDisabled}}
         @handleChange={{this.handleDateChange}}
         @translations={{@translations}}
