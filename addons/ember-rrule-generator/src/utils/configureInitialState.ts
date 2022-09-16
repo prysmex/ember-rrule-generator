@@ -6,7 +6,6 @@ import dayjs from 'dayjs';
 import { isEmpty, uniqueId } from 'lodash-es';
 
 import computeRRuleToString from './computeRRule/toString/computeRRule';
-import { DATE_TIME_FORMAT } from './constants.js';
 
 import { Config } from 'ember-rrule-generator/components/r-rule-generator';
 
@@ -29,7 +28,7 @@ const configureState = (config: Config = {}, id) => {
   const data = {
     start: {
       onDate: {
-        date: dayjs().format(DATE_TIME_FORMAT),
+        date: dayjs(),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
         },
@@ -101,7 +100,7 @@ const configureState = (config: Config = {}, id) => {
       mode: configureEnd(),
       after: 1,
       onDate: {
-        date: dayjs().format(DATE_TIME_FORMAT),
+        date: dayjs(),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
         },

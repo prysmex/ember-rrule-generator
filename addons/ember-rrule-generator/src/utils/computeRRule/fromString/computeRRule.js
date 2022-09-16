@@ -1,7 +1,6 @@
 import { rrulestr as rruleObjectFromString } from 'rrule';
 import dayjs from 'dayjs';
 
-import { DATE_TIME_FORMAT } from '../../constants';
 import computeStartOnDate from './computeStartOnDate';
 import computeFrequency from './computeFrequency';
 import computeYearlyMode from './computeYearlyMode';
@@ -41,9 +40,7 @@ const computeRRule = (data, rrule) => {
       start: {
         ...data.start,
         onDate: {
-          date: dayjs(computeStartOnDate(data, rruleObj)).format(
-            DATE_TIME_FORMAT
-          ),
+          date: dayjs(computeStartOnDate(data, rruleObj)),
           options: {
             ...data.start.onDate.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
@@ -101,9 +98,7 @@ const computeRRule = (data, rrule) => {
         mode: computeEndMode(data, rruleObj),
         after: computeEndAfter(data, rruleObj),
         onDate: {
-          date: dayjs(computeEndOnDate(data, rruleObj)).format(
-            DATE_TIME_FORMAT
-          ),
+          date: dayjs(computeEndOnDate(data, rruleObj)),
           options: {
             ...data.end.onDate.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
