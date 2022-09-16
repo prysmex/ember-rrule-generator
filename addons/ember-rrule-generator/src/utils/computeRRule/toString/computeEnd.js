@@ -8,7 +8,7 @@ const computeEnd = ({ mode, after, onDate: { date } }) => {
   }
 
   if (mode === 'On date') {
-    end.until = dayjs(date).format();
+    end.until = dayjs(date).toDate();
   }
 
   return end;

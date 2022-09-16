@@ -4,16 +4,11 @@ import BaseContainerComponent, {
 import YearlyOnTheMonth from './yearly-on-the-month';
 import YearlyOnTheDay from './yearly-on-the-day';
 import YearlyOnTheWhich from './yearly-on-the-which';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import type RRuleGenerator from '../../r-rule-generator/index';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type OnThe = RRuleGenerator['state']['data']['repeat']['yearly']['onThe'];
-
-//eslint-disable-next-line
-dayjs.extend(customParseFormat);
 
 import { MONTHS, DAYS } from 'ember-rrule-generator/utils/constants';
 

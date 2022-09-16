@@ -40,7 +40,7 @@ const computeRRule = (data, rrule) => {
       start: {
         ...data.start,
         onDate: {
-          date: dayjs(computeStartOnDate(data, rruleObj)),
+          date: dayjs(computeStartOnDate(data, rruleObj)).toDate(),
           options: {
             ...data.start.onDate.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
@@ -98,7 +98,7 @@ const computeRRule = (data, rrule) => {
         mode: computeEndMode(data, rruleObj),
         after: computeEndAfter(data, rruleObj),
         onDate: {
-          date: dayjs(computeEndOnDate(data, rruleObj)),
+          date: dayjs(computeEndOnDate(data, rruleObj)).toDate(),
           options: {
             ...data.end.onDate.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
