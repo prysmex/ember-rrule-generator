@@ -33,7 +33,6 @@ export default {
     friday: 'Friday',
     saturday: 'Saturday',
     sunday: 'Sunday',
-    day: 'Day',
     weekday: 'Weekday',
     'weekend day': 'Weekend day',
   },

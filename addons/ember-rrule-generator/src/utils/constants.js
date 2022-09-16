@@ -21,7 +21,6 @@ export const DAYS = [
   'Friday',
   'Saturday',
   'Sunday',
-  'Day',
   'Weekday',
   'Weekend day',
 ];

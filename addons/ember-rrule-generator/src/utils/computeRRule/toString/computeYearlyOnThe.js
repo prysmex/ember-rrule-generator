@@ -47,9 +47,6 @@ const computeYearlyOnThe = (onThe) => {
     case 'Sunday':
       repeat.byweekday = [RRule.SU.nth(bysetpos)];
       break;
-    case 'Day':
-      repeat.bymonthday = bysetpos;
-      break;
     case 'Weekday':
       repeat.byweekday = [0, 1, 2, 3, 4];
       repeat.bysetpos = bysetpos;

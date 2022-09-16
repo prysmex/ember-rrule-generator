@@ -31,9 +31,6 @@ const computeMonthlyOnTheDay = (data, rruleObj) => {
     case '6': {
       return 'Sunday';
     }
-    case '0,1,2,3,4,5,6': {
-      return 'Day';
-    }
     case '0,1,2,3,4': {
       return 'Weekday';
     }
