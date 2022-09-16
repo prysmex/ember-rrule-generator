@@ -4,9 +4,6 @@ const computeMonthlyMode = (data, rruleObj) => {
   }
 
   if (rruleObj.bymonthday) {
-    if (typeof rruleObj.bymonthday === 'number' && rruleObj.bymonthday < 0) {
-      return 'on the';
-    }
     return 'on';
   }
 
