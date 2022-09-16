@@ -1,5 +1,7 @@
+import { Frequency } from 'rrule';
+
 const computeMonthlyOnTheWhich = (data, rruleObj) => {
-  if (rruleObj.freq !== 1 || !rruleObj.bysetpos) {
+  if (rruleObj.freq !== Frequency.MONTHLY || !rruleObj.bysetpos) {
     return data.repeat.monthly.onThe.which;
   }
 

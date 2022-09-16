@@ -1,5 +1,7 @@
+import { Frequency } from 'rrule';
+
 const computeYearlyOnTheWhich = (data, rruleObj) => {
-  if (rruleObj.freq !== 0 || !rruleObj.byweekday) {
+  if (rruleObj.freq !== Frequency.YEARLY || !rruleObj.byweekday) {
     return data.repeat.yearly.onThe.which;
   }
 

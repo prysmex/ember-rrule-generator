@@ -1,5 +1,8 @@
+import { Frequency } from 'rrule';
+
+
 const computeMonthlyInterval = (data, rruleObj) => {
-  if (rruleObj.freq !== 1) {
+  if (rruleObj.freq !== Frequency.MONTHLY) {
     return data.repeat.monthly.interval || 1;
   }
 

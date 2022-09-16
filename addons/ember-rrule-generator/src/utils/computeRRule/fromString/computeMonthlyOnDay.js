@@ -1,5 +1,7 @@
+import { Frequency } from 'rrule';
+
 const computeMonthlyOnDay = (data, rruleObj) => {
-  if (rruleObj.freq !== 1 || !rruleObj.bymonthday) {
+  if (rruleObj.freq !== Frequency.MONTHLY || !rruleObj.bymonthday) {
     return data.repeat.monthly.on.day;
   }
 
