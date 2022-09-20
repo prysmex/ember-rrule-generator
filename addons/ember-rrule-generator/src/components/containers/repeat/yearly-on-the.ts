@@ -9,13 +9,15 @@ import type RRuleGenerator from '../../r-rule-generator/index';
 import translateLabel from 'ember-rrule-generator/utils/translateLabel';
 
 type OnThe = RRuleGenerator['state']['data']['repeat']['yearly']['onThe'];
+type allowBYSETPOS =
+  RRuleGenerator['state']['data']['repeat']['yearly']['options']['allowBYSETPOS'];
 
 import { MONTHS, DAYS } from 'ember-rrule-generator/utils/constants';
 
 type Signature = BaseContainerSignature & {
   Args: {
     onThe: OnThe;
-    allowBYSETPOS?: boolean;
+    allowBYSETPOS?: allowBYSETPOS;
   };
 };
 

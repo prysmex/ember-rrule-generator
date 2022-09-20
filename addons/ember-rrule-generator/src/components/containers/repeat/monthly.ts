@@ -80,4 +80,11 @@ export default class ContainersRepeatMonthlyComponent extends BaseContainerCompo
     const { allowBYSETPOS } = this.args.monthly.options || {};
     return typeof allowBYSETPOS === 'undefined' ? true : allowBYSETPOS;
   }
+
+  get negativeDaysQuantity() {
+    const { negativeDaysQuantity } = this.args.monthly.options;
+    return typeof negativeDaysQuantity === 'undefined'
+      ? 3
+      : negativeDaysQuantity;
+  }
 }

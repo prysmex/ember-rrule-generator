@@ -11,6 +11,7 @@ type On = RRuleGenerator['state']['data']['repeat']['monthly']['on'];
 type Signature = BaseContainerSignature & {
   Args: {
     on: On;
+    negativeDaysQuantity: RRuleGenerator['state']['data']['repeat']['monthly']['options']['negativeDaysQuantity'];
   };
 };
 
@@ -28,16 +29,19 @@ export default class ContainersRepeatMonthlyOnComponent extends BaseContainerCom
         ),
       };
     });
-    //eslint-disable-next-line
-    const neg = [...new Array(30)].map((_day, i) => {
-      return {
-        value: (i + 1) * -1,
-        label: translateLabel(
-          this.args.translations,
-          `numerals_by_number.${(i + 1) * -1}`
-        ),
-      };
-    });
+
+    const neg = [...new Array(this.args.negativeDaysQuantity)].map(
+      (_day, i) => {
+        return {
+          value: (i + 1) * -1,
+          label: translateLabel(
+            this.args.translations,
+            `numerals_by_number.${(i + 1) * -1}`
+          ),
+        };
+      }
+    );
+
     return [...positive, ...neg];
   }
 }

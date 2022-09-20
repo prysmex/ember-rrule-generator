@@ -24,6 +24,7 @@ const configureState = (config: Config = {}, id) => {
     );
   };
   const uniqueRruleId = isEmpty(id) ? uniqueId('rrule-') : id;
+  const configureNegativeDaysQuantity = () => config.negativeDaysQuantity || 3;
 
   const data = {
     start: {
@@ -51,6 +52,7 @@ const configureState = (config: Config = {}, id) => {
         options: {
           modes: config.yearly,
           allowBYSETPOS: config.allowBYSETPOS,
+          negativeDaysQuantity: configureNegativeDaysQuantity(),
         },
       },
       monthly: {
@@ -66,6 +68,7 @@ const configureState = (config: Config = {}, id) => {
         options: {
           modes: config.monthly,
           allowBYSETPOS: config.allowBYSETPOS,
+          negativeDaysQuantity: configureNegativeDaysQuantity(),
         },
       },
       weekly: {

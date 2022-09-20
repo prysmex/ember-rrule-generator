@@ -42,6 +42,7 @@ export interface Config {
   hideError?: boolean;
   weekStartsOnSunday?: boolean;
   allowBYSETPOS?: boolean;
+  negativeDaysQuantity?: boolean;
   supportedTimezones?: () => string[];
   tzid?: string;
 }

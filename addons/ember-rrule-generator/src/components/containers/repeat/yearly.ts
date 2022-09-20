@@ -83,4 +83,11 @@ export default class ContainersRepeatYearlyComponent extends BaseContainerCompon
     const { allowBYSETPOS } = this.args.yearly.options || {};
     return typeof allowBYSETPOS === 'undefined' ? true : allowBYSETPOS;
   }
+
+  get negativeDaysQuantity() {
+    const { negativeDaysQuantity } = this.args.yearly.options;
+    return typeof negativeDaysQuantity === 'undefined'
+      ? 3
+      : negativeDaysQuantity;
+  }
 }
