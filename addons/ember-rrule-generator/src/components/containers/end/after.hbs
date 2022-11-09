@@ -2,7 +2,7 @@
   {{yield
     (hash
       handleChange=this.numericalFieldHandler
-      after=@after
+      value=@after
       id=@id
       name=@name
       translations=@translations
@@ -19,7 +19,7 @@
         @name={{@name}}
         @isDisabled={{@isDisabled}}
         name={{@name}}
-        @after={{@after}}
+        @value={{@after}}
         @handleChange={{this.numericalFieldHandler}}
         @translations={{@translations}}
         @labels={{@labels}}
