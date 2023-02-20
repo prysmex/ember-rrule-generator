@@ -29,7 +29,7 @@ const configureState = (config: Config = {}, id) => {
   const data = {
     start: {
       onDate: {
-        date: dayjs().toDate(),
+        // date: dayjs().toDate(),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
         },
