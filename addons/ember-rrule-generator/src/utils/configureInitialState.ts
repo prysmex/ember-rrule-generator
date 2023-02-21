@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable */
-import dayjs from 'dayjs';
 import { isEmpty, uniqueId } from 'lodash-es';
 
 import computeRRuleToString from './computeRRule/toString/computeRRule';
@@ -29,7 +28,6 @@ const configureState = (config: Config = {}, id) => {
   const data = {
     start: {
       onDate: {
-        // date: dayjs().toDate(),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
         },
@@ -103,7 +101,6 @@ const configureState = (config: Config = {}, id) => {
       mode: configureEnd(),
       after: 1,
       onDate: {
-        date: dayjs().toDate(),
         options: {
           weekStartsOnSunday: config.weekStartsOnSunday,
         },

@@ -7,7 +7,7 @@ const computeEnd = ({ mode, after, onDate: { date } }) => {
     end.count = after;
   }
 
-  if (mode === 'On date') {
+  if (mode === 'On date' && date && dayjs(date).isValid()) {
     end.until = dayjs(date).toDate();
   }
 

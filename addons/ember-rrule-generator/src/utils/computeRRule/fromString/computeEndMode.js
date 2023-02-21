@@ -3,11 +3,11 @@ const computeEndMode = (data, rruleObj) => {
     return 'After';
   }
 
-  if (rruleObj.until) {
+  if (rruleObj.until || data.end.mode === 'On date') {
     return 'On date';
   }
 
-  return 'Never';
+  return data.end.mode;
 };
 
 export default computeEndMode;

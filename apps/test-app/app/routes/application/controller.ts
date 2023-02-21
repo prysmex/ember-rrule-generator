@@ -35,8 +35,7 @@ export default class ApplictionController extends Controller {
   RepeatYearlyOnMonth = RepeatYearlyOnMonth;
   RepeatYearlyOnDay = RepeatYearlyOnDay;
 
-  @tracked rule: string =
-    'DTSTART:20190301T230000Z\nFREQ=WEEKLY;BYMONTH=1;BYMONTHDAY=1';
+  @tracked rule: string = 'RRULE:FREQ=DAILY;INTERVAL=1';
   changeRule = (rule: string) => {
     this.rule = rule;
   };

@@ -1,4 +1,5 @@
 import { helper } from '@ember/component/helper';
+//@ts-expect-error
 import Component from '@glimmer/component';
 
 import RRuleGenerator, { EndValue } from '../../r-rule-generator/index';
