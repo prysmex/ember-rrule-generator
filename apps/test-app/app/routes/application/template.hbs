@@ -72,8 +72,13 @@
   </Generator.Repeat>
   <Generator.End as |End|>
     <End.Select @view={{component this.Select label="End"}} />
-    <End.After @view={{this.NumberInput}} />
-    <End.OnDate @view={{this.DatePicker}} />
+
+    {{#if End.isOnDateActive}}
+      <End.OnDate @view={{this.DatePicker}} />
+    {{else if End.isAfterActive}}
+      <End.After @view={{this.NumberInput}} />
+    {{/if}}
+
   </Generator.End>
 </this.RRuleGenerator>
 {{outlet}}
