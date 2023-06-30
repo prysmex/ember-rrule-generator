@@ -127,9 +127,6 @@ export default class RRuleGenerator extends Component<Signature> {
     //eslint-disable-next-line
     const rrule = computeRRuleToString(newData!);
 
-    //eslint-disable-next-line
-    console.log(rrule);
-
     this.args.onChange?.(rrule);
   };
 
