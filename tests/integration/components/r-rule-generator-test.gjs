@@ -375,6 +375,21 @@ module('Integration | Component | r-rule-generator', function (hooks) {
     );
   });
 
+  test('monthly on the Thursday', async function (assert) {
+    state.value = `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=1`;
+    await render(<template><Full @state={{ctx.state}} /></template>);
+
+    await fillIn('select[name="repeat.monthly.mode"]', 'on the');
+    await fillIn('select[name="repeat.monthly.onThe.which"]', 'Third');
+    await fillIn('select[name="repeat.monthly.onThe.day"]', 'Thursday');
+    assert.strictEqual(
+      state.lastChange(),
+      `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+3TH`,
+    );
+    assert.dom('select[name="repeat.monthly.onThe.which"]').hasValue('Third');
+    assert.dom('select[name="repeat.monthly.onThe.day"]').hasValue('Thursday');
+  });
+
   test('yearly on', async function (assert) {
     state.value = `${START}\nRRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=1;BYMONTHDAY=1`;
     await render(<template><Full @state={{ctx.state}} /></template>);

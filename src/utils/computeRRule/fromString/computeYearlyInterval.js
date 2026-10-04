@@ -1,11 +1,11 @@
 import { Frequency } from 'rrule';
 
-const computeMonthlyInterval = (data, rruleObj) => {
-  if (rruleObj.freq !== Frequency.MONTHLY) {
+const computeYearlyInterval = (data, rruleObj) => {
+  if (rruleObj.freq !== Frequency.YEARLY) {
     return data.repeat.yearly.interval || 1;
   }
 
   return rruleObj.interval || 1;
 };
 
-export default computeMonthlyInterval;
+export default computeYearlyInterval;

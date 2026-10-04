@@ -35,7 +35,7 @@ const computeMonthlyOnThe = (onThe) => {
       repeat.byweekday = [RRule.WE.nth(bysetpos)];
       break;
     case 'Thursday':
-      repeat.byweekday = [RRule.TU.nth(bysetpos)];
+      repeat.byweekday = [RRule.TH.nth(bysetpos)];
       break;
     case 'Friday':
       repeat.byweekday = [RRule.FR.nth(bysetpos)];

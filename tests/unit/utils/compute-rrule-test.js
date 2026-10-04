@@ -1,4 +1,4 @@
-import { module, test, todo } from 'qunit';
+import { module, test } from 'qunit';
 
 import computeRRuleToString from '#src/utils/computeRRule/toString/computeRRule.js';
 import computeRRuleFromString from '#src/utils/computeRRule/fromString/computeRRule.js';
@@ -180,19 +180,14 @@ module('Unit | Utility | computeRRule', function () {
       });
     });
 
-    todo(
-      'parses monthly on the (nth BYDAY) — ordinal is currently lost',
-      function (assert) {
-        const data = parse(
-          `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+2TU`,
-        );
+    test('parses monthly on the (nth BYDAY)', function (assert) {
+      const data = parse(`${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+2TU`);
 
-        assert.deepEqual(data.repeat.monthly.onThe, {
-          day: 'Tuesday',
-          which: 'Second',
-        });
-      },
-    );
+      assert.deepEqual(data.repeat.monthly.onThe, {
+        day: 'Tuesday',
+        which: 'Second',
+      });
+    });
 
     test('parses yearly on', function (assert) {
       const data = parse(
@@ -244,7 +239,7 @@ module('Unit | Utility | computeRRule', function () {
       assert.strictEqual(data.timezone.tzid, 'America/Monterrey');
     });
 
-    todo('parses WKST=SU — currently ignored', function (assert) {
+    test('parses WKST=SU', function (assert) {
       const data = parse(
         `${START}\nRRULE:FREQ=WEEKLY;INTERVAL=1;WKST=SU;BYDAY=SU`,
       );
@@ -264,7 +259,12 @@ module('Unit | Utility | computeRRule', function () {
       `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`,
       `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=SA,SU;BYSETPOS=1`,
       `${START}\nRRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=3;BYMONTHDAY=10`,
-      `${START}\nRRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=+4TH;BYMONTH=11`,
+      `${START}\nRRULE:FREQ=YEARLY;INTERVAL=2;BYDAY=+4TH;BYMONTH=11`,
+      `${START}\nRRULE:FREQ=YEARLY;INTERVAL=3;BYMONTH=3;BYMONTHDAY=10`,
+      `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+2TU`,
+      `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=2;BYDAY=-1FR`,
+      `${START}\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+3TH`,
+      `${START}\nRRULE:FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;WKST=SU`,
       `${START}\nRRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1MO;BYMONTH=5`,
       `${START}\nRRULE:FREQ=DAILY;INTERVAL=1;COUNT=5`,
       `${START}\nRRULE:FREQ=DAILY;INTERVAL=1;UNTIL=20221231T000000Z`,
@@ -277,25 +277,22 @@ module('Unit | Utility | computeRRule', function () {
       });
     }
 
-    todo('yearly interval — currently always parsed as 1', function (assert) {
+    test('yearly interval', function (assert) {
       const rrule = `${START}\nRRULE:FREQ=YEARLY;INTERVAL=2;BYMONTH=3;BYMONTHDAY=10`;
 
       assert.strictEqual(computeRRuleToString(parse(rrule)), rrule);
     });
 
-    todo(
-      'monthly on the Thursday — currently serialized as Tuesday',
-      function (assert) {
-        const data = initialData({ hideStart: true });
-        data.repeat.frequency = 'Monthly';
-        data.repeat.monthly.mode = 'on the';
-        data.repeat.monthly.onThe = { day: 'Thursday', which: 'Third' };
+    test('monthly on the Thursday', function (assert) {
+      const data = initialData({ hideStart: true });
+      data.repeat.frequency = 'Monthly';
+      data.repeat.monthly.mode = 'on the';
+      data.repeat.monthly.onThe = { day: 'Thursday', which: 'Third' };
 
-        assert.strictEqual(
-          computeRRuleToString(data),
-          'RRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+3TH',
-        );
-      },
-    );
+      assert.strictEqual(
+        computeRRuleToString(data),
+        'RRULE:FREQ=MONTHLY;INTERVAL=1;BYDAY=+3TH',
+      );
+    });
   });
 });

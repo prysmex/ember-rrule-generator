@@ -2,7 +2,10 @@ const computeWeekStartDay = (data, rruleObj) => {
   if (!rruleObj.wkst) {
     return data.options.weekStartsOnSunday;
   }
-  return rruleObj.wkst === 6;
+  const wkst =
+    typeof rruleObj.wkst === 'number' ? rruleObj.wkst : rruleObj.wkst.weekday;
+
+  return wkst === 6;
 };
 
 export default computeWeekStartDay;
