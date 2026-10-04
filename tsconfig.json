@@ -1,5 +1,24 @@
+/**
+ * This tsconfig is not used for publishing.
+ * It's only for the local editing experience
+ * (and linting)
+ */
 {
-  "extends": "./tsconfig-root.json",
-  "compilerOptions": {},
-  "files": []
+  "extends": "@ember/app-tsconfig",
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "unpublished-development-types/**/*",
+    "demo-app/**/*"
+  ],
+  "compilerOptions": {
+    "rootDir": ".",
+    "allowJs": true,
+    "types": [
+      "ember-source/types",
+      "vite/client",
+      "@embroider/core/virtual",
+      "@glint/ember-tsc/types"
+    ]
+  }
 }

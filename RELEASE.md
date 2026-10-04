@@ -1,77 +1,27 @@
-<p align="center">
-  <picture>
-  <source
-    srcset="./NCC-1701-a.svg"
-    media="(prefers-color-scheme: dark)"
-  />
-  <source
-    srcset="./NCC-1701-a-blue.svg"
-    media="(prefers-color-scheme: light)"
-  />
-  <img
-    class="project-logo"
-    src="./NCC-1701-a-blue.svg#gh-light-mode-only"
-    alt="Built with WarpDrive"
-    width="120px"
-    title="Built with WarpDrive"
-    />
-  <img
-    class="project-logo"
-    src="./NCC-1701-a.svg#gh-dark-mode-only"
-    alt="Built with WarpDrive"
-    width="120px"
-    title="Built with WarpDrive" />
-  </picture>
-</p>
+# Release Process
 
-# Release Guide
+Releases in this repo are mostly automated using [release-plan](https://github.com/embroider-build/release-plan/). Once you label all your PRs correctly (see below) you will have an automatically generated PR that updates your CHANGELOG.md file and a `.release-plan.json` that is used to prepare the release once the PR is merged.
 
-The following guide details the release process and infrastructure.
+## Preparation
 
-## Generating a Release Candidate
+Since the majority of the actual release process is automated, the remaining tasks before releasing are:
 
-### Overview 
+- correctly labeling **all** pull requests that have been merged since the last release
+- updating pull request titles so they make sense to our users
 
-**Determining the next version number**
+Some great information on why this is important can be found at [keepachangelog.com](https://keepachangelog.com/en/1.1.0/), but the overall
+guiding principle here is that changelogs are for humans, not machines.
 
-TODO description
+When reviewing merged PR's the labels to be used are:
 
-**Bumping The Version**
+- breaking - Used when the PR is considered a breaking change.
+- enhancement - Used when the PR adds a new feature or enhancement.
+- bug - Used when the PR fixes a bug included in a previous release.
+- documentation - Used when the PR adds or updates documentation.
+- internal - Internal changes or things that don't fit in any other category.
 
-The script automatically bumps the version of the project in the following locations to the new version.
+**Note:** `release-plan` requires that **all** PRs are labeled. If a PR doesn't fit in a category it's fine to label it as `internal`
 
-  - package.json
-  - lerna.json
-  - [addons|apps|engines|tools]/*/package.json
+## Release
 
-**Generating and Moving Static Assets**
-
-TODO description
-
-**Generating Release Notes**
-
-During a release, our automated script uses [lerna changelog](https://github.com/lerna/lerna-changelog) to generate release notes and add them to [./CHANGELOG.md](./CHANGELOG.md) by aggregating the commit messages and PR titles that have occurred since the prior minor or patch release. These messages are organized and presented utilizing [CI the enforced](./.github/workflows/enforce-pr-labels-canary.yml) [labeling system](https://github.com/prysmex/ember-rrule-generator/labels?q=changelog).
-
- - `:memo: security` | :lock: Security Improvement
- - `:memo: feat` | :rocket: Enhancement
- - `:memo: bugfix` | :bug: Bug Fix
- - `:memo: perf` | :zap: Performance
- - `:memo: cleanup` | :shower: Deprecation Removal
- - `:memo: deprecation` | :evergreen_tree: New Deprecation
- - `:memo: doc` | :memo: Documentation
- - `:memo: test` | :goal_net: Test
- - `:memo: chore` | :house: Internal
-
-**Tagging The Commit**
-
-Once the version has been bumped, static assets generated, and changelog updated a commit is generated to preserve these changes.
-That commit is then [tagged](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with the same version number. The commit and the
-[tag](https://github.com/prysmex/ember-rrule-generator/tags) are then pushed to github to preserve the history of what we've published and when.
-
-**Generating A Release**
-
-Once the commit has been tagged, our script publishes the tag as a new [Github Release](https://github.com/prysmex/ember-rrule-generator/releases) with the associated release notes.
-
-## Deploying/Publishing New Versions
-
-TODO add tooling
+Once the prep work is completed, the actual release is straight forward: you just need to merge the open [Plan Release](https://github.com/prysmex/ember-rrule-generator/pulls?q=is%3Apr+is%3Aopen+%22Prepare+Release%22+in%3Atitle) PR

@@ -7,5 +7,10 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - 'dependencies'
-      - ':memo: skip'
-      - ':dart: canary'
+      - 'internal'
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+    labels:
+      - 'internal'
