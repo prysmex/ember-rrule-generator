@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, test, todo } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, fillIn, render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -579,5 +579,50 @@ module('Integration | Component | r-rule-generator', function (hooks) {
     assert.dom('[data-test-name]').hasText('repeat.frequency');
     assert.dom('[data-test-value]').hasText('Daily');
     assert.dom('[data-test-count]').hasText('6');
+  });
+
+  test('Start.OnDate yields its props', async function (assert) {
+    await render(hbs`
+      <this.RRuleGenerator
+        @value={{this.value}}
+        @onChange={{this.onChange}}
+        @config={{this.config}}
+        as |Generator|
+      >
+        <Generator.Start as |Start|>
+          <Start.OnDate as |d|>
+            <span data-test-start-name>{{d.name}}</span>
+            <span data-test-start-set>{{if d.value "yes" "no"}}</span>
+          </Start.OnDate>
+        </Generator.Start>
+      </this.RRuleGenerator>
+    `);
+
+    assert.dom('[data-test-start-name]').hasText('start.onDate');
+    assert.dom('[data-test-start-set]').hasText('yes');
+  });
+
+  todo('Timezone.Select yields its props — block form currently throws', async function (assert) {
+    this.value = `DTSTART;TZID=UTC:20220101T000000\nRRULE:FREQ=DAILY;INTERVAL=1`;
+    await render(hbs`
+      <this.RRuleGenerator
+        @value={{this.value}}
+        @onChange={{this.onChange}}
+        @config={{this.config}}
+        as |Generator|
+      >
+        <Generator.Timezone as |Timezone|>
+          <Timezone.Select as |t|>
+            <span data-test-tz-name>{{t.name}}</span>
+            <span data-test-tz-value>{{t.value}}</span>
+            <span data-test-tz-count>{{t.options.length}}</span>
+          </Timezone.Select>
+        </Generator.Timezone>
+      </this.RRuleGenerator>
+    `);
+
+    assert.dom('[data-test-tz-name]').hasText('timezone.tzid');
+    assert.dom('[data-test-tz-value]').hasText('UTC');
+    assert.dom('[data-test-tz-count]').hasText('3');
   });
 });
