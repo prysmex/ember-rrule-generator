@@ -1,6 +1,6 @@
 {
   "name": "ember-rrule-generator",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Headless rrule generator components for Ember",
   "keywords": [
     "ember-addon",
@@ -61,7 +61,7 @@
     "src"
   ],
   "scripts": {
-    "build": "rollup --config",
+    "build": "rollup --config && node scripts/verify-app-reexports.mjs",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
@@ -72,7 +72,7 @@
     "lint:js:fix": "eslint . --fix",
     "lint:publish": "pnpm build && publint run --level error",
     "lint:types": "ember-tsc --noEmit",
-    "prepack": "rollup --config",
+    "prepack": "rollup --config && node scripts/verify-app-reexports.mjs",
     "start": "vite dev",
     "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0"
   },
@@ -228,7 +228,6 @@
       "./utils/computeRRule/toString/computeYearlyOn.js": "./dist/_app_/utils/computeRRule/toString/computeYearlyOn.js",
       "./utils/computeRRule/toString/computeYearlyOnThe.js": "./dist/_app_/utils/computeRRule/toString/computeYearlyOnThe.js",
       "./utils/configureInitialState.js": "./dist/_app_/utils/configureInitialState.js",
-      "./utils/constants.js": "./dist/_app_/utils/constants.js",
       "./utils/numerical-field-handler.js": "./dist/_app_/utils/numerical-field-handler.js",
       "./utils/translateLabel.js": "./dist/_app_/utils/translateLabel.js"
     }

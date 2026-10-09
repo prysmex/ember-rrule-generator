@@ -30,13 +30,22 @@ export default {
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports([
-      'components/**/*.js',
-      'utils/**/*.js',
-      'helpers/**/*.js',
-      'modifiers/**/*.js',
-      'services/**/*.js',
-    ]),
+    addon.appReexports(
+      [
+        'components/**/*.js',
+        'utils/**/*.js',
+        'helpers/**/*.js',
+        'modifiers/**/*.js',
+        'services/**/*.js',
+      ],
+      {
+        // utils/constants is a plain constants module with no default
+        // export, and nothing resolves it by name, so it has no business
+        // in the app tree. Re-exporting it there broke Embroider/Vite
+        // builds with [MISSING_EXPORT] "default".
+        exclude: ['utils/constants.js'],
+      },
+    ),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
     // `dependencies` and `peerDependencies` as well as standard Ember-provided
